@@ -22,8 +22,7 @@
     "build": "react-scripts build",
     "test": "start-server-and-test start http-get://localhost:3000 cy:run",
     "eject": "react-scripts eject",
-    "cypress": "./node_modules/.bin/cypress open",
-    "cy:run": "cypress run",
+    "cy:run": "./node_modules/.bin/cypress open",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
