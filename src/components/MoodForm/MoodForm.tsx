@@ -1,5 +1,5 @@
 import './MoodForm.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { SUBMIT_MOOD } from '../../utils/graph_mutations';
 
