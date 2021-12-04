@@ -19,19 +19,19 @@ function App() {
   }
 
   if (error) {
-    return <h2>{error}</h2>
+    return <h2>{ error }</h2>
   }
 
   return (
     <div className="App">
       <header className="header">
         <h1>GlowUp</h1>
+        { user && <h2>Welcome { user.username }</h2>}
         <nav className="nav">
           <h2>Dashboard</h2>
           <h2>Journal</h2>
         </nav>
       </header>
-
     </div>
   );
 }
