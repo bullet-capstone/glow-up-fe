@@ -1,14 +1,26 @@
 import './MoodForm.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useMutation } from '@apollo/client';
+import { SUBMIT_MOOD } from '../../utils/graph_mutations';
 
 const MoodForm = () => {
   const [ mood, setMood ] = useState('')
   const [ description, setDescription ] = useState('')
 
+  const [ createMood ] = useMutation(SUBMIT_MOOD)
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    createMood({ variables: { mood: parseInt(mood), description: description }})
+
+    setMood('');
+    setDescription('');
+  }
 
   return (
     <section className="mood-form-container">
-      <form className="mood-form">
+      <form className="mood-form" onSubmit={ handleSubmit }>
         <h2>
           How are you feeling today?
         </h2>
@@ -18,7 +30,7 @@ const MoodForm = () => {
             aria-label="strongly negative"
             name="mood"
             id="strongly-negative"
-            value="1"
+            value="0"
             onClick={ e => setMood(e.currentTarget.value) }
           />
           <label
@@ -32,7 +44,7 @@ const MoodForm = () => {
             aria-label="negative"
             name="mood"
             id="negative"
-            value="2"
+            value="1"
             onClick={ e => setMood(e.currentTarget.value) }
           />
           <label
@@ -46,7 +58,7 @@ const MoodForm = () => {
             aria-label="neutral"
             name="mood"
             id="neutral"
-            value="3"
+            value="2"
             onClick={ e => setMood(e.currentTarget.value) }
           />
           <label
@@ -74,7 +86,7 @@ const MoodForm = () => {
             aria-label="strongly positive"
             name="mood"
             id="strongly-positive"
-            value="5"
+            value="4"
             onClick={ e => setMood(e.currentTarget.value) }
           />
           <label
@@ -91,6 +103,7 @@ const MoodForm = () => {
           value={ description }
           onChange={ e => setDescription(e.currentTarget.value) }
         />
+        <button type="submit">Submit</button>
       </form>
     </section>
   )
