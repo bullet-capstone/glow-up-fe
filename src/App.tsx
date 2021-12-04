@@ -14,13 +14,24 @@ function App() {
     }
   }, [data, loading])
 
-  console.log(data.fetchUser, error, loading)
+  if (loading) {
+   return  <h2>Loading</h2>
+  }
+
+  if (error) {
+    return <h2>{error}</h2>
+  }
 
   return (
     <div className="App">
-      <header>
-
+      <header className="header">
+        <h1>GlowUp</h1>
+        <nav className="nav">
+          <h2>Dashboard</h2>
+          <h2>Journal</h2>
+        </nav>
       </header>
+
     </div>
   );
 }
