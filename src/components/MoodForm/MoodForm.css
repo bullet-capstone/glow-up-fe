@@ -27,13 +27,24 @@ input[type=radio] {
   cursor: pointer;
 }
 
+.moods-container {
+  margin-bottom: 1em;
+}
+
 .mood-description {
   width: 100%;
   border: 0;
   border-radius: 5px;
   padding: 0.5rem;
+  margin-top: 1.5em;
 }
 
 input[type=radio]:checked + label {
   font-size: 2em;
+}
+
+.error-message {
+  position: absolute;
+  top: 20vh;
+  width: 100%;
 }

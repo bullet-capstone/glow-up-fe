@@ -6,16 +6,21 @@ import { SUBMIT_MOOD } from '../../utils/graph_mutations';
 const MoodForm = () => {
   const [ mood, setMood ] = useState('')
   const [ description, setDescription ] = useState('')
-
+  const [ validateForm, setValidateForm ] = useState(true)
   const [ createMood ] = useMutation(SUBMIT_MOOD)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    createMood({ variables: { mood: parseInt(mood), description: description }})
+    if (!mood) {
+      setValidateForm(false)
+    } else {
+      createMood({ variables: { mood: parseInt(mood), description: description }})
 
-    setMood('');
-    setDescription('');
+      setValidateForm(true)
+      setMood('');
+      setDescription('');
+    }
   }
 
   return (
@@ -24,14 +29,15 @@ const MoodForm = () => {
         <h2>
           How are you feeling today?
         </h2>
-        <div>
+        <div className="moods-container">
           <input
             type="radio"
             aria-label="strongly negative"
             name="mood"
             id="strongly-negative"
             value="0"
-            onClick={ e => setMood(e.currentTarget.value) }
+            onChange={ e => setMood(e.currentTarget.value) }
+            checked={ mood === "0" }
           />
           <label
             htmlFor="strongly-negative"
@@ -45,7 +51,8 @@ const MoodForm = () => {
             name="mood"
             id="negative"
             value="1"
-            onClick={ e => setMood(e.currentTarget.value) }
+            onChange={ e => setMood(e.currentTarget.value) }
+            checked={ mood === "1" }
           />
           <label
             htmlFor="negative"
@@ -59,7 +66,8 @@ const MoodForm = () => {
             name="mood"
             id="neutral"
             value="2"
-            onClick={ e => setMood(e.currentTarget.value) }
+            onChange={ e => setMood(e.currentTarget.value) }
+            checked={ mood === "2" }
           />
           <label
             htmlFor="neutral"
@@ -72,8 +80,9 @@ const MoodForm = () => {
             aria-label="positive"
             name="mood"
             id="positive"
-            value="4"
-            onClick={ e => setMood(e.currentTarget.value) }
+            value="3"
+            onChange={ e => setMood(e.currentTarget.value) }
+            checked={ mood === "3" }
           />
           <label
             htmlFor="positive"
@@ -87,7 +96,8 @@ const MoodForm = () => {
             name="mood"
             id="strongly-positive"
             value="4"
-            onClick={ e => setMood(e.currentTarget.value) }
+            onChange={ e => setMood(e.currentTarget.value) }
+            checked={ mood === "4" }
           />
           <label
             htmlFor="strongly-positive"
@@ -96,6 +106,11 @@ const MoodForm = () => {
             😁
           </label>
         </div>
+        { !validateForm &&
+          <p className="error-message">
+            **Please select your mood today!**
+          </p>
+        }
         <input
           type="text"
           placeholder="Today, I am feeling..."
