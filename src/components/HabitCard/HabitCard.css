@@ -1,0 +1,15 @@
+.habit-card-container input[type="checkbox"] {
+  display: none;
+}
+
+.habit-card-container input + label {
+  display: inline-block;
+  width: 192px;
+  height: 192px;
+  cursor: pointer;
+  /* background-image: url(../../assets/icons/logo192.png);
+  color: blue; */
+}
+/* .my-custom-input-label-box input[type="checkbox"]:checked + label {
+	background-image: url(/images/service/checkbox-checked.png)
+} */
