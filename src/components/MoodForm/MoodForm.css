@@ -1,0 +1,50 @@
+.mood-form-container {
+  background: url(../../assets/form-background.png) 100%;
+  height: 500px;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.mood-form {
+  position: absolute;
+  top: 25vh;
+  line-height: 10vh;
+}
+
+input[type=radio] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.mood-label {
+  font-size: 1.5em;
+  margin: 0.4em;
+  cursor: pointer;
+}
+
+.moods-container {
+  margin-bottom: 1em;
+}
+
+.mood-description {
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin-top: 1.5em;
+}
+
+input[type=radio]:checked + label {
+  font-size: 2em;
+}
+
+.error-message {
+  position: absolute;
+  top: 20vh;
+  width: 100%;
+}

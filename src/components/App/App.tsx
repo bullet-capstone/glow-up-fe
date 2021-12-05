@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useQuery } from "@apollo/client";
 import './App.css';
-import { QUERY_USER } from './utils/graph_queries';
-import { User } from './utils/Models'
+import { QUERY_USER } from '../../utils/graph_queries';
+import { User } from '../../utils/Models';
+import MoodForm from '../MoodForm/MoodForm';
 
 function App() {
   const { loading, error, data } = useQuery(QUERY_USER)
@@ -32,6 +33,7 @@ function App() {
           <h2>Journal</h2>
         </nav>
       </header>
+      <MoodForm />
     </div>
   );
 }

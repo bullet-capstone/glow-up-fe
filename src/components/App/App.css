@@ -8,6 +8,7 @@
   display: flex;
   width: 100vw;
   justify-content: space-between;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .nav {
