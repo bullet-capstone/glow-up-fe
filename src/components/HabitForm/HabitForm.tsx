@@ -12,7 +12,7 @@ const HabitForm = () => {
     { id: 4, name: "Brush Teeth x2" },
     { id: 5, name: "Drink Water" },
     { id: 6, name: "Socialize" },
-    { id: 7, name: "Eat Health" },
+    { id: 7, name: "Eat Healthy" },
     { id: 8, name: "Wash Dishes" },
     { id: 9, name: "Write" },
     { id: 10, name: "Shower" },
