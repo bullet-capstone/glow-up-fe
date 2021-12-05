@@ -29,8 +29,13 @@ const HabitForm = () => {
 
   return (
     <div className="habit-form-container">
-      <HabitCard />
-      {/* {habitCards} */}
+      <form className="habit-form">
+        <HabitCard />
+        <HabitCard />
+
+        {/* {habitCards} */}
+      </form>
+      <button className="habit-submit-button">Submit</button>
     </div>
   )
 }

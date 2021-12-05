@@ -1,5 +1,16 @@
 .habit-form-container {
   border: 1px solid red;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.habit-form {
+  display: grid;
+  grid-template-columns: repeat(5, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 20px;
+}
+
+.habit-submit-button {
+  width: 100px;
 }
