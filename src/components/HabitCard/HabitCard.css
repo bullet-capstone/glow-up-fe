@@ -1,4 +1,4 @@
-.habit-card-container input[type="checkbox"] {
+/* .habit-card-container input[type="checkbox"] {
   display: none;
 }
 
@@ -6,10 +6,10 @@
   display: inline-block;
   width: 100%;
   /* height: 192px; */
-  cursor: pointer;
-  /* background-image: url(../../assets/icons/logo192.png);
+/* cursor: pointer; */
+/* background-image: url(../../assets/icons/logo192.png);
   color: blue; */
-}
+/* }  */
 /* .my-custom-input-label-box input[type="checkbox"]:checked + label {
 	background-image: url(/images/service/checkbox-checked.png)
 } */
@@ -18,4 +18,9 @@
   width: 100px;
   height: 100px;
   border: 1px solid green;
+}
+
+.habit-icon {
+  width: 80px;
+  height: 80px;
 }

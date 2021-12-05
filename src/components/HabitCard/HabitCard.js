@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 export default function HabitCard(props) {
   const [cardState, setCardState] = useState({
     checked: 0,
-    style: { color: "red" },
+    style: { backgroundColor: "none" },
   })
   // const [style, setStyle] = useState({ color: null })
 
@@ -24,27 +24,31 @@ export default function HabitCard(props) {
   //       })
   // }, [checked])
 
-  const toggleCheck = () => {
+  const toggleCheck = e => {
+    e.preventDefault()
     console.log("toggle check fires")
     cardState.checked
       ? setCardState({
           ...cardState,
           checked: 0,
-          style: { color: "red" },
+          style: { backgroundColor: "pink" },
         })
       : setCardState({
           ...cardState,
           checked: 1,
-          style: { color: "blue" },
+          style: { backgroundColor: "none" },
         })
   }
 
   return (
     <div className="habit-card-container">
-      <label style={cardState.style} onClick={toggleCheck}>
+      {/* <label style={cardState.style} onClick={toggleCheck}>
         <input type="checkbox" value={props.name} id={props.id} />
         {props.name}
-      </label>
+      </label> */}
+
+      <button className="habit-icon" id={props.id} onClick={toggleCheck} style={cardState.style}></button>
+      <p className="habit-text">{props.name}</p>
     </div>
   )
 }
