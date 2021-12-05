@@ -1,16 +1,15 @@
-
 interface Mood {
-    id: string
-    mood: number
-    description: string
-    createdAt: string
+  id: string
+  mood: number
+  description: string
+  createdAt: string
 }
 
-// export interface Habit {
-//   id: string
-//   name: string
-//   description: string
-// }
+export interface Habit {
+  id: string
+  name: string
+  description: string
+}
 
 interface HabitEntry {
   id: string
@@ -18,7 +17,6 @@ interface HabitEntry {
   habitId: string
   status: number
 }
-
 
 interface JournalEntry {
   id: string
