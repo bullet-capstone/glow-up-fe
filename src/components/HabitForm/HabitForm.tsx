@@ -25,9 +25,12 @@ const HabitForm = () => {
 
   // setUserHabits(data)
 
+  // const habitCards = data.map(habit => <HabitCard name={habit.name})
+
   return (
     <div className="habit-form-container">
       <HabitCard />
+      {/* {habitCards} */}
     </div>
   )
 }
