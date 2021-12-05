@@ -5,35 +5,35 @@ import HabitCard from "../HabitCard/HabitCard"
 
 const HabitForm = () => {
   // const { userHabits, setUserHabits } = useContext(AppContext)
-  // const data = [
-  //   { id: 1, name: "Exercise" },
-  //   { id: 2, name: "Exercise" },
-  //   { id: 3, name: "Exercise" },
-  //   { id: 4, name: "Exercise" },
-  //   { id: 5, name: "Exercise" },
-  //   { id: 6, name: "Exercise" },
-  //   { id: 7, name: "Exercise" },
-  //   { id: 8, name: "Exercise" },
-  //   { id: 9, name: "Exercise" },
-  //   { id: 10, name: "Exercise" },
-  //   { id: 11, name: "Exercise" },
-  //   { id: 12, name: "Exercise" },
-  //   { id: 13, name: "Exercise" },
-  //   { id: 14, name: "Exercise" },
-  //   { id: 15, name: "Exercise" },
-  // ]
+  const habitData = [
+    { id: 1, name: "Exercise" },
+    { id: 2, name: "Meditate" },
+    { id: 3, name: "Floss" },
+    { id: 4, name: "Brush Teeth x2" },
+    { id: 5, name: "Drink Water" },
+    { id: 6, name: "Socialize" },
+    { id: 7, name: "Eat Health" },
+    { id: 8, name: "Wash Dishes" },
+    { id: 9, name: "Write" },
+    { id: 10, name: "Shower" },
+    { id: 11, name: "Less Social Media" },
+    { id: 12, name: "Make Bed" },
+    { id: 13, name: "Read" },
+    { id: 14, name: "Go Outside" },
+    { id: 15, name: "Plan Tomorrow" },
+  ]
 
   // setUserHabits(data)
 
-  // const habitCards = data.map(habit => <HabitCard name={habit.name})
+  const habitCards = habitData.map(habit => <HabitCard name={habit.name} />)
 
   return (
     <div className="habit-form-container">
       <form className="habit-form">
-        <HabitCard />
-        <HabitCard />
+        {/* <HabitCard name="Excercise" />
+        <HabitCard name="Meditate" /> */}
 
-        {/* {habitCards} */}
+        {habitCards}
       </form>
       <button className="habit-submit-button">Submit</button>
     </div>
