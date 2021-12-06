@@ -3,20 +3,15 @@ import { AppContext } from "../../utils/context"
 import { QUERY_HABITS } from "../../utils/graph_queries"
 import { SUBMIT_HABIT } from "../../utils/graph_mutations"
 import { useQuery, useMutation } from "@apollo/client"
-import { useEffect, useContext } from "react"
+import { useContext } from "react"
 import HabitCard from "../HabitCard/HabitCard"
 import "../../assets/icons/habit7-uncheck.png"
+import { Habit } from "../../utils/Models"
 
 const HabitForm = () => {
-  const { loading, error, data } = useQuery(QUERY_HABITS)
-  const { userHabits, setUserHabits, checkedHabitIds } = useContext(AppContext)
+  const { error, data } = useQuery(QUERY_HABITS)
+  const { checkedHabitIds } = useContext(AppContext)
   const [createHabitEntry] = useMutation(SUBMIT_HABIT)
-
-  useEffect(() => {
-    if (!loading && data) {
-      setUserHabits(data.fetchHabits)
-    }
-  }, [data, loading])
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -29,20 +24,22 @@ const HabitForm = () => {
     }
   }
 
-  return userHabits ? (
+  return (
     <section className="habit-form-container">
       <h2 className="habit-form-question">What have you accomplished?</h2>
-      <form className="habit-form" onSubmit={createHabitEntries}>
-        {userHabits.map(habit => (
-          <HabitCard name={habit.name} id={habit.id} key={habit.id} />
-        ))}
-      </form>
-      <button className="habit-submit-button" type="submit">
-        Submit
-      </button>
+      {data ? (
+        <form className="habit-form" onSubmit={createHabitEntries}>
+          {data.fetchHabits.map((habit: Habit) => (
+            <HabitCard name={habit.name} id={habit.id} key={habit.id} />
+          ))}
+          <button className="habit-submit-button" type="submit">
+            Submit
+          </button>
+        </form>
+      ) : (
+        <h2>{error}</h2>
+      )}
     </section>
-  ) : (
-    <h2>{error}</h2>
   )
 }
 

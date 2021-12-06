@@ -18,7 +18,6 @@ const AppContext = createContext<ContextState>({
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [userHabits, setUserHabits] = useState<Habit[]>([])
   const [checkedHabitIds, setCheckedHabitIds] = useState<number[]>([])
-  // const [habitSubmitted, setHabitSubmitted] = useState(false)
 
   return (
     <AppContext.Provider value={{ userHabits, setUserHabits, checkedHabitIds, setCheckedHabitIds }}>
