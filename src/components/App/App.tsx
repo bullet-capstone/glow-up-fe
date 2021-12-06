@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useQuery } from "@apollo/client"
 import "./App.css"
 import { QUERY_USER } from "../../utils/graph_queries"
@@ -8,6 +8,7 @@ import HabitForm from "../HabitForm/HabitForm"
 
 function App() {
   const { loading, error, data } = useQuery(QUERY_USER)
+
   const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {

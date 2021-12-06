@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client"
 
 export const QUERY_USER = gql`
-query fetchUser {
+  query fetchUser {
     fetchUser {
       username
 
@@ -23,7 +23,15 @@ query fetchUser {
         id
         content
         date
-      }      
+      }
+    }
+  }
+`
+export const QUERY_HABITS = gql`
+  {
+    fetchHabit {
+      id
+      name
     }
   }
 `
