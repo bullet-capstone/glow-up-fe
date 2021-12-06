@@ -41,6 +41,8 @@ export default function HabitCard(props) {
         let filtered = checkedHabitId.filter(ele => ele !== parseInt(e.target.id))
         setCheckedHabitId(filtered)
         break
+      default:
+        break
     }
   }
 

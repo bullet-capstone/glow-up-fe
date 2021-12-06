@@ -2,7 +2,7 @@ import "./HabitForm.css"
 import { AppContext } from "../../utils/context.js"
 import { QUERY_HABITS } from "../../utils/graph_queries"
 import { useQuery } from "@apollo/client"
-import { useEffect, useContext, useState } from "react"
+import { useEffect, useContext } from "react"
 import HabitCard from "../HabitCard/HabitCard"
 import { useMutation } from "@apollo/client"
 import { SUBMIT_HABIT } from "../../utils/graph_mutations"
@@ -10,7 +10,7 @@ import "../../assets/icons/habit7-uncheck.png"
 
 const HabitForm = () => {
   const { loading, error, data } = useQuery(QUERY_HABITS)
-  const { userHabits, setUserHabits, checkedHabitId, habitSubmitted, setHabitSubmitted } = useContext(AppContext)
+  const { userHabits, setUserHabits, checkedHabitId } = useContext(AppContext)
   const [createHabitEntry] = useMutation(SUBMIT_HABIT)
 
   // const [checkedCards, setCheckedCards] = useState([])
@@ -54,7 +54,7 @@ const HabitForm = () => {
       </button>
     </div>
   ) : (
-    <h2>We could not get data at the moment</h2>
+    <h2>{error}</h2>
   )
 }
 
