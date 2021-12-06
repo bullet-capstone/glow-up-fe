@@ -1,0 +1,10 @@
+.dashboard-container {
+  background: url(../../assets/dashboard-background.png) 100%;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
