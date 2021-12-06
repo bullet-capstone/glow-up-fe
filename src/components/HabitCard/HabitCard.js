@@ -1,45 +1,28 @@
 import "./HabitCard.css"
-import { useState, useEffect, useContext } from "react"
+import { useState, useContext } from "react"
 import { AppContext } from "../../utils/context"
-// import habit7Uncheck from "../../assets/icons/habit7-uncheck.png"
 
 export default function HabitCard(props) {
-  const [checked, setChecked] = useState(0)
+  const { checkedHabitIds, setCheckedHabitIds } = useContext(AppContext)
+  const [ checked, setChecked ] = useState(checkedHabitIds.includes(props.id))
   const [style, setStyle] = useState({
-    backgroundColor: null,
-    // backgroundImage: "url(../../assets/icons/habit7-uncheck.png)",
+    backgroundColor: '#e4dfdd',
   })
-  const { checkedHabitId, setCheckedHabitId } = useContext(AppContext)
-
-  useEffect(() => {
-    checked
-      ? setStyle({
-          ...style,
-          backgroundColor: "pink",
-          // backgroundImage: `url(../../assets/icons/${props.id}check.png)`,
-          // backgroundRepeat: "no-repeat",
-        })
-      : setStyle({
-          ...style,
-          backgroundColor: null,
-          // backgroundImage: `url(../../assets/icons/${props.id}check.png)`,
-          // backgroundImage: "url(../../assets/icons/favicon.ico)",
-          // backgroundRepeat: "no-repeat",
-        })
-  }, [checked])
 
   const toggleCheck = e => {
     e.preventDefault()
     switch (checked) {
-      case 0:
-        setChecked(1)
-        setCheckedHabitId([...checkedHabitId, parseInt(e.target.id)])
+      case false:
+        setChecked(true)
+        setCheckedHabitIds([...checkedHabitIds, parseInt(e.target.id)])
+        setStyle({ backgroundColor: '#4a5582', color: "#fff"})
         break
 
-      case 1:
-        setChecked(0)
-        let filtered = checkedHabitId.filter(ele => ele !== parseInt(e.target.id))
-        setCheckedHabitId(filtered)
+      case true:
+        setChecked(false)
+        let filtered = checkedHabitIds.filter(ele => ele !== parseInt(e.target.id))
+        setCheckedHabitIds(filtered)
+        setStyle({ backgroundColor: '#e4dfdd', color: "black" })
         break
       default:
         break
@@ -47,10 +30,8 @@ export default function HabitCard(props) {
   }
 
   return (
-    <div className="habit-card-container">
-      <button className="habit-icon" id={props.id} onClick={toggleCheck} style={style}></button>
-
-      <p className="habit-text">{props.name}</p>
-    </div>
+    <button className="habit-card-button" onClick={toggleCheck} id={props.id} style={style}>
+      {props.name}
+    </button>
   )
 }
