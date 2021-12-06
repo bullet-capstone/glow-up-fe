@@ -6,6 +6,7 @@ import { User } from "../../utils/Models"
 import MoodForm from "../MoodForm/MoodForm"
 import HabitForm from "../HabitForm/HabitForm"
 import Dashboard from "../Dashboard/Dashboard"
+import { Routes, Route, NavLink } from "react-router-dom";
 
 function App() {
   const { loading, error, data } = useQuery(QUERY_USER)
