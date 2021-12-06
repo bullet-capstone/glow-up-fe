@@ -5,6 +5,7 @@ import { QUERY_USER } from "../../utils/graph_queries"
 import { User } from "../../utils/Models"
 import MoodForm from "../MoodForm/MoodForm"
 import HabitForm from "../HabitForm/HabitForm"
+import Dashboard from "../Dashboard/Dashboard"
 
 function App() {
   const { loading, error, data } = useQuery(QUERY_USER)
@@ -29,7 +30,8 @@ function App() {
     <div className="App">
       <header className="header">
         <h1>GlowUp</h1>
-        {user && <h2>Welcome {user.username}</h2>}
+        {//user && <h2>Welcome {user.username}</h2>}
+      }
         <nav className="nav">
           <h2>Dashboard</h2>
           <h2>Journal</h2>
@@ -37,6 +39,7 @@ function App() {
       </header>
       <MoodForm />
       <HabitForm />
+      <Dashboard />
     </div>
   )
 }
