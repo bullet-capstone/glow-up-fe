@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react"
+import { useState, useEffect } from "react"
 import { useQuery } from "@apollo/client"
 import "./App.css"
 import { QUERY_USER } from "../../utils/graph_queries"
