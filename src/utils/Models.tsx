@@ -8,7 +8,6 @@ interface Mood {
 export interface Habit {
   id: string
   name: string
-  // description: string
 }
 
 interface HabitEntry {

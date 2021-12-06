@@ -28,8 +28,8 @@ export const QUERY_USER = gql`
   }
 `
 export const QUERY_HABITS = gql`
-  {
-    fetchHabit {
+  query fetchHabits {
+    fetchHabits {
       id
       name
     }

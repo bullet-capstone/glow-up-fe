@@ -4,12 +4,12 @@ const AppContext = createContext({})
 
 const ContextProvider = props => {
   const [userHabits, setUserHabits] = useState([])
-  const [checkedHabitId, setCheckedHabitId] = useState([])
+  const [checkedHabitIds, setCheckedHabitIds] = useState([])
   const [habitSubmitted, setHabitSubmitted] = useState(false)
 
   return (
     <AppContext.Provider
-      value={{ userHabits, setUserHabits, checkedHabitId, setCheckedHabitId, habitSubmitted, setHabitSubmitted }}
+      value={{ userHabits, setUserHabits, checkedHabitIds, setCheckedHabitIds, habitSubmitted, setHabitSubmitted }}
     >
       {props.children}
     </AppContext.Provider>
