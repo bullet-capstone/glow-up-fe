@@ -31,16 +31,30 @@ function App() {
     <div className="App">
       <header className="header">
         <h1>GlowUp</h1>
-        {//user && <h2>Welcome {user.username}</h2>}
-      }
         <nav className="nav">
-          <h2>Dashboard</h2>
-          <h2>Journal</h2>
+          <NavLink to="glow-up-fe/">
+            Mood Tracker
+          </NavLink>
+          <NavLink to="glow-up-fe/habit-tracker">
+            Habit Tracker
+          </NavLink>
+          <NavLink to="glow-up-fe/journal">
+            Journal
+          </NavLink>
+          <NavLink to="glow-up-fe/dashboard">
+            Dashboard
+          </NavLink>
+
         </nav>
       </header>
-      <MoodForm />
-      <HabitForm />
-      <Dashboard />
+      <Routes>
+        <Route path="glow-up-fe">
+          <Route index element={<MoodForm />}/>
+          <Route path="habit-tracker" element={<HabitForm />}/>
+          <Route path="dashboard" element={<Dashboard />}/>
+        </Route>
+      </Routes>
+
     </div>
   )
 }
