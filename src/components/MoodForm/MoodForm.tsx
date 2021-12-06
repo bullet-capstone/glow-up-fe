@@ -118,7 +118,7 @@ const MoodForm = () => {
           value={ description }
           onChange={ e => setDescription(e.currentTarget.value) }
         />
-        <button type="submit">Submit</button>
+        <button className="mood-submit-button" type="submit">Submit</button>
       </form>
     </section>
   )
