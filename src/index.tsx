@@ -4,7 +4,7 @@ import "./index.css"
 import App from "./components/App/App"
 import reportWebVitals from "./reportWebVitals"
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
-import { ContextProvider } from "./utils/context.js"
+import { ContextProvider } from "./utils/context"
 
 const client = new ApolloClient({
   uri: "http://localhost:3001/graphql",
