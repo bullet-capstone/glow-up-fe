@@ -1,8 +1,7 @@
 .mood-form-container {
   background: url(../../assets/form-background.png) 100%;
-  height: 500px;
   background-size: cover;
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;

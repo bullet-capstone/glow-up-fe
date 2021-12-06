@@ -1,0 +1,32 @@
+.habit-form-container {
+  background: #acb3cb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  font-family: 'Raleway', sans-serif;
+}
+
+.habit-form-question {
+  margin: 1rem;
+}
+
+.habit-form {
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 600px;
+  margin: 1rem;
+}
+
+.mood-submit-button,
+.habit-submit-button {
+  width: 100px;
+  font-family: 'Raleway', sans-serif;
+  border-radius: 5px;
+  border: 0;
+  margin: 1rem;
+}
