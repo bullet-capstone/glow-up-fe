@@ -7,7 +7,7 @@ export default function HabitCard(props) {
   const [checked, setChecked] = useState(0)
   const [style, setStyle] = useState({
     backgroundColor: null,
-    // backgroundImage: `url(../../assets/icons/${props.id}uncheck.png)`,
+    // backgroundImage: "url(../../assets/icons/habit7-uncheck.png)",
   })
   const { checkedHabitId, setCheckedHabitId } = useContext(AppContext)
 
@@ -47,7 +47,7 @@ export default function HabitCard(props) {
   return (
     <div className="habit-card-container">
       <button className="habit-icon" id={props.id} onClick={toggleCheck} style={style}></button>
-      {/* <img src={$habit7Uncheck} /> */}
+
       <p className="habit-text">{props.name}</p>
     </div>
   )
