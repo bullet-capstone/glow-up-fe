@@ -13,12 +13,12 @@ const Dashboard = () => {
       {moodRecorded ? (
         <div className="daily-mood">🥳 I feel super today</div>
       ) : (
-        <Link to="glow-up-fe/">Enter your mood today!</Link>
+        <Link to="/glow-up-fe/">Enter your mood today!</Link>
       )}
       {habitRecorded ? (
         <div className="daily-habit">Today I've done blah blah</div>
       ) : (
-        <Link to="glow-up-fe/habit-tracker">Enter your habits today!</Link>
+        <Link to="/glow-up-fe/habit-tracker">Enter your habits today!</Link>
       )}
     </section>
   )
