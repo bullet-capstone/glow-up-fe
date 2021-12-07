@@ -35,48 +35,18 @@ const MoodForm = () => {
           <div className="moods-container">
             <input
               type="radio"
-              aria-label="strongly negative"
+              aria-label="strongly positive"
               name="mood"
-              id="strongly-negative"
-              value="0"
+              id="strongly-positive"
+              value="4"
               onChange={ e => setMood(e.currentTarget.value) }
-              checked={ mood === "0" }
+              checked={ mood === "4" }
             />
             <label
-              htmlFor="strongly-negative"
+              htmlFor="strongly-positive"
               className="mood-label"
             >
-              😭
-            </label>
-            <input
-              type="radio"
-              aria-label="negative"
-              name="mood"
-              id="negative"
-              value="1"
-              onChange={ e => setMood(e.currentTarget.value) }
-              checked={ mood === "1" }
-            />
-            <label
-              htmlFor="negative"
-              className="mood-label"
-            >
-              🙁
-            </label>
-            <input
-              type="radio"
-              aria-label="neutral"
-              name="mood"
-              id="neutral"
-              value="2"
-              onChange={ e => setMood(e.currentTarget.value) }
-              checked={ mood === "2" }
-            />
-            <label
-              htmlFor="neutral"
-              className="mood-label"
-            >
-              😐
+              😁
             </label>
             <input
               type="radio"
@@ -95,18 +65,49 @@ const MoodForm = () => {
             </label>
             <input
               type="radio"
-              aria-label="strongly positive"
+              aria-label="neutral"
               name="mood"
-              id="strongly-positive"
-              value="4"
+              id="neutral"
+              value="2"
               onChange={ e => setMood(e.currentTarget.value) }
-              checked={ mood === "4" }
+              checked={ mood === "2" }
             />
             <label
-              htmlFor="strongly-positive"
+              htmlFor="neutral"
               className="mood-label"
             >
-              😁
+              😐
+            </label>
+
+            <input
+              type="radio"
+              aria-label="negative"
+              name="mood"
+              id="negative"
+              value="1"
+              onChange={ e => setMood(e.currentTarget.value) }
+              checked={ mood === "1" }
+            />
+            <label
+              htmlFor="negative"
+              className="mood-label"
+            >
+              🙁
+            </label>
+            <input
+              type="radio"
+              aria-label="strongly negative"
+              name="mood"
+              id="strongly-negative"
+              value="0"
+              onChange={ e => setMood(e.currentTarget.value) }
+              checked={ mood === "0" }
+            />
+            <label
+              htmlFor="strongly-negative"
+              className="mood-label"
+            >
+              😭
             </label>
           </div>
           { !validateForm &&

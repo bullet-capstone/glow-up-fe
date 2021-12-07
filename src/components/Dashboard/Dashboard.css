@@ -1,0 +1,32 @@
+.dashboard-container {
+  background: url(../../assets/dashboard-background.png) 100%;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+.page-title {
+  margin-top: 5rem;
+}
+
+.today-container {
+  background: rgba(255, 255, 255, 0.80);
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: left;
+  line-height: 2rem;
+  display: flex;
+  gap: 2rem;
+  /* position: absolute;
+  right: 10%; */
+}
+
+.week-container {
+  background: #e6eaee;
+  height: 100vh;
+}

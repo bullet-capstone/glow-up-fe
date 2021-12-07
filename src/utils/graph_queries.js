@@ -35,3 +35,35 @@ export const QUERY_HABITS = gql`
     }
   }
 `
+export const QUERY_DAILY_ENTRIES = gql`
+  query fetchUser {
+    fetchUser {
+      dailyMood {
+        id
+        mood
+        description
+      }
+
+      dailyHabits {
+        id
+        name
+      }
+    }
+  }
+`
+// const QUERY_WEEKLY_ENTRIES = gql`
+//   query fetchUser {
+//     fetchUser {
+//       weeklyHabits {
+//         habitId
+//         status
+//         date
+//         id
+//       }
+//       weeklyMoods {
+//         createdAt
+//         mood
+//       }
+//     }
+//   }
+// `
