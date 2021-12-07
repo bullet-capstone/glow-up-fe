@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react"
-import { Habit, Mood } from "./Models"
+import { Habit, HabitEntry, Mood } from "./Models"
 
 interface ContextState {
   userHabits: Habit[]
@@ -30,7 +30,9 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [moodRecorded, setMoodRecorded] = useState<boolean>(false)
   const [habitRecorded, setHabitRecorded] = useState<boolean>(false)
 
-  const [todaysMood, setTodaysMood] = useState<Mood>(null)
+  // const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
+
+  // const [todaysHabits, setTodaysHabits = useState<HabitEntry[] | null>(null)
 
   return (
     <AppContext.Provider
@@ -43,6 +45,10 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         setMoodRecorded,
         habitRecorded,
         setHabitRecorded,
+        // todaysMood,
+        // setTodaysMood,
+        // todaysHabits,
+        // setTodaysHabits
       }}
     >
       {children}
