@@ -51,3 +51,19 @@ export const QUERY_DAILY_ENTRIES = gql`
     }
   }
 `
+const QUERY_WEEKLY_ENTRIES = gql`
+quety fetchUser{
+  fetchUser {
+    weeklyHabits{
+      habitId
+      status
+      date
+      id
+    }
+    weeklyMoods{
+      createdAt
+      mood
+    }
+  }
+}
+`

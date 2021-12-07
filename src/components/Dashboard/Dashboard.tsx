@@ -5,19 +5,20 @@ import { AppContext } from "../../utils/context"
 import { useQuery } from "@apollo/client"
 
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
+import { Habit } from "../../utils/Models"
 
 const Dashboard = () => {
   // const { moodRecorded, habitRecorded } = useContext(AppContext)
 
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
 
-  useEffect(() => {
-    if (!loading && data) {
-      console.log(data)
-    } else {
-      console.log("error", error)
-    }
-  }, [loading, data])
+  // useEffect(() => {
+  //   if (!loading && data) {
+  //     console.log(data)
+  //   } else {
+  //     console.log("error", error)
+  //   }
+  // }, [loading, data])
 
   const displayMood = () => {
     switch (data.fetchUser.dailyMood.mood) {
@@ -37,10 +38,17 @@ const Dashboard = () => {
     }
   }
 
+  const displayHabit = () => {
+    const completedHabits = data.fetchUser.dailyHabits.map((habit: Habit) => <p>{habit.name}</p>)
+
+    return completedHabits
+  }
+
   return (
     <section className="dashboard-container">
       <h2>My Dashboard</h2>
       {data && <p>{displayMood()}</p>}
+      {data.fetchUser.dailyHabits && <div className="completed-habits">{displayHabit()}</div>}
       {/* {moodRecorded ? (
         <div className="daily-mood">🥳 I feel super today</div>
       ) : (
