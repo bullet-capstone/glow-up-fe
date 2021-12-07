@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react"
-import { Habit, HabitEntry, Mood } from "./Models"
+import { Habit } from "./Models"
 
 interface ContextState {
   userHabits: Habit[]

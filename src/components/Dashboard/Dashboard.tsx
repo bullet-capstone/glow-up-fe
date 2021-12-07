@@ -20,10 +20,8 @@ const Dashboard = () => {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
       console.log('is this running')
-    } else {
-      console.log("error", error)
     }
-  })
+  }, [loading, data])
 
   const displayMood = () => {
     if (todaysMood) {
@@ -60,6 +58,7 @@ const Dashboard = () => {
 
   return (
   <main>
+    { error && <h2>Oops, something went wrong!</h2> }
     <section className="dashboard-container">
       <h2 className="page-title">My Dashboard</h2>
         <article className="today-container">
