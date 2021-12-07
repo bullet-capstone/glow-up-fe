@@ -1,54 +1,63 @@
 import "./Dashboard.css"
 import { Link } from "react-router-dom"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { AppContext } from "../../utils/context"
 import { useQuery } from "@apollo/client"
 
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
-import { Habit } from "../../utils/Models"
+import { Habit, Mood, HabitEntry } from "../../utils/Models"
 
 const Dashboard = () => {
   // const { moodRecorded, habitRecorded } = useContext(AppContext)
+  const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
+
+  const [todaysHabits, setTodaysHabits] = useState<Habit[] | null>(null)
 
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
 
-  // useEffect(() => {
-  //   if (!loading && data) {
-  //     console.log(data)
-  //   } else {
-  //     console.log("error", error)
-  //   }
-  // }, [loading, data])
+  useEffect(() => {
+    if (!loading && data) {
+      console.log("data", data)
+      setTodaysMood(data.fetchUser.dailyMood)
+      setTodaysHabits(data.fetchUser.dailyHabits)
+    } else {
+      console.log("error", error)
+    }
+  }, [loading, data])
 
   const displayMood = () => {
-    switch (data.fetchUser.dailyMood.mood) {
-      case 0:
-        return "😭"
-      case 1:
-        return "🙁"
-      case 2:
-        return "😐"
-      case 3:
-        return "🙂"
-      case 4:
-        return "😁"
+    if (todaysMood) {
+      switch (todaysMood.mood) {
+        case 0:
+          return "😭"
+        case 1:
+          return "🙁"
+        case 2:
+          return "😐"
+        case 3:
+          return "🙂"
+        case 4:
+          return "😁"
 
-      default:
-        return "❓"
+        default:
+          return "❓"
+      }
     }
   }
 
   const displayHabit = () => {
-    const completedHabits = data.fetchUser.dailyHabits.map((habit: Habit) => <p>{habit.name}</p>)
-
-    return completedHabits
+    if (todaysHabits) {
+      const completedHabits = todaysHabits.map((habit: Habit) => <p>{habit.name}</p>)
+      return completedHabits
+    }
   }
 
   return (
     <section className="dashboard-container">
       <h2>My Dashboard</h2>
-      {data && <p>{displayMood()}</p>}
-      {data.fetchUser.dailyHabits && <div className="completed-habits">{displayHabit()}</div>}
+      {todaysMood && <p>{displayMood()}</p>}
+
+      {todaysHabits && <div className="completed-habits">{displayHabit()}</div>}
       {/* {moodRecorded ? (
         <div className="daily-mood">🥳 I feel super today</div>
       ) : (
