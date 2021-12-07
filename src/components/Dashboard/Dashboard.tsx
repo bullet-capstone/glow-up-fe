@@ -1,27 +1,29 @@
 import "./Dashboard.css"
 import { Link } from "react-router-dom"
-import { useContext, useEffect, useState } from "react"
-import { AppContext } from "../../utils/context"
+import { useEffect, useState } from "react"
+// import { AppContext } from "../../utils/context"
 import { useQuery } from "@apollo/client"
 
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
-import { Habit, Mood, HabitEntry } from "../../utils/Models"
+import { Habit, Mood } from "../../utils/Models"
 
 const Dashboard = () => {
   // const { moodRecorded, habitRecorded } = useContext(AppContext)
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
-  const [todaysHabits, setTodaysHabits] = useState<Habit[] | null>(null)
+  const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
+
 
 
   useEffect(() => {
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
+      console.log('is this running')
     } else {
       console.log("error", error)
     }
-  }, [loading, data])
+  })
 
   const displayMood = () => {
     if (todaysMood) {
@@ -44,7 +46,7 @@ const Dashboard = () => {
   }
 
   const displayHabit = () => {
-    const completedHabits = todaysHabits.map((habit: Habit) => <p>✅ {habit.name}</p>)
+    const completedHabits = todaysHabits!.map((habit: Habit) => <p key={habit.id}>✅ {habit.name}</p>)
 
     return completedHabits
   }
@@ -60,28 +62,31 @@ const Dashboard = () => {
   <main>
     <section className="dashboard-container">
       <h2 className="page-title">My Dashboard</h2>
-      { false ? (
         <article className="today-container">
+          { todaysMood ? (
           <div>
             <h3>Today {date}</h3>
             <p>I am feeling: {displayMood()}</p>
             {// { todaysMood && todaysMood.description && (<p>{todaysMood.description}</p>)}
           }
           </div>
+        )
+        :
+        (
+          <Link to="/glow-up-fe/">➕ Enter your mood today!</Link>
+        )}
+        { todaysHabits.length ? (
           <div className="completed-habits">
             <h4>Habits I completed:</h4>
             {displayHabit()}
             <Link to="/glow-up-fe/habit-tracker">➕ Add more habits</Link>
           </div>
-        </article>
-      ):
-      (
-        <>
-          <Link to="/glow-up-fe/">➕ Enter your mood today!</Link>
+        )
+        :
+        (
           <Link to="/glow-up-fe/habit-tracker">➕ Enter your habits!</Link>
-        </>
-      )
-      }
+        )}
+      </article>
     </section>
     <section className="week-container">
       <h3>This week...</h3>
