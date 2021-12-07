@@ -5,19 +5,19 @@ import { AppContext } from "../../utils/context"
 import { useQuery } from "@apollo/client"
 
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
-import { Habit, Mood } from "../../utils/Models"
+import { Habit, Mood, HabitEntry } from "../../utils/Models"
 
 const Dashboard = () => {
   // const { moodRecorded, habitRecorded } = useContext(AppContext)
-
+  const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
+  const [todaysHabits, setTodaysHabits] = useState<Habit[] | null>(null)
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
-  const [ todaysMood, setTodaysMood ] = useState<Mood | null>(null)
-  const [ habits, setHabits ] = useState<Habit[] >([])
+
 
   useEffect(() => {
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
-      setHabits(data.fetchUser.dailyHabits)
+      setTodaysHabits(data.fetchUser.dailyHabits)
     } else {
       console.log("error", error)
     }
@@ -44,7 +44,7 @@ const Dashboard = () => {
   }
 
   const displayHabit = () => {
-    const completedHabits = habits.map((habit: Habit) => <p>✅ {habit.name}</p>)
+    const completedHabits = todaysHabits.map((habit: Habit) => <p>✅ {habit.name}</p>)
 
     return completedHabits
   }
