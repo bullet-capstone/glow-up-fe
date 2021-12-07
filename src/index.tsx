@@ -8,8 +8,6 @@ import { BrowserRouter as Router } from "react-router-dom"
 
 const client = new ApolloClient({
   uri: "https://glowup-be.herokuapp.com/graphql",
-  // uri: "http://localhost:3001/graphql",
-
   cache: new InMemoryCache(),
 })
 
