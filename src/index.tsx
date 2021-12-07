@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 import { ContextProvider } from "./utils/context"
 
 const client = new ApolloClient({
-  uri: "http://localhost:3001/graphql",
+  uri: "https://glowup-be.herokuapp.com/graphql",
   cache: new InMemoryCache(),
 })
 
