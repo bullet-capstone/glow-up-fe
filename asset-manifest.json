@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/glow-up-fe/static/css/main.b4c07192.chunk.css",
-    "main.js": "/glow-up-fe/static/js/main.b35ecaee.chunk.js",
-    "main.js.map": "/glow-up-fe/static/js/main.b35ecaee.chunk.js.map",
+    "main.js": "/glow-up-fe/static/js/main.b78dfde3.chunk.js",
+    "main.js.map": "/glow-up-fe/static/js/main.b78dfde3.chunk.js.map",
     "runtime-main.js": "/glow-up-fe/static/js/runtime-main.c2ae78db.js",
     "runtime-main.js.map": "/glow-up-fe/static/js/runtime-main.c2ae78db.js.map",
     "static/js/2.9ba0b0d8.chunk.js": "/glow-up-fe/static/js/2.9ba0b0d8.chunk.js",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.c2ae78db.js",
     "static/js/2.9ba0b0d8.chunk.js",
     "static/css/main.b4c07192.chunk.css",
-    "static/js/main.b35ecaee.chunk.js"
+    "static/js/main.b78dfde3.chunk.js"
   ]
 }
