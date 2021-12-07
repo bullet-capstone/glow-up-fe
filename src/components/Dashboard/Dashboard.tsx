@@ -17,7 +17,6 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!loading && data) {
-      console.log("data", data)
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
     } else {
@@ -26,30 +25,26 @@ const Dashboard = () => {
   }, [loading, data])
 
   const displayMood = () => {
-    if (todaysMood) {
-      switch (todaysMood.mood) {
-        case 0:
-          return "😭"
-        case 1:
-          return "🙁"
-        case 2:
-          return "😐"
-        case 3:
-          return "🙂"
-        case 4:
-          return "😁"
+    switch (todaysMood!.mood) {
+      case 0:
+        return "😭"
+      case 1:
+        return "🙁"
+      case 2:
+        return "😐"
+      case 3:
+        return "🙂"
+      case 4:
+        return "😁"
 
-        default:
-          return "❓"
-      }
+      default:
+        return "❓"
     }
   }
 
   const displayHabit = () => {
-    if (todaysHabits) {
-      const completedHabits = todaysHabits.map((habit: Habit) => <p>{habit.name}</p>)
-      return completedHabits
-    }
+    const completedHabits = todaysHabits!.map((habit: Habit) => <p>{habit.name}</p>)
+    return completedHabits
   }
 
   return (
