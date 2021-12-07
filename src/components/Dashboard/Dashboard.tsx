@@ -2,7 +2,7 @@ import "./Dashboard.css"
 import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { AppContext } from "../../utils/context"
-// import { QUERY_HABITS } from "../../utils/graph_queries"
+import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 
 const Dashboard = () => {
   const { moodRecorded, habitRecorded } = useContext(AppContext)

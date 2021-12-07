@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react"
-import { Habit } from "./Models"
+import { Habit, Mood } from "./Models"
 
 interface ContextState {
   userHabits: Habit[]
@@ -29,6 +29,8 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const [moodRecorded, setMoodRecorded] = useState<boolean>(false)
   const [habitRecorded, setHabitRecorded] = useState<boolean>(false)
+
+  const [todaysMood, setTodaysMood] = useState<Mood>(null)
 
   return (
     <AppContext.Provider

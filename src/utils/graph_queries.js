@@ -35,3 +35,19 @@ export const QUERY_HABITS = gql`
     }
   }
 `
+export const QUERY_DAILY_ENTRIES = gql`
+  query fetchUser {
+    fetchUser {
+      dailyMood {
+        id
+        mood
+        description
+      }
+
+      dailyHabits {
+        id
+        name
+      }
+    }
+  }
+`

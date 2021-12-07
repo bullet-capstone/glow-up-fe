@@ -1,4 +1,4 @@
-interface Mood {
+export interface Mood {
   id: string
   mood: number
   description: string
@@ -10,14 +10,14 @@ export interface Habit {
   name: string
 }
 
-interface HabitEntry {
+export interface HabitEntry {
   id: string
   date: string
   habitId: string
   status: number
 }
 
-interface JournalEntry {
+export interface JournalEntry {
   id: string
   date: string
   content: string
