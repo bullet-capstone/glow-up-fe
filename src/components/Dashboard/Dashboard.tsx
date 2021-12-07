@@ -19,10 +19,28 @@ const Dashboard = () => {
     }
   }, [loading, data])
 
+  const displayMood = () => {
+    switch (data.fetchUser.dailyMood.mood) {
+      case 0:
+        return "😭"
+      case 1:
+        return "🙁"
+      case 2:
+        return "😐"
+      case 3:
+        return "🙂"
+      case 4:
+        return "😁"
+
+      default:
+        return "❓"
+    }
+  }
+
   return (
     <section className="dashboard-container">
       <h2>My Dashboard</h2>
-      {/* {data} */}
+      {data && <p>{displayMood()}</p>}
       {/* {moodRecorded ? (
         <div className="daily-mood">🥳 I feel super today</div>
       ) : (
