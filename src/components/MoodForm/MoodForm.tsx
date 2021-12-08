@@ -30,7 +30,7 @@ const MoodForm = () => {
 
   return (
     <section className="mood-form-container">
-      { todaysMood ? (
+      { null ? (
         <MoodToday />
       ) : (
         <form className="mood-form" onSubmit={handleSubmit}>

@@ -26,7 +26,12 @@
 .page-quote {
   position: relative;
   font-weight: bold;
-  background: rgba(255,255,255, 0.85);
+  background: rgba(255,255,255, 0.50);
+  padding: 0 0.25rem;
+}
+
+.author {
+  text-align: right;
 }
 
 .today-container {

@@ -40,8 +40,10 @@ const Dashboard = () => {
       {error && <h2>{`Error! ${error.message}`}</h2>}
       <section className="dashboard-container">
         <h2 className="page-title">My Dashboard</h2>
-        <p className="page-quote">"Every action you take is a vote for the type of person you wish to become."</p>
-        <p className="page-quote">― James Clear</p>
+        <div>
+          <p className="page-quote">"Every action you take is a vote for the type of person you wish to become."</p>
+          <p className="page-quote author">― James Clear</p>
+        </div>
       </section>
       <article className="today-container">
         {todaysMood ? <MoodToday /> : <Link to="/glow-up-fe/track">➕ Enter your mood today!</Link>}
@@ -51,7 +53,7 @@ const Dashboard = () => {
             <div className="completed-habits">
               {displayHabit()}
             </div>
-            <Link to="/glow-up-fe/track">➕ Add more habits</Link>
+            <Link to="/glow-up-fe/track">➕ Edit habits</Link>
           </div>
         ) : (
           <Link to="/glow-up-fe/track">➕ Enter your habits!</Link>
