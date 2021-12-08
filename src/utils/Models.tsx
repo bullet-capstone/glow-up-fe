@@ -2,7 +2,7 @@ export interface Mood {
   id: string
   mood: number
   description: string
-  createdAt: string
+  createdAt?: string
 }
 
 export interface Habit {

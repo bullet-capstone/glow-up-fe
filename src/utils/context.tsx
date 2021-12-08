@@ -1,19 +1,16 @@
 import React, { createContext, useState } from "react"
-import { Habit } from "./Models"
+import { isStringLiteral } from "typescript"
+import { Habit, Mood, HabitEntry } from "./Models"
 
 interface ContextState {
   userHabits: Habit[]
   setUserHabits: (habits: Habit[]) => void
   checkedHabitIds: number[]
   setCheckedHabitIds: (habitIds: number[]) => void
-  // moodRecorded: boolean
-  // setMoodRecorded: (moodRecorded: boolean) => void
-  // habitRecorded: boolean
-  // setHabitRecorded: (habitRecorded: boolean) => void
-  // todaysMood: Mood
-  // setTodaysMood: (mood: Mood) => void
-  // todaysHabits: HabitEntry[]
-  // setTodaysHabits: (habits: HabitEntry[]) => void
+  todaysMood: Mood | null
+  setTodaysMood: (mood: Mood) => void
+  todaysHabits: HabitEntry[]
+  setTodaysHabits: (habits: HabitEntry[]) => void
 }
 
 const AppContext = createContext<ContextState>({
@@ -21,14 +18,10 @@ const AppContext = createContext<ContextState>({
   setUserHabits: () => {},
   checkedHabitIds: [],
   setCheckedHabitIds: () => {},
-  // moodRecorded: false,
-  // setMoodRecorded: () => {},
-  // habitRecorded: false,
-  // setHabitRecorded: () => {},
-  // todaysMood: [],
-  // setTodaysMood: () => {},
-  // todaysHabits: [],
-  // setTodaysHabits: () => {},
+  todaysMood: null,
+  setTodaysMood: () => {},
+  todaysHabits: [],
+  setTodaysHabits: () => {},
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
@@ -38,9 +31,9 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   // const [moodRecorded, setMoodRecorded] = useState<boolean>(false)
   // const [habitRecorded, setHabitRecorded] = useState<boolean>(false)
 
-  // const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
+  const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
 
-  // const [todaysHabits, setTodaysHabits] = useState<HabitEntry[] | null>(null)
+  const [todaysHabits, setTodaysHabits] = useState<HabitEntry[]>([])
 
   return (
     <AppContext.Provider
@@ -49,14 +42,10 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         setUserHabits,
         checkedHabitIds,
         setCheckedHabitIds,
-        // moodRecorded,
-        // setMoodRecorded,
-        // habitRecorded,
-        // setHabitRecorded,
-        // todaysMood,
-        // setTodaysMood,
-        // todaysHabits,
-        // setTodaysHabits,
+        todaysMood,
+        setTodaysMood,
+        todaysHabits,
+        setTodaysHabits,
       }}
     >
       {children}

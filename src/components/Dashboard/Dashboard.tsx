@@ -8,18 +8,15 @@ import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { Habit, Mood } from "../../utils/Models"
 
 const Dashboard = () => {
-  // const { moodRecorded, habitRecorded } = useContext(AppContext)
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
   const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
-
-
 
   useEffect(() => {
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
-      console.log('is this running')
+      console.log("is this running")
     }
   }, [loading, data])
 
@@ -50,47 +47,44 @@ const Dashboard = () => {
   }
 
   const today = new Date()
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
+  var dd = String(today.getDate()).padStart(2, "0")
+  var mm = String(today.getMonth() + 1).padStart(2, "0") //January is 0!
+  var yyyy = today.getFullYear()
 
-  const date = mm + '/' + dd + '/' + yyyy;
+  const date = mm + "/" + dd + "/" + yyyy
 
   return (
-  <main>
-    { error && <h2>Oops, something went wrong!</h2> }
-    <section className="dashboard-container">
-      <h2 className="page-title">My Dashboard</h2>
+    <main>
+      {error && <h2>Oops, something went wrong!</h2>}
+      <section className="dashboard-container">
+        <h2 className="page-title">My Dashboard</h2>
         <article className="today-container">
-          { todaysMood ? (
-          <div>
-            <h3>Today {date}</h3>
-            <p>I am feeling: {displayMood()}</p>
-            {// { todaysMood && todaysMood.description && (<p>{todaysMood.description}</p>)}
-          }
-          </div>
-        )
-        :
-        (
-          <Link to="/glow-up-fe/">➕ Enter your mood today!</Link>
-        )}
-        { todaysHabits.length ? (
-          <div className="completed-habits">
-            <h4>Habits I completed:</h4>
-            {displayHabit()}
-            <Link to="/glow-up-fe/habit-tracker">➕ Add more habits</Link>
-          </div>
-        )
-        :
-        (
-          <Link to="/glow-up-fe/habit-tracker">➕ Enter your habits!</Link>
-        )}
-      </article>
-    </section>
-    <section className="week-container">
-      <h3>This week...</h3>
-    </section>
-  </main>
+          {todaysMood ? (
+            <div>
+              <h3>Today {date}</h3>
+              <p>I am feeling: {displayMood()}</p>
+              {
+                // { todaysMood && todaysMood.description && (<p>{todaysMood.description}</p>)}
+              }
+            </div>
+          ) : (
+            <Link to="/glow-up-fe/">➕ Enter your mood today!</Link>
+          )}
+          {todaysHabits.length ? (
+            <div className="completed-habits">
+              <h4>Habits I completed:</h4>
+              {displayHabit()}
+              <Link to="/glow-up-fe/habit-tracker">➕ Add more habits</Link>
+            </div>
+          ) : (
+            <Link to="/glow-up-fe/habit-tracker">➕ Enter your habits!</Link>
+          )}
+        </article>
+      </section>
+      <section className="week-container">
+        <h3>This week...</h3>
+      </section>
+    </main>
   )
 }
 
