@@ -1,23 +1,21 @@
 {
   "files": {
-    "main.css": "/glow-up-fe/static/css/main.2865e074.chunk.css",
-    "main.js": "/glow-up-fe/static/js/main.0b8de371.chunk.js",
-    "main.js.map": "/glow-up-fe/static/js/main.0b8de371.chunk.js.map",
+    "main.css": "/glow-up-fe/static/css/main.d7d0e127.chunk.css",
+    "main.js": "/glow-up-fe/static/js/main.0fb520fb.chunk.js",
+    "main.js.map": "/glow-up-fe/static/js/main.0fb520fb.chunk.js.map",
     "runtime-main.js": "/glow-up-fe/static/js/runtime-main.db12db73.js",
     "runtime-main.js.map": "/glow-up-fe/static/js/runtime-main.db12db73.js.map",
-    "static/js/2.d6d7408f.chunk.js": "/glow-up-fe/static/js/2.d6d7408f.chunk.js",
-    "static/js/2.d6d7408f.chunk.js.map": "/glow-up-fe/static/js/2.d6d7408f.chunk.js.map",
+    "static/js/2.6af50d00.chunk.js": "/glow-up-fe/static/js/2.6af50d00.chunk.js",
+    "static/js/2.6af50d00.chunk.js.map": "/glow-up-fe/static/js/2.6af50d00.chunk.js.map",
     "index.html": "/glow-up-fe/index.html",
-    "static/css/main.2865e074.chunk.css.map": "/glow-up-fe/static/css/main.2865e074.chunk.css.map",
-    "static/js/2.d6d7408f.chunk.js.LICENSE.txt": "/glow-up-fe/static/js/2.d6d7408f.chunk.js.LICENSE.txt",
-    "static/media/Dashboard.css": "/glow-up-fe/static/media/dashboard-background.bbcdde8f.png",
-    "static/media/App.css": "/glow-up-fe/static/media/form-background.0a2aa844.png",
+    "static/css/main.d7d0e127.chunk.css.map": "/glow-up-fe/static/css/main.d7d0e127.chunk.css.map",
+    "static/js/2.6af50d00.chunk.js.LICENSE.txt": "/glow-up-fe/static/js/2.6af50d00.chunk.js.LICENSE.txt",
     "static/media/habit7-uncheck.d30420f0.png": "/glow-up-fe/static/media/habit7-uncheck.d30420f0.png"
   },
   "entrypoints": [
     "static/js/runtime-main.db12db73.js",
-    "static/js/2.d6d7408f.chunk.js",
-    "static/css/main.2865e074.chunk.css",
-    "static/js/main.0b8de371.chunk.js"
+    "static/js/2.6af50d00.chunk.js",
+    "static/css/main.d7d0e127.chunk.css",
+    "static/js/main.0fb520fb.chunk.js"
   ]
 }
