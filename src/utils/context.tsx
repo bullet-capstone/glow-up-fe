@@ -1,19 +1,17 @@
 import React, { createContext, useState } from "react"
-import { Habit } from "./Models"
+
+import { Habit, Mood } from "./Models"
 
 interface ContextState {
   userHabits: Habit[]
   setUserHabits: (habits: Habit[]) => void
   checkedHabitIds: number[]
   setCheckedHabitIds: (habitIds: number[]) => void
-  // moodRecorded: boolean
-  // setMoodRecorded: (moodRecorded: boolean) => void
-  // habitRecorded: boolean
-  // setHabitRecorded: (habitRecorded: boolean) => void
-  // todaysMood: Mood
-  // setTodaysMood: (mood: Mood) => void
-  // todaysHabits: HabitEntry[]
-  // setTodaysHabits: (habits: HabitEntry[]) => void
+  todaysMood: Mood | null
+  setTodaysMood: (mood: Mood) => void
+  todaysHabits: Habit[]
+  setTodaysHabits: (habits: Habit[]) => void
+  displayMood: (mood: number) => string
 }
 
 const AppContext = createContext<ContextState>({
@@ -21,26 +19,38 @@ const AppContext = createContext<ContextState>({
   setUserHabits: () => {},
   checkedHabitIds: [],
   setCheckedHabitIds: () => {},
-  // moodRecorded: false,
-  // setMoodRecorded: () => {},
-  // habitRecorded: false,
-  // setHabitRecorded: () => {},
-  // todaysMood: [],
-  // setTodaysMood: () => {},
-  // todaysHabits: [],
-  // setTodaysHabits: () => {},
+  todaysMood: null,
+  setTodaysMood: () => {},
+  todaysHabits: [],
+  setTodaysHabits: () => {},
+  displayMood: () => "",
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [userHabits, setUserHabits] = useState<Habit[]>([])
   const [checkedHabitIds, setCheckedHabitIds] = useState<number[]>([])
 
-  // const [moodRecorded, setMoodRecorded] = useState<boolean>(false)
-  // const [habitRecorded, setHabitRecorded] = useState<boolean>(false)
+  const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
 
-  // const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
+  const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
 
-  // const [todaysHabits, setTodaysHabits] = useState<HabitEntry[] | null>(null)
+  const displayMood = (mood: number) => {
+    switch (mood) {
+      case 0:
+        return "😭"
+      case 1:
+        return "🙁"
+      case 2:
+        return "😐"
+      case 3:
+        return "🙂"
+      case 4:
+        return "😁"
+
+      default:
+        return "❓"
+    }
+  }
 
   return (
     <AppContext.Provider
@@ -49,14 +59,11 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         setUserHabits,
         checkedHabitIds,
         setCheckedHabitIds,
-        // moodRecorded,
-        // setMoodRecorded,
-        // habitRecorded,
-        // setHabitRecorded,
-        // todaysMood,
-        // setTodaysMood,
-        // todaysHabits,
-        // setTodaysHabits,
+        todaysMood,
+        setTodaysMood,
+        todaysHabits,
+        setTodaysHabits,
+        displayMood,
       }}
     >
       {children}
