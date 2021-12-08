@@ -3,6 +3,7 @@ import { useState, useContext } from "react"
 import { useMutation } from "@apollo/client"
 import { SUBMIT_MOOD } from "../../utils/graph_mutations"
 import { AppContext } from "../../utils/context"
+import MoodToday from "../MoodToday/MoodToday"
 
 const MoodForm = () => {
   const [mood, setMood] = useState("")
@@ -10,7 +11,7 @@ const MoodForm = () => {
   const [validateForm, setValidateForm] = useState(true)
   const [createMood] = useMutation(SUBMIT_MOOD)
   // const [isSubmitted, setIsSubmitted] = useState(false)
-  const { todaysMood, displayMood } = useContext(AppContext)
+  const { todaysMood } = useContext(AppContext)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -30,11 +31,7 @@ const MoodForm = () => {
   return (
     <section className="mood-form-container">
       {todaysMood ? (
-        <div>
-          <p>I am feeling: {displayMood(todaysMood!.mood)}</p>
-          {todaysMood!.description && <p>{todaysMood!.description}</p>}
-          {/* <button>Second Thought?</button>  to add when changing mood fnc is available*/}
-        </div>
+        <MoodToday />
       ) : (
         <form className="mood-form" onSubmit={handleSubmit}>
           <h2>How are you feeling today?</h2>

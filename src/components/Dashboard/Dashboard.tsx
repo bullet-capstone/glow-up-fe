@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 import { useEffect, useContext } from "react"
 import { AppContext } from "../../utils/context"
 import { useQuery } from "@apollo/client"
-
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { Habit } from "../../utils/Models"
+import MoodToday from "../MoodToday/MoodToday"
 
 const Dashboard = () => {
-  const { todaysMood, setTodaysMood, todaysHabits, setTodaysHabits, displayMood } = useContext(AppContext)
+  const { todaysMood, setTodaysMood, todaysHabits, setTodaysHabits } = useContext(AppContext)
 
   const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
 
@@ -27,13 +27,6 @@ const Dashboard = () => {
     return completedHabits
   }
 
-  const today = new Date()
-  var dd = String(today.getDate()).padStart(2, "0")
-  var mm = String(today.getMonth() + 1).padStart(2, "0") //January is 0!
-  var yyyy = today.getFullYear()
-
-  const date = mm + "/" + dd + "/" + yyyy
-
   return (
     <main>
       {loading && <h2>Loading...</h2>}
@@ -41,15 +34,7 @@ const Dashboard = () => {
       <section className="dashboard-container">
         <h2 className="page-title">My Dashboard</h2>
         <article className="today-container">
-          {todaysMood ? (
-            <div>
-              <h3>Today: {date}</h3>
-              <p>I am feeling: {displayMood(todaysMood.mood)}</p>
-              {todaysMood.description && <p>{todaysMood.description}</p>}
-            </div>
-          ) : (
-            <Link to="/glow-up-fe/track">➕ Enter your mood today!</Link>
-          )}
+          {todaysMood ? <MoodToday /> : <Link to="/glow-up-fe/track">➕ Enter your mood today!</Link>}
           {todaysHabits.length ? (
             <div className="completed-habits">
               <h4>Habits I completed:</h4>
