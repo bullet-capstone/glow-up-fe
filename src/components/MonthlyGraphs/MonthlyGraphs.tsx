@@ -71,7 +71,6 @@ const MonthlyGraphs = () => {
           return new Intl.DateTimeFormat('en-US').format(date)
       })
 
-
       const monthlyMoods = data.fetchUser.monthlyMoods.slice().reverse()
         .map((mood :Mood) => mood.mood)
 
@@ -79,7 +78,6 @@ const MonthlyGraphs = () => {
       setMonthlyMoods(monthlyMoods)
     }
   }, [ data, loading ])
-
 
    const dataset = {
       labels,
@@ -95,13 +93,16 @@ const MonthlyGraphs = () => {
       ]
     };
 
-    const today = new Date()
-    const month = today.toLocaleString('default', { month: 'long' });
+  const today = new Date()
+  const monthString = today.toLocaleString('default', { month: 'long' });
 
   return (
     <section className="graph-container">
-      <h3 className="month-title">{month}</h3>
-      { monthlyMoods.length && <Chart type='line' data={dataset}  options={options}/>}
+      <h3 className="month-title">{monthString}</h3>
+      { !!monthlyMoods.length && (
+        <Chart type='line' data={dataset}  options={options}/>
+      )}
+      { error && <h2>Sorry, something went wrong!</h2>}
     </section>
   )
 }
