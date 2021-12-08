@@ -8,17 +8,6 @@ interface HabitCardProps {
   checkedToday: boolean
 }
 
-// interface Style {
-//   true: {
-//     backgroundColor: string
-//     color: string
-//   }
-//   false: {
-//     backgroundColor: string
-//     color: string
-//   }
-// }
-
 export default function HabitCard(props: HabitCardProps) {
   const { checkedHabitIds, setCheckedHabitIds } = useContext(AppContext)
   const [checked, setChecked] = useState(props.checkedToday)

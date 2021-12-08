@@ -23,7 +23,8 @@ const HabitForm = () => {
     e.preventDefault()
     const entryParams = checkedHabitIds.map(ele => ({ id: ele }))
     if (!entryParams.length) {
-      alert("You have not selected any habit")
+      alert("No entry today? Tomorrow is another day!")
+      createHabitEntry({ variables: { idArr: entryParams } })
     } else {
       createHabitEntry({ variables: { idArr: entryParams } })
       alert("Great job")
@@ -31,9 +32,6 @@ const HabitForm = () => {
   }
 
   const displayHabits = () => {
-    // const dailyHabitsId = todaysHabits.map((ele: Habit) => ele.id)
-    // console.log("dailyhabits in habitform", dailyHabitsId)
-
     return data.fetchHabits.map((habit: Habit) => (
       <HabitCard
         name={habit.name}
