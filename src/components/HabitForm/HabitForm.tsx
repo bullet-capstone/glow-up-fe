@@ -24,16 +24,27 @@ const HabitForm = () => {
     }
   }
 
+  const displayHabits = () => {
+    const dailyHabitsId = todaysHabits.map((ele: Habit) => ele.id)
+    console.log("dailyhabits in habitform", dailyHabitsId)
+
+    return data.fetchHabits.map((habit: Habit) => (
+      <HabitCard name={habit.name} id={habit.id} key={habit.id} checkedToday={dailyHabitsId.includes(habit.id)} />
+    ))
+  }
+
   return (
     <>
       {loading && <h2>Loading...</h2>}
       {error && <h2>{`Error! ${error.message}`}</h2>}
       <section className="habit-form-container">
-        <h2 className="habit-form-question">What have you accomplished?</h2>
+        {todaysHabits.length ? (
+          <h2>Add more habits</h2>
+        ) : (
+          <h2 className="habit-form-question">No check in yet. Go complete some!</h2>
+        )}
         <form className="habit-form" onSubmit={createHabitEntries}>
-          {data.fetchHabits.map((habit: Habit) => (
-            <HabitCard name={habit.name} id={habit.id} key={habit.id} />
-          ))}
+          {data && displayHabits()}
           <button className="habit-submit-button" type="submit">
             Submit
           </button>

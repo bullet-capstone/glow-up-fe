@@ -19,7 +19,6 @@ const Dashboard = () => {
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
-      console.log("todays habits", data.fetchUser.dailyHabits)
     }
   }, [loading, data])
 
