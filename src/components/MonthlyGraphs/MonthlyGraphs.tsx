@@ -45,28 +45,39 @@ const options = {
     },
   },
   scales: {
-   yAxis: {
-     ticks: {
-         callback: function(value:string | number):string | undefined {
-             return yLabels[value as keyof typeof yLabels];
-         }
+     yAxis: {
+       ticks: {
+           callback: function(value:string | number):string | undefined {
+               return yLabels[value as keyof typeof yLabels];
+           }
+       }
+     },
+     xAxis: {
+       // type: 'timeseries',
+       title: {
+         display: true,
+         text: 'Day of the Month'
+       }
      }
-   }
    }
 };
 
 const MonthlyGraphs = () => {
   const { loading, data } = useQuery(QUERY_MONTHLY_ENTRIES)
-  const [ labels, setLabels ] = useState<number[]>([]);
+  const [ labels, setLabels ] = useState<string[]>([]);
   const [ monthlyMoods, setMonthlyMoods ] = useState<Mood[]>([]);
 
   useEffect(() => {
     if (!loading && data) {
-      const dayLabels = data.fetchUser.monthlyMoods
-      .map((mood: Mood) => {
-        return parseInt(mood.createdAt!.slice(8,10))
+      const dayLabels = data.fetchUser.monthlyMoods.slice()
+      .sort((a: Mood, b: Mood) => {
+        return parseInt(a.createdAt!.slice(8,10)) - parseInt(b.createdAt!.slice(8,10))
       })
-      .sort((a: number, b :number) => a - b)
+      .map((mood: Mood) => {
+          const date = new Date(mood.createdAt!)
+          return new Intl.DateTimeFormat('en-US').format(date)
+      })
+
 
       const monthlyMoods = data.fetchUser.monthlyMoods.slice().reverse()
         .map((mood :Mood) => mood.mood)
