@@ -3,6 +3,7 @@ import { gql } from "@apollo/client"
 export const QUERY_USER = gql`
   query fetchUser {
     fetchUser {
+      id
       username
 
       moods {
@@ -38,6 +39,7 @@ export const QUERY_HABITS = gql`
 export const QUERY_DAILY_ENTRIES = gql`
   query fetchUser {
     fetchUser {
+      id
       dailyMood {
         id
         mood
@@ -67,3 +69,17 @@ export const QUERY_DAILY_ENTRIES = gql`
 //     }
 //   }
 // `
+
+
+export const QUERY_MONTHLY_ENTRIES = gql`
+  query fetchUser {
+    fetchUser {
+      id
+      monthlyMoods {
+        id
+        createdAt
+        mood
+      }
+    }
+  }
+`

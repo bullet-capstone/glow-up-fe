@@ -2,6 +2,7 @@ import "./Dashboard.css"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 // import { AppContext } from "../../utils/context"
+import MonthlyGraphs from '../MonthlyGraphs/MonthlyGraphs'
 import { useQuery } from "@apollo/client"
 
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
@@ -90,6 +91,7 @@ const Dashboard = () => {
     <section className="week-container">
       <h3>This week...</h3>
     </section>
+    <MonthlyGraphs />
   </main>
   )
 }
