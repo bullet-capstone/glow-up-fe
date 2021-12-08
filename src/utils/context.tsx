@@ -11,6 +11,7 @@ interface ContextState {
   setTodaysMood: (mood: Mood) => void
   todaysHabits: Habit[]
   setTodaysHabits: (habits: Habit[]) => void
+  displayMood: (mood: number) => string
 }
 
 const AppContext = createContext<ContextState>({
@@ -22,6 +23,7 @@ const AppContext = createContext<ContextState>({
   setTodaysMood: () => {},
   todaysHabits: [],
   setTodaysHabits: () => {},
+  displayMood: () => "",
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
@@ -31,6 +33,24 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
 
   const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
+
+  const displayMood = (mood: number) => {
+    switch (mood) {
+      case 0:
+        return "😭"
+      case 1:
+        return "🙁"
+      case 2:
+        return "😐"
+      case 3:
+        return "🙂"
+      case 4:
+        return "😁"
+
+      default:
+        return "❓"
+    }
+  }
 
   return (
     <AppContext.Provider
@@ -43,6 +63,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         setTodaysMood,
         todaysHabits,
         setTodaysHabits,
+        displayMood,
       }}
     >
       {children}

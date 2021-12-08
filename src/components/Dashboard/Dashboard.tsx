@@ -8,8 +8,7 @@ import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { Habit, Mood } from "../../utils/Models"
 
 const Dashboard = () => {
-  const { todaysMood, setTodaysMood } = useContext(AppContext)
-  const { todaysHabits, setTodaysHabits } = useContext(AppContext)
+  const { todaysMood, setTodaysMood, todaysHabits, setTodaysHabits, displayMood } = useContext(AppContext)
 
   // const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
 
@@ -24,25 +23,25 @@ const Dashboard = () => {
     }
   }, [loading, data])
 
-  const displayMood = () => {
-    if (todaysMood) {
-      switch (todaysMood.mood) {
-        case 0:
-          return "😭"
-        case 1:
-          return "🙁"
-        case 2:
-          return "😐"
-        case 3:
-          return "🙂"
-        case 4:
-          return "😁"
+  // const displayMood = () => {
+  //   if (todaysMood) {
+  //     switch (todaysMood.mood) {
+  //       case 0:
+  //         return "😭"
+  //       case 1:
+  //         return "🙁"
+  //       case 2:
+  //         return "😐"
+  //       case 3:
+  //         return "🙂"
+  //       case 4:
+  //         return "😁"
 
-        default:
-          return "❓"
-      }
-    }
-  }
+  //       default:
+  //         return "❓"
+  //     }
+  //   }
+  // }
 
   const displayHabit = () => {
     const completedHabits = todaysHabits!.map((habit: Habit) => <p key={habit.id}>✅ {habit.name}</p>)
@@ -67,7 +66,7 @@ const Dashboard = () => {
           {todaysMood ? (
             <div>
               <h3>Today: {date}</h3>
-              <p>I am feeling: {displayMood()}</p>
+              <p>I am feeling: {displayMood(todaysMood.mood)}</p>
               {todaysMood.description && <p>{todaysMood.description}</p>}
             </div>
           ) : (
