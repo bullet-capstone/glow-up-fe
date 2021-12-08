@@ -67,3 +67,16 @@ export const QUERY_DAILY_ENTRIES = gql`
 //     }
 //   }
 // `
+
+
+const QUERY_MONTHLY_ENTRIES = gql`
+  query fetchUser {
+    fetchUser {
+      monthlyMoods {
+        id
+        createdAt
+        mood
+      }
+    }
+  }
+`
