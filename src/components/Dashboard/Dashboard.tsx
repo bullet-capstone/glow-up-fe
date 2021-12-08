@@ -1,15 +1,16 @@
 import "./Dashboard.css"
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
-// import { AppContext } from "../../utils/context"
+import { useEffect, useState, useContext } from "react"
+import { AppContext } from "../../utils/context"
 import { useQuery } from "@apollo/client"
 
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { Habit, Mood } from "../../utils/Models"
 
 const Dashboard = () => {
-  const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
-  const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
+  const { todaysMood, setTodaysMood } = useContext(AppContext)
+  const { todaysHabits, setTodaysHabits } = useContext(AppContext)
+  // const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
 
   useEffect(() => {

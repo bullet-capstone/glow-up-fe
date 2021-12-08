@@ -9,8 +9,8 @@ interface ContextState {
   setCheckedHabitIds: (habitIds: number[]) => void
   todaysMood: Mood | null
   setTodaysMood: (mood: Mood) => void
-  todaysHabits: HabitEntry[]
-  setTodaysHabits: (habits: HabitEntry[]) => void
+  todaysHabits: Habit[]
+  setTodaysHabits: (habits: Habit[]) => void
 }
 
 const AppContext = createContext<ContextState>({
@@ -28,12 +28,9 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [userHabits, setUserHabits] = useState<Habit[]>([])
   const [checkedHabitIds, setCheckedHabitIds] = useState<number[]>([])
 
-  // const [moodRecorded, setMoodRecorded] = useState<boolean>(false)
-  // const [habitRecorded, setHabitRecorded] = useState<boolean>(false)
-
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
 
-  const [todaysHabits, setTodaysHabits] = useState<HabitEntry[]>([])
+  const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
 
   return (
     <AppContext.Provider
