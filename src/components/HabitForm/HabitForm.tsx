@@ -3,15 +3,21 @@ import { AppContext } from "../../utils/context"
 import { QUERY_HABITS } from "../../utils/graph_queries"
 import { SUBMIT_HABIT } from "../../utils/graph_mutations"
 import { useQuery, useMutation } from "@apollo/client"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import HabitCard from "../HabitCard/HabitCard"
 import "../../assets/icons/habit7-uncheck.png"
 import { Habit } from "../../utils/Models"
 
 const HabitForm = () => {
   const { loading, error, data } = useQuery(QUERY_HABITS)
-  const { checkedHabitIds, todaysHabits } = useContext(AppContext)
+  const { checkedHabitIds, setCheckedHabitIds, todaysHabits } = useContext(AppContext)
   const [createHabitEntry] = useMutation(SUBMIT_HABIT)
+
+  useEffect(() => {
+    if (!loading && data) {
+      setCheckedHabitIds(todaysHabits.map((ele: Habit) => parseInt(ele.id)))
+    }
+  }, [loading, data])
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -25,11 +31,16 @@ const HabitForm = () => {
   }
 
   const displayHabits = () => {
-    const dailyHabitsId = todaysHabits.map((ele: Habit) => ele.id)
-    console.log("dailyhabits in habitform", dailyHabitsId)
+    // const dailyHabitsId = todaysHabits.map((ele: Habit) => ele.id)
+    // console.log("dailyhabits in habitform", dailyHabitsId)
 
     return data.fetchHabits.map((habit: Habit) => (
-      <HabitCard name={habit.name} id={habit.id} key={habit.id} checkedToday={dailyHabitsId.includes(habit.id)} />
+      <HabitCard
+        name={habit.name}
+        id={habit.id}
+        key={habit.id}
+        checkedToday={checkedHabitIds.includes(parseInt(habit.id))}
+      />
     ))
   }
 

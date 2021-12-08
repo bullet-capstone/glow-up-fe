@@ -8,21 +8,21 @@ interface HabitCardProps {
   checkedToday: boolean
 }
 
-interface Style {
-  true: {
-    backgroundColor: string
-    color: string
-  }
-  false: {
-    backgroundColor: string
-    color: string
-  }
-}
+// interface Style {
+//   true: {
+//     backgroundColor: string
+//     color: string
+//   }
+//   false: {
+//     backgroundColor: string
+//     color: string
+//   }
+// }
 
 export default function HabitCard(props: HabitCardProps) {
   const { checkedHabitIds, setCheckedHabitIds } = useContext(AppContext)
   const [checked, setChecked] = useState(props.checkedToday)
-  const [style, setStyle] = useState<Style>({
+  const [style, setStyle] = useState({
     false: {
       backgroundColor: "#e4dfdd",
       color: "black",
@@ -32,7 +32,6 @@ export default function HabitCard(props: HabitCardProps) {
       color: "#fff",
     },
   })
-  const [styleKey, setStyleKey] = useState(props.checkedToday.toString())
 
   const toggleCheck = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -40,14 +39,12 @@ export default function HabitCard(props: HabitCardProps) {
       case false:
         setChecked(true)
         setCheckedHabitIds([...checkedHabitIds, parseInt(e.currentTarget.id)])
-        setStyleKey("true")
         break
 
       case true:
         setChecked(false)
         let filtered = checkedHabitIds.filter(ele => ele !== parseInt(e.currentTarget.id))
         setCheckedHabitIds(filtered)
-        setStyleKey("false")
         break
       default:
         break
@@ -55,7 +52,12 @@ export default function HabitCard(props: HabitCardProps) {
   }
 
   return (
-    <button className="habit-card-button" onClick={toggleCheck} id={props.id} style={style[styleKey]}>
+    <button
+      className="habit-card-button"
+      onClick={toggleCheck}
+      id={props.id}
+      style={!checked ? style.true : style.false}
+    >
       {props.name}
     </button>
   )
