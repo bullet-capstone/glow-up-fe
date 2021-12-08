@@ -25,13 +25,42 @@ ChartJS.register(
   Legend
 )
 
-export const options = {
+interface yLabels {
+  0: string
+  1: string
+  2: string
+  3: string
+  4: string
+}
+
+const yLabels: yLabels = {
+	 0: '😭',
+   1: '🙁',
+   2: '😐',
+   3: '🙂',
+   4: '😁'
+}
+
+const options = {
   responsive: true,
   plugins: {
     legend: {
       position: 'top' as const,
-    }
-  }
+    },
+    title: {
+      display: true,
+      text: 'Monthly Moods',
+    },
+  },
+  scales: {
+   yAxis: {
+     ticks: {
+         callback: function(value:string | number):string | undefined {
+             return yLabels[value as keyof typeof yLabels];
+         }
+     }
+   }
+   }
 };
 
 interface Dataset {
