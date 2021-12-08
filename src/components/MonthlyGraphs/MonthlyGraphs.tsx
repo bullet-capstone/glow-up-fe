@@ -51,13 +51,6 @@ const options = {
                return yLabels[value as keyof typeof yLabels];
            }
        }
-     },
-     xAxis: {
-       // type: 'timeseries',
-       title: {
-         display: true,
-         text: 'Day of the Month'
-       }
      }
    }
 };
