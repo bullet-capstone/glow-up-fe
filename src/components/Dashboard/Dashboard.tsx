@@ -18,6 +18,7 @@ const Dashboard = () => {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, data])
 
   const displayHabit = () => {
