@@ -25,15 +25,7 @@ ChartJS.register(
   Legend
 )
 
-interface yLabels {
-  0: string
-  1: string
-  2: string
-  3: string
-  4: string
-}
-
-const yLabels: yLabels = {
+const yLabels = {
 	 0: '😭',
    1: '🙁',
    2: '😐',
@@ -62,11 +54,6 @@ const options = {
    }
    }
 };
-
-interface Dataset {
-  labels: string[]
-  datasets: Object[]
-}
 
 const MonthlyGraphs = () => {
   const { loading, data } = useQuery(QUERY_MONTHLY_ENTRIES)
