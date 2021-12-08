@@ -1,6 +1,10 @@
 import { useContext } from "react"
 import { AppContext } from "../../utils/context"
+<<<<<<< HEAD
 import './MoodToday.css'
+=======
+import Quote from "../Quote/Quote"
+>>>>>>> 6ed0219 (Add Quote component.Display quote when user's mood is lower than 2)
 
 export default function MoodToday() {
   const today = new Date()
@@ -15,6 +19,7 @@ export default function MoodToday() {
       <h3>Today: {date}</h3>
       <p>I am feeling: {displayMood(todaysMood!.mood)}</p>
       {todaysMood!.description && <p>{todaysMood!.description}</p>}
+      {todaysMood!.mood <= 3 ? <Quote /> : null}
       {/* <button>Second Thought?</button>  to add when changing mood fnc is available*/}
     </div>
   )

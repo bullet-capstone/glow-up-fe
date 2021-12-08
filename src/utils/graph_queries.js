@@ -53,23 +53,22 @@ export const QUERY_DAILY_ENTRIES = gql`
     }
   }
 `
-// const QUERY_WEEKLY_ENTRIES = gql`
-//   query fetchUser {
-//     fetchUser {
-//       weeklyHabits {
-//         habitId
-//         status
-//         date
-//         id
-//       }
-//       weeklyMoods {
-//         createdAt
-//         mood
-//       }
-//     }
-//   }
-// `
-
+const QUERY_WEEKLY_ENTRIES = gql`
+  query fetchUser {
+    fetchUser {
+      weeklyHabits {
+        habitId
+        status
+        date
+        id
+      }
+      weeklyMoods {
+        createdAt
+        mood
+      }
+    }
+  }
+`
 
 export const QUERY_MONTHLY_ENTRIES = gql`
   query fetchUser {
