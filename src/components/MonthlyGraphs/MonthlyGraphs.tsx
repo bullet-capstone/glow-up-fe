@@ -56,9 +56,13 @@ const options = {
 };
 
 const MonthlyGraphs = () => {
-  const { loading, data, error } = useQuery(QUERY_MONTHLY_ENTRIES)
+  const today = new Date()
+  const monthString = today.toLocaleString('default', { month: 'long' });
+
   const [ labels, setLabels ] = useState<string[]>([]);
   const [ monthlyMoods, setMonthlyMoods ] = useState<Mood[]>([]);
+
+  const { loading, data, error } = useQuery(QUERY_MONTHLY_ENTRIES)
 
   useEffect(() => {
     if (!loading && data) {
@@ -93,15 +97,19 @@ const MonthlyGraphs = () => {
       ]
     };
 
-  const today = new Date()
-  const monthString = today.toLocaleString('default', { month: 'long' });
+
 
   return (
     <section className="graph-container">
       <h3 className="month-title">{monthString}</h3>
-      { !!monthlyMoods.length && (
+      { !!monthlyMoods.length ? (
         <Chart type='line' data={dataset}  options={options}/>
-      )}
+      )
+      :
+      (
+        <h2>There aren't any mood entries for this month yet!</h2>
+      )
+      }
       { error && <h2>Sorry, something went wrong!</h2>}
     </section>
   )
