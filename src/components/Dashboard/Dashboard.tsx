@@ -13,13 +13,14 @@ const Dashboard = () => {
 
   // const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
 
-  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
+  const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
 
   useEffect(() => {
+    refetch()
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
-      console.log("useEffect fires")
+      console.log("todays habits", data.fetchUser.dailyHabits)
     }
   }, [loading, data])
 
@@ -56,13 +57,16 @@ const Dashboard = () => {
 
   const date = mm + "/" + dd + "/" + yyyy
 
+  if (loading) return <h1>Loading...</h1>
+  if (error) return <h1>{`Error! ${error.message}`}</h1>
+
   return (
     <main>
       {error && <h2>Oops, something went wrong!</h2>}
       <section className="dashboard-container">
         <h2 className="page-title">My Dashboard</h2>
         <article className="today-container">
-          {!todaysMood ? (
+          {todaysMood ? (
             <div>
               <h3>Today: {date}</h3>
               <p>I am feeling: {displayMood()}</p>
