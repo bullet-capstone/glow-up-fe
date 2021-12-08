@@ -56,7 +56,7 @@ const options = {
 };
 
 const MonthlyGraphs = () => {
-  const { loading, data } = useQuery(QUERY_MONTHLY_ENTRIES)
+  const { loading, data, error } = useQuery(QUERY_MONTHLY_ENTRIES)
   const [ labels, setLabels ] = useState<string[]>([]);
   const [ monthlyMoods, setMonthlyMoods ] = useState<Mood[]>([]);
 
