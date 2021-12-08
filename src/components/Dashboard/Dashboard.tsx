@@ -57,12 +57,10 @@ const Dashboard = () => {
 
   const date = mm + "/" + dd + "/" + yyyy
 
-  if (loading) return <h1>Loading...</h1>
-  if (error) return <h1>{`Error! ${error.message}`}</h1>
-
   return (
     <main>
-      {error && <h2>Oops, something went wrong!</h2>}
+      {loading && <h2>Loading...</h2>}
+      {error && <h2>{`Error! ${error.message}`}</h2>}
       <section className="dashboard-container">
         <h2 className="page-title">My Dashboard</h2>
         <article className="today-container">
@@ -70,9 +68,7 @@ const Dashboard = () => {
             <div>
               <h3>Today: {date}</h3>
               <p>I am feeling: {displayMood()}</p>
-              {
-                // { todaysMood && todaysMood.description && (<p>{todaysMood.description}</p>)}
-              }
+              {todaysMood.description && <p>{todaysMood.description}</p>}
             </div>
           ) : (
             <Link to="/glow-up-fe/track">➕ Enter your mood today!</Link>
