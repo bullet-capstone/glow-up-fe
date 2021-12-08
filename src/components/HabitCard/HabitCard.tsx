@@ -1,5 +1,5 @@
 import "./HabitCard.css"
-import { useState, useContext } from "react"
+import { useState, useContext, useEffect } from "react"
 import { AppContext } from "../../utils/context"
 
 interface HabitCardProps {
@@ -33,6 +33,10 @@ export default function HabitCard(props: HabitCardProps) {
     },
   })
 
+  useEffect(() => {
+    setChecked(props.checkedToday)
+  }, [props.checkedToday])
+
   const toggleCheck = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     switch (checked) {
@@ -56,7 +60,7 @@ export default function HabitCard(props: HabitCardProps) {
       className="habit-card-button"
       onClick={toggleCheck}
       id={props.id}
-      style={!checked ? style.true : style.false}
+      style={checked ? style.true : style.false}
     >
       {props.name}
     </button>
