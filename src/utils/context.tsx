@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react"
-import { isStringLiteral } from "typescript"
-import { Habit, Mood, HabitEntry } from "./Models"
+
+import { Habit, Mood } from "./Models"
 
 interface ContextState {
   userHabits: Habit[]

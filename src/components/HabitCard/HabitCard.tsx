@@ -11,7 +11,7 @@ interface HabitCardProps {
 export default function HabitCard(props: HabitCardProps) {
   const { checkedHabitIds, setCheckedHabitIds } = useContext(AppContext)
   const [checked, setChecked] = useState(props.checkedToday)
-  const [style, setStyle] = useState({
+  const [style] = useState({
     false: {
       backgroundColor: "#e4dfdd",
       color: "black",

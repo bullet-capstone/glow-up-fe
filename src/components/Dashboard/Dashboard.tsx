@@ -1,16 +1,14 @@
 import "./Dashboard.css"
 import { Link } from "react-router-dom"
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useContext } from "react"
 import { AppContext } from "../../utils/context"
 import { useQuery } from "@apollo/client"
 
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
-import { Habit, Mood } from "../../utils/Models"
+import { Habit } from "../../utils/Models"
 
 const Dashboard = () => {
   const { todaysMood, setTodaysMood, todaysHabits, setTodaysHabits, displayMood } = useContext(AppContext)
-
-  // const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
 
   const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
 
@@ -21,26 +19,6 @@ const Dashboard = () => {
       setTodaysHabits(data.fetchUser.dailyHabits)
     }
   }, [loading, data])
-
-  // const displayMood = () => {
-  //   if (todaysMood) {
-  //     switch (todaysMood.mood) {
-  //       case 0:
-  //         return "😭"
-  //       case 1:
-  //         return "🙁"
-  //       case 2:
-  //         return "😐"
-  //       case 3:
-  //         return "🙂"
-  //       case 4:
-  //         return "😁"
-
-  //       default:
-  //         return "❓"
-  //     }
-  //   }
-  // }
 
   const displayHabit = () => {
     const completedHabits = todaysHabits!.map((habit: Habit) => <p key={habit.id}>✅ {habit.name}</p>)

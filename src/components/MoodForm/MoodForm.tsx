@@ -9,7 +9,7 @@ const MoodForm = () => {
   const [description, setDescription] = useState("")
   const [validateForm, setValidateForm] = useState(true)
   const [createMood] = useMutation(SUBMIT_MOOD)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [isSubmitted, setIsSubmitted] = useState(false)
   const { todaysMood, displayMood } = useContext(AppContext)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,7 +23,7 @@ const MoodForm = () => {
       setValidateForm(true)
       setMood("")
       setDescription("")
-      setIsSubmitted(true)
+      // setIsSubmitted(true)
     }
   }
 
