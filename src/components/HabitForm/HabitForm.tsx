@@ -9,8 +9,8 @@ import "../../assets/icons/habit7-uncheck.png"
 import { Habit } from "../../utils/Models"
 
 const HabitForm = () => {
-  const { error, data } = useQuery(QUERY_HABITS)
-  const { checkedHabitIds } = useContext(AppContext)
+  const { loading, error, data } = useQuery(QUERY_HABITS)
+  const { checkedHabitIds, todaysHabits } = useContext(AppContext)
   const [createHabitEntry] = useMutation(SUBMIT_HABIT)
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,9 +25,11 @@ const HabitForm = () => {
   }
 
   return (
-    <section className="habit-form-container">
-      <h2 className="habit-form-question">What have you accomplished?</h2>
-      {data ? (
+    <>
+      {loading && <h2>Loading...</h2>}
+      {error && <h2>{`Error! ${error.message}`}</h2>}
+      <section className="habit-form-container">
+        <h2 className="habit-form-question">What have you accomplished?</h2>
         <form className="habit-form" onSubmit={createHabitEntries}>
           {data.fetchHabits.map((habit: Habit) => (
             <HabitCard name={habit.name} id={habit.id} key={habit.id} />
@@ -36,10 +38,8 @@ const HabitForm = () => {
             Submit
           </button>
         </form>
-      ) : (
-        <h2>{error}</h2>
-      )}
-    </section>
+      </section>
+    </>
   )
 }
 

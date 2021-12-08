@@ -33,6 +33,7 @@ const MoodForm = () => {
         <div>
           <p>I am feeling: {displayMood(todaysMood!.mood)}</p>
           {todaysMood!.description && <p>{todaysMood!.description}</p>}
+          {/* <button>Second Thought?</button>  to add when changing mood fnc is available*/}
         </div>
       ) : (
         <form className="mood-form" onSubmit={handleSubmit}>
