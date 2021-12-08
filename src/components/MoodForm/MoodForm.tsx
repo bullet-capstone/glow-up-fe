@@ -30,7 +30,7 @@ const MoodForm = () => {
 
   return (
     <section className="mood-form-container">
-      {todaysMood ? (
+      { todaysMood ? (
         <MoodToday />
       ) : (
         <form className="mood-form" onSubmit={handleSubmit}>
@@ -101,19 +101,16 @@ const MoodForm = () => {
           {!validateForm && <p className="error-message">**Please select your mood today!**</p>}
           <input
             type="text"
-            placeholder="Today, I am feeling..."
+            placeholder="Describe your mood..."
             className="mood-description"
             value={description}
             onChange={e => setDescription(e.currentTarget.value)}
           />
           <button className="mood-submit-button" type="submit">
-            Submit
+            ✔ submit your mood
           </button>
         </form>
       )}
-      {/* <article className="mood-form">
-          <h2>Thank you for submitting your mood today!</h2>
-        </article> */}
     </section>
   )
 }

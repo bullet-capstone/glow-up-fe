@@ -1,16 +1,22 @@
 .mood-form-container {
-  /* background-size: cover; */
-  height: 100vh;
+  /* height: 100vh; */
+  background: url('https://images.unsplash.com/photo-1504198266287-1659872e6590?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Quicksand", sans-serif;
+  width: 100%;
 }
 
 .mood-form {
-  position: absolute;
-  top: 25vh;
+  margin: 5rem 2rem;
   line-height: 10vh;
+  background: rgba(255,255,255,0.85);
+  border-radius: 5px;
+  padding: 1rem;
 }
 
 input[type="radio"] {
@@ -30,11 +36,14 @@ input[type="radio"] {
 }
 
 .mood-description {
-  width: 100%;
-  border: 0;
+  width: 80%;
+  border: 1px solid grey;
   border-radius: 5px;
   padding: 0.5rem;
   margin-top: 1.5em;
+  /* box-shadow: 0 4px 2px -2px rgb(0 0 0 / 50%); */
+  color: black;
+  font-family: 'Raleway';
 }
 
 input[type="radio"]:checked + label {
@@ -42,7 +51,7 @@ input[type="radio"]:checked + label {
 }
 
 .error-message {
-  position: absolute;
-  top: 20vh;
+  /* position: absolute;
+  top: 20vh; */
   width: 100%;
 }
