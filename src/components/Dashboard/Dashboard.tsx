@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client"
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { Habit } from "../../utils/Models"
 import MoodToday from "../MoodToday/MoodToday"
+import Week from "../Week/Week"
 
 const Dashboard = () => {
   const { todaysMood, setTodaysMood, todaysHabits, setTodaysHabits } = useContext(AppContext)
@@ -61,6 +62,7 @@ const Dashboard = () => {
       </article>
       <section className="week-container">
         <h3>This week...</h3>
+        <Week />
       </section>
       <MonthlyGraphs />
     </main>
