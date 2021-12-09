@@ -11,7 +11,7 @@ interface WeeklyCardProps {
 }
 
 export default function DailyCard(props: WeeklyCardProps) {
-  const { displayMood, displayHabit, habitMap } = useContext(AppContext)
+  const { displayMood, habitMap } = useContext(AppContext)
 
   const habitList = props.habits.map(habit => {
     return <p key={habit.id}>{habitMap![parseInt(habit.habitId) as keyof typeof habitMap]}</p>
