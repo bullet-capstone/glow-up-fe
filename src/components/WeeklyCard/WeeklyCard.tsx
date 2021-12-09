@@ -9,7 +9,7 @@ interface WeeklyCardProps {
   dayString: string
 }
 
-export default function DailyCard(props: WeeklyCardProps) {
+export default function WeeklyCard(props: WeeklyCardProps) {
   const { displayMood, habitMap } = useContext(AppContext)
 
   const habitList = props.habits.map(habit => {
