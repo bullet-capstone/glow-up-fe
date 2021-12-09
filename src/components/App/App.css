@@ -1,12 +1,8 @@
 .App {
   text-align: center;
-  background: url(../../assets/form-background.png);
-  background-size: cover;
 }
 
 .header {
-  /* position: absolute;
-  z-index: 1; */
   display: flex;
   width: 100vw;
   justify-content: space-between;
@@ -27,8 +23,4 @@ a {
 
 .active {
   text-decoration: underline;
-}
-
-.trackers-container {
-  border: 2px solid black;
 }

@@ -1,11 +1,17 @@
 .habit-form-container {
-  background: #acb3cb;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: 'Quicksand', sans-serif;
+}
+
+.habit-image {
+  width: 50vw;
+}
+
+.habit-form-div {
+  width: 50vw;
 }
 
 .habit-form-question {
@@ -24,9 +30,15 @@
 
 .mood-submit-button,
 .habit-submit-button {
-  width: 100px;
   font-family: 'Raleway', sans-serif;
   border-radius: 5px;
-  border: 0;
+  border: 1px solid black;
   margin: 1rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mood-submit-button:hover,
+.habit-submit-button:hover {
+  background: #AEC992;
 }

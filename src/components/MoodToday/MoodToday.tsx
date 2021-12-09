@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { AppContext } from "../../utils/context"
+import './MoodToday.css'
 
 export default function MoodToday() {
   const today = new Date()

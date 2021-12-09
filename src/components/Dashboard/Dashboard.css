@@ -1,29 +1,60 @@
 .dashboard-container {
-  background: url(../../assets/dashboard-background.png) 100%;
-  background-size: cover;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  font-family: 'Raleway', sans-serif;
+  position: relative;
+}
+
+.dashboard-container::before {
+  content: "";
+  background-image: url('https://images.unsplash.com/photo-1594486968161-50ef4355ce11?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2064&q=80');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.85;
 }
 
 .page-title {
-  margin-top: 5rem;
+  margin: 5rem;
+  position: relative;
+}
+
+.page-quote {
+  position: relative;
+  font-weight: bold;
+  background: rgba(255,255,255, 0.50);
+  padding: 0 0.25rem;
+}
+
+.author {
+  text-align: right;
 }
 
 .today-container {
-  background: rgba(255, 255, 255, 0.80);
-  margin: 1rem;
-  padding: 1rem;
-  border-radius: 1rem;
-  text-align: left;
-  line-height: 2rem;
   display: flex;
-  gap: 2rem;
-  /* position: absolute;
-  right: 10%; */
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.completed-habits-container {
+  margin: 1rem 0.5rem 2rem;
+}
+
+.completed-habits {
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 50vw;
+}
+
+.completed-habit {
+  width: 140px;
+  display: flex;
+  align-items: center;
 }
 
 .week-container {

@@ -13,12 +13,12 @@ export default function HabitCard(props: HabitCardProps) {
   const [checked, setChecked] = useState(props.checkedToday)
   const [style] = useState({
     false: {
-      backgroundColor: "#e4dfdd",
+      backgroundColor: "#E7E7E7",
       color: "black",
     },
     true: {
-      backgroundColor: "#4a5582",
-      color: "#fff",
+      backgroundColor: "#86AE5B",
+      color: "black",
     },
   })
 
