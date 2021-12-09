@@ -1,6 +1,8 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useState, useEffect } from "react"
 
 import { Habit, Mood, HabitMap } from "./Models"
+import { useQuery } from "@apollo/client"
+import { QUERY_DAILY_ENTRIES } from "../utils/graph_queries"
 
 interface ContextState {
   userHabits: Habit[]
@@ -82,6 +84,17 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
     return yyyy + "-" + mm + "-" + dd
   }
+
+  const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
+
+  useEffect(() => {
+    refetch()
+    if (!loading && data) {
+      setTodaysMood(data.fetchUser.dailyMood)
+      setTodaysHabits(data.fetchUser.dailyHabits)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, data])
 
   return (
     <AppContext.Provider
