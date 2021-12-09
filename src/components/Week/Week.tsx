@@ -20,8 +20,15 @@ export default function Week() {
   useEffect(() => {
     if (!loading && data) {
       const orderedHabits: HabitEntry[][] = []
+      // Keep below comments to see how server time is ahead of us
+      // let today = new Date()
+      // let todayString = today.toISOString()
+      // console.log("today", todayString)
+
       for (let i = 1; i <= 7; i++) {
         let dayString = getDayString(i)
+        console.log("daystring in week", dayString)
+
         let dayHabits: HabitEntry[] = data.fetchUser.weeklyHabits.filter(
           (habit: HabitEntry) => habit.date.slice(0, 10) === dayString
         )
@@ -47,7 +54,7 @@ export default function Week() {
 
   const makeCards = () => {
     const weeklyCards = weeklyStats.map((ele: DayStat, index: number) => (
-      <WeeklyCard mood={ele.mood.mood} habits={ele.habits} key={index} />
+      <WeeklyCard mood={ele.mood.mood} habits={ele.habits} key={index} dayString={getDayString(index + 1)} />
     ))
 
     return weeklyCards

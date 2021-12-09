@@ -6,6 +6,7 @@ import "./WeeklyCard.css"
 interface WeeklyCardProps {
   mood: number
   habits: HabitEntry[]
+  dayString: string
 }
 
 export default function DailyCard(props: WeeklyCardProps) {
@@ -21,7 +22,7 @@ export default function DailyCard(props: WeeklyCardProps) {
 
   return (
     <div className="weekly-card">
-      <p></p>
+      <h5>{props.dayString}</h5>
       <p>Mood:{displayMood(props.mood)} </p>
       <div>{habitList}</div>
     </div>
