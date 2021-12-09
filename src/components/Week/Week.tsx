@@ -3,11 +3,11 @@ import { useQuery } from "@apollo/client"
 import { QUERY_WEEKLY_ENTRIES } from "../../utils/graph_queries"
 import { HabitEntry, Mood } from "../../utils/Models"
 import WeeklyCard from "../WeeklyCard/WeeklyCard"
+import "./Week.css"
 
 export default function Week() {
   const { loading, error, data } = useQuery(QUERY_WEEKLY_ENTRIES)
   const [weeklyStats, setWeeklyStats] = useState([])
-  // const [weeklyHabits, setWeeklyHabits] = useState([])
 
   interface DayStat {
     mood: Mood
@@ -49,5 +49,8 @@ export default function Week() {
     return weeklyCards
   }
 
-  return <div>{makeCards()}</div>
+  if (loading) return <h1>Loading</h1>
+  if (error) return <h1>{error.message}</h1>
+
+  return <div className="weekcard-holder">{makeCards()}</div>
 }

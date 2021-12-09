@@ -1,0 +1,4 @@
+.weekcard-holder {
+  display: flex;
+  flex-direction: row;
+}
