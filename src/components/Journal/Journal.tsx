@@ -28,7 +28,9 @@ const Journal = () => {
     <section>
       { loading && <h2>Loading...</h2> }
       { error && <h2>Oops, something went wrong!</h2> }
-      <h1>Journal</h1>
+      <div className="journal-title-container">
+        <h1 className="journal-title">My Journal</h1>
+      </div>
       { entryCards }
     </section>
   )
