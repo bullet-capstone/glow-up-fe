@@ -2,7 +2,6 @@ import { useContext } from "react"
 import { AppContext } from "../../utils/context"
 import { HabitEntry } from "../../utils/Models"
 import "./WeeklyCard.css"
-import { HabitMap } from "../../utils/Models"
 
 interface WeeklyCardProps {
   mood: number
