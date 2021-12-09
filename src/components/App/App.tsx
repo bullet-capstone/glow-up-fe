@@ -2,6 +2,7 @@ import "./App.css"
 import MoodForm from "../MoodForm/MoodForm"
 import HabitForm from "../HabitForm/HabitForm"
 import Dashboard from "../Dashboard/Dashboard"
+import Journal from "../Journal/Journal"
 import { Routes, Route, NavLink } from "react-router-dom"
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
             }
           />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="journal" element={<Journal />} />
         </Route>
       </Routes>
     </div>
