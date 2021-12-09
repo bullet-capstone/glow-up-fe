@@ -13,6 +13,7 @@ interface ContextState {
   setTodaysHabits: (habits: Habit[]) => void
   displayMood: (mood: number) => string
   displayHabit: (habit: number) => string
+  getDayString: (count: number) => string
 }
 
 const AppContext = createContext<ContextState>({
@@ -26,6 +27,7 @@ const AppContext = createContext<ContextState>({
   setTodaysHabits: () => {},
   displayMood: () => "",
   displayHabit: () => "",
+  getDayString: () => "",
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
@@ -91,6 +93,12 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     }
   }
 
+  const getDayString = (gap: number) => {
+    let day = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24 * gap)
+    let dayString = day.toISOString().slice(0, 10)
+    return dayString
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -104,6 +112,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         setTodaysHabits,
         displayMood,
         displayHabit,
+        getDayString,
       }}
     >
       {children}

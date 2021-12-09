@@ -1,13 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useQuery } from "@apollo/client"
 import { QUERY_WEEKLY_ENTRIES } from "../../utils/graph_queries"
 import { HabitEntry, Mood } from "../../utils/Models"
 import WeeklyCard from "../WeeklyCard/WeeklyCard"
+import { AppContext } from "../../utils/context"
+
 import "./Week.css"
 
 export default function Week() {
   const { loading, error, data } = useQuery(QUERY_WEEKLY_ENTRIES)
   const [weeklyStats, setWeeklyStats] = useState([])
+  const { getDayString } = useContext(AppContext)
 
   interface DayStat {
     mood: Mood
@@ -18,8 +21,7 @@ export default function Week() {
     if (!loading && data) {
       const orderedHabits: HabitEntry[][] = []
       for (let i = 1; i <= 7; i++) {
-        let day = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24 * i)
-        let dayString = day.toISOString().slice(0, 10)
+        let dayString = getDayString(i)
         let dayHabits: HabitEntry[] = data.fetchUser.weeklyHabits.filter(
           (habit: HabitEntry) => habit.date.slice(0, 10) === dayString
         )
@@ -44,7 +46,9 @@ export default function Week() {
   }, [loading, data])
 
   const makeCards = () => {
-    const weeklyCards = weeklyStats.map((ele: DayStat) => <WeeklyCard mood={ele.mood.mood} habits={ele.habits} />)
+    const weeklyCards = weeklyStats.map((ele: DayStat, index: number) => (
+      <WeeklyCard mood={ele.mood.mood} habits={ele.habits} key={index} />
+    ))
 
     return weeklyCards
   }
