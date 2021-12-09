@@ -3,6 +3,11 @@ import { QUERY_JOURNAL_ENTRIES } from "../../utils/graph_queries"
 import { useQuery } from "@apollo/client"
 import { JournalEntry } from "../../utils/Models"
 import { useEffect, useState } from "react"
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const Journal = () => {
   const { loading, data, error } = useQuery(QUERY_JOURNAL_ENTRIES)
@@ -17,10 +22,20 @@ const Journal = () => {
   const entryCards = journalEntries.map((entry :JournalEntry) => {
     const date = new Date(entry.date).toLocaleString("en-US")
     return (
-      <article key={entry.id}>
-        <p>{date}</p>
-        <p>{entry.content}</p>
-      </article>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls={`panel${date}-content`}
+          id={`panel${date}-header`}
+        >
+          <Typography>Journal Entry {date}</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+          {entry.content}
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
     )
   })
 
