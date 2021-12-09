@@ -11,7 +11,7 @@ export default function MoodToday() {
       <h3>Today: {date}</h3>
       <p>I am feeling: {displayMood(todaysMood!.mood)}</p>
       {todaysMood!.description && <p>{todaysMood!.description}</p>}
-      {todaysMood!.mood <= 3 ? <Quote /> : null}
+      {todaysMood!.mood <= 2 ? <Quote /> : null}
       {/* <button>Second Thought?</button>  to add when changing mood fnc is available*/}
     </div>
   )
