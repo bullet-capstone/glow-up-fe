@@ -31,16 +31,11 @@ const MoodForm = () => {
 
   return (
     <section className="mood-form-container">
-<<<<<<< HEAD
-      { todaysMood ? (
-        <MoodToday />
-=======
       {todaysMood ? (
         <>
           <MoodToday />
           {todaysMood!.mood <= 2 ? <Quote /> : null}
         </>
->>>>>>> 34d870e (Add Week component)
       ) : (
         <form className="mood-form" onSubmit={handleSubmit}>
           <h2>How are you feeling today?</h2>
