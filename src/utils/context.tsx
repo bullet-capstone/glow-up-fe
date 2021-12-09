@@ -95,8 +95,12 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const getDayString = (gap: number) => {
     let day = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24 * gap)
-    let dayString = day.toISOString().slice(0, 10)
-    return dayString
+    // let dayString = day.toISOString().slice(0, 10)
+    var dd = String(day.getDate()).padStart(2, "0")
+    var mm = String(day.getMonth() + 1).padStart(2, "0") //January is 0!
+    var yyyy = day.getFullYear()
+
+    return mm + "/" + dd + "/" + yyyy
   }
 
   return (
