@@ -12,7 +12,6 @@ interface ContextState {
   todaysHabits: Habit[]
   setTodaysHabits: (habits: Habit[]) => void
   displayMood: (mood: number) => string
-  displayHabit: (habit: number) => string
   getDayString: (count: number) => string
   habitMap: HabitMap | null
 }
@@ -27,7 +26,6 @@ const AppContext = createContext<ContextState>({
   todaysHabits: [],
   setTodaysHabits: () => {},
   displayMood: () => "",
-  displayHabit: () => "",
   getDayString: () => "",
   habitMap: null,
 })
@@ -75,43 +73,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         return "❓"
     }
   }
-  const displayHabit = (habit: number) => {
-    switch (habit) {
-      case 1:
-        return "Exercise"
-      case 2:
-        return "Meditate"
-      case 3:
-        return "Floss"
-      case 4:
-        return "Brush teeth x2"
-      case 5:
-        return "Drink Water"
-      case 6:
-        return "Socialize"
-      case 7:
-        return "Eat Healthy"
-      case 8:
-        return "Wash Dishes"
-      case 9:
-        return "Write in Journal"
-      case 10:
-        return "Take a Shower"
-      case 11:
-        return "Stay off Social Media"
-      case 12:
-        return "Make Bed"
-      case 13:
-        return "Read"
-      case 14:
-        return "Go Outside"
-      case 15:
-        return "Plan Tomorrow"
-
-      default:
-        return "❓"
-    }
-  }
 
   const getDayString = (gap: number) => {
     let day = new Date(new Date().valueOf() - 1000 * 60 * 60 * 24 * gap)
@@ -134,7 +95,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         todaysHabits,
         setTodaysHabits,
         displayMood,
-        displayHabit,
         getDayString,
         habitMap,
       }}
