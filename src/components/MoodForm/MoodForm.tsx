@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client"
 import { SUBMIT_MOOD } from "../../utils/graph_mutations"
 import { AppContext } from "../../utils/context"
 import MoodToday from "../MoodToday/MoodToday"
+import Quote from "../Quote/Quote"
 
 const MoodForm = () => {
   const [mood, setMood] = useState("")
@@ -30,8 +31,11 @@ const MoodForm = () => {
 
   return (
     <section className="mood-form-container">
-      { todaysMood ? (
-        <MoodToday />
+      {todaysMood ? (
+        <>
+          <MoodToday />
+          {todaysMood!.mood <= 2 ? <Quote /> : null}
+        </>
       ) : (
         <form className="mood-form" onSubmit={handleSubmit}>
           <h2>How are you feeling today?</h2>

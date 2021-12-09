@@ -29,3 +29,7 @@ export interface User {
   habitEntries: HabitEntry[]
   journalEntries: JournalEntry[]
 }
+
+export interface HabitMap {
+  [key: number]: string
+}
