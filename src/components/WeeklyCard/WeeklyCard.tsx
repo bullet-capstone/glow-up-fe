@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { AppContext } from "../../utils/context"
 import { HabitEntry } from "../../utils/Models"
 import "./WeeklyCard.css"
+import { HabitMap } from "../../utils/Models"
 
 interface WeeklyCardProps {
   mood: number
@@ -10,10 +11,10 @@ interface WeeklyCardProps {
 }
 
 export default function DailyCard(props: WeeklyCardProps) {
-  const { displayMood, displayHabit } = useContext(AppContext)
+  const { displayMood, displayHabit, habitMap } = useContext(AppContext)
 
   const habitList = props.habits.map(habit => {
-    return <p key={habit.id}>{displayHabit(parseInt(habit.habitId))}</p>
+    return <p key={habit.id}>{habitMap![parseInt(habit.habitId) as keyof typeof habitMap]}</p>
   })
 
   return (
