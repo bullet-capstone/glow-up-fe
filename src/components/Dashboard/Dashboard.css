@@ -18,6 +18,7 @@
   opacity: 0.85;
 }
 
+.journal-title,
 .page-title {
   margin: 5rem;
   position: relative;
