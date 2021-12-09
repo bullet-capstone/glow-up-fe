@@ -83,3 +83,16 @@ export const QUERY_MONTHLY_ENTRIES = gql`
     }
   }
 `
+
+export const QUERY_JOURNAL_ENTRIES = gql`
+  query fetchUser {
+    fetchUser {
+      id
+      journalEntries {
+        id
+        content
+        date
+      }
+    }
+  }
+`
