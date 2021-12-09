@@ -27,7 +27,7 @@ export default function Week() {
 
       for (let i = 1; i <= 7; i++) {
         let dayString = getDayString(i)
-        console.log("daystring in week", dayString)
+        // console.log("daystring in week", dayString)
 
         let dayHabits: HabitEntry[] = data.fetchUser.weeklyHabits.filter(
           (habit: HabitEntry) => habit.date.slice(0, 10) === dayString
@@ -45,7 +45,8 @@ export default function Week() {
         return acc
       }, [])
 
-      console.log("final", final)
+      //below log to check grouped habits by day
+      // console.log("final", final)
       setWeeklyStats(final)
     }
 

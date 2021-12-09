@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { AppContext } from "../../utils/context"
 import { HabitEntry } from "../../utils/Models"
 import "./WeeklyCard.css"
@@ -10,15 +10,11 @@ interface WeeklyCardProps {
 }
 
 export default function DailyCard(props: WeeklyCardProps) {
-  const { displayMood, displayHabit, getDayString } = useContext(AppContext)
+  const { displayMood, displayHabit } = useContext(AppContext)
 
   const habitList = props.habits.map(habit => {
-    return <p>{displayHabit(parseInt(habit.habitId))}</p>
+    return <p key={habit.id}>{displayHabit(parseInt(habit.habitId))}</p>
   })
-
-  useEffect(() => {
-    console.log("props habits", props.habits)
-  }, [])
 
   return (
     <div className="weekly-card">
