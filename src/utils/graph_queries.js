@@ -53,7 +53,7 @@ export const QUERY_DAILY_ENTRIES = gql`
     }
   }
 `
-const QUERY_WEEKLY_ENTRIES = gql`
+export const QUERY_WEEKLY_ENTRIES = gql`
   query fetchUser {
     fetchUser {
       weeklyHabits {

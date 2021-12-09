@@ -1,10 +1,7 @@
 import { useContext } from "react"
 import { AppContext } from "../../utils/context"
-<<<<<<< HEAD
-import './MoodToday.css'
-=======
+import "./MoodToday.css"
 import Quote from "../Quote/Quote"
->>>>>>> 6ed0219 (Add Quote component.Display quote when user's mood is lower than 2)
 
 export default function MoodToday() {
   const today = new Date()
