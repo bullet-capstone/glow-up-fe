@@ -1,0 +1,18 @@
+{
+  "data": {
+    "fetchHabits": [
+      {
+        "id": "1",
+        "name": "Exercise"
+      },
+      {
+        "id": "2",
+        "name": "Meditate"
+      },
+      {
+        "id": "3",
+        "name": "Floss"
+      }
+    ]
+  }
+}

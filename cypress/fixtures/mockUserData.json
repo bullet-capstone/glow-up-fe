@@ -1,0 +1,144 @@
+{
+  "data": {
+    "fetchUser": {
+      "id": "1",
+      "username": "User",
+      "dailyMood": {
+        "id": "29",
+        "mood": 2,
+        "description": "Mood 29"
+      },
+      "dailyHabits": [
+        {
+          "id": "1",
+          "name": "Exercise"
+        },
+        {
+          "id": "5",
+          "name": "Drink Water"
+        }
+      ],
+      "weeklyHabits": [
+        {
+          "habitId": 7,
+          "date": "2021-12-08 00:00:00 UTC",
+          "id": "120"
+        },
+        {
+          "habitId": 10,
+          "date": "2021-12-07 00:00:00 UTC",
+          "id": "166"
+        },
+        {
+          "habitId": 12,
+          "date": "2021-12-07 00:00:00 UTC",
+          "id": "186"
+        },
+        {
+          "habitId": 3,
+          "date": "2021-12-06 00:00:00 UTC",
+          "id": "50"
+        },
+        {
+          "habitId": 8,
+          "date": "2021-12-05 00:00:00 UTC",
+          "id": "138"
+        },
+        {
+          "habitId": 4,
+          "date": "2021-12-04 00:00:00 UTC",
+          "id": "62"
+        }
+      ],
+      "weeklyMoods": [
+        {
+          "createdAt": "2021-12-08T00:00:00Z",
+          "mood": 0
+        },
+        {
+          "createdAt": "2021-12-07T00:00:00Z",
+          "mood": 0
+        },
+        {
+          "createdAt": "2021-12-06T00:00:00Z",
+          "mood": 2
+        },
+        {
+          "createdAt": "2021-12-05T00:00:00Z",
+          "mood": 1
+        },
+        {
+          "createdAt": "2021-12-04T00:00:00Z",
+          "mood": 1
+        },
+        {
+          "createdAt": "2021-12-03T00:00:00Z",
+          "mood": 2
+        },
+        {
+          "createdAt": "2021-12-02T00:00:00Z",
+          "mood": 3
+        }
+      ],
+      "journalEntries": [
+        {
+          "id": "30",
+          "content": "something really important",
+          "date": "2021-11-09T00:00:00Z"
+        },
+        {
+          "id": "29",
+          "content": "something really important",
+          "date": "2021-11-10T00:00:00Z"
+        },
+        {
+          "id": "28",
+          "content": "something really important",
+          "date": "2021-11-11T00:00:00Z"
+        }
+      ],
+      "monthlyMoods": [
+        {
+          "id": "1",
+          "createdAt": "2021-12-08T00:00:00Z",
+          "mood": 0
+        },
+        {
+          "id": "2",
+          "createdAt": "2021-12-07T00:00:00Z",
+          "mood": 0
+        },
+        {
+          "id": "3",
+          "createdAt": "2021-12-06T00:00:00Z",
+          "mood": 2
+        },
+        {
+          "id": "4",
+          "createdAt": "2021-12-05T00:00:00Z",
+          "mood": 1
+        },
+        {
+          "id": "5",
+          "createdAt": "2021-12-04T00:00:00Z",
+          "mood": 1
+        },
+        {
+          "id": "6",
+          "createdAt": "2021-12-03T00:00:00Z",
+          "mood": 2
+        },
+        {
+          "id": "7",
+          "createdAt": "2021-12-02T00:00:00Z",
+          "mood": 3
+        },
+        {
+          "id": "8",
+          "createdAt": "2021-12-01T00:00:00Z",
+          "mood": 2
+        }
+      ]
+    }
+  }
+}
