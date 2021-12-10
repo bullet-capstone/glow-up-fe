@@ -19,25 +19,29 @@ const Journal = () => {
     }
   }, [loading, data])
 
-  const entryCards = journalEntries.map((entry :JournalEntry) => {
-    const date = new Date(entry.date).toLocaleString("en-US")
-    return (
-      <Accordion>
+  let entryCards;
+  if (journalEntries.length) {
+    entryCards = journalEntries.map((entry :JournalEntry) => {
+      const date = new Date(entry.date).toLocaleString("en-US")
+      return (
+        <Accordion>
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls={`panel${date}-content`}
-          id={`panel${date}-header`}
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls={`panel${date}-content`}
+        id={`panel${date}-header`}
         >
-          <Typography>Journal Entry {date}</Typography>
+        <Typography>Journal Entry {date}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-          {entry.content}
-          </Typography>
+        <Typography>
+        {entry.content}
+        </Typography>
         </AccordionDetails>
-      </Accordion>
-    )
-  })
+        </Accordion>
+      )
+    })
+
+  }
 
   return (
     <section>
