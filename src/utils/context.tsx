@@ -89,20 +89,16 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     return yyyy + "-" + mm + "-" + dd
   }
 
-  const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
+  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
 
   useEffect(() => {
-    refetch()
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
     } else if (error) {
-      console.log("error in context", error)
-
       setDailyQueryError(error)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, data])
+  }, [loading, data, error])
 
   return (
     <AppContext.Provider

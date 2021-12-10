@@ -17,8 +17,7 @@ const HabitForm = () => {
     if (!loading && data) {
       setCheckedHabitIds(todaysHabits.map((ele: Habit) => parseInt(ele.id)))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, data])
+  }, [loading, data, todaysHabits, setCheckedHabitIds])
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
