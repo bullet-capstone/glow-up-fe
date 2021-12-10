@@ -45,20 +45,23 @@ const HabitForm = () => {
   return (
     <>
       {loading && <h2>Loading...</h2>}
-      {error && <h2>{`Error! ${error.message}`}</h2>}
-      <section className="habit-form-container">
-        {todaysHabits.length ? (
-          <h2>Add more habits</h2>
-        ) : (
-          <h2 className="habit-form-question">No check in yet. Go complete some!</h2>
-        )}
-        <form className="habit-form" onSubmit={createHabitEntries}>
-          {data && displayHabits()}
-          <button className="habit-submit-button" type="submit">
-            Submit
-          </button>
-        </form>
-      </section>
+      {error ? (
+        <h2>{`Error! ${error.message}`}</h2>
+      ) : (
+        <section className="habit-form-container">
+          {todaysHabits.length ? (
+            <h2>Add more habits</h2>
+          ) : (
+            <h2 className="habit-form-question">No check in yet. Go complete some!</h2>
+          )}
+          <form className="habit-form" onSubmit={createHabitEntries}>
+            {data && displayHabits()}
+            <button className="habit-submit-button" type="submit">
+              Submit
+            </button>
+          </form>
+        </section>
+      )}
     </>
   )
 }
