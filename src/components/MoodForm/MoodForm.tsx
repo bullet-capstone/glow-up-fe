@@ -30,7 +30,7 @@ const MoodForm = () => {
 
   return (
     <section className="mood-form-container">
-      {todaysMood || isSubmitted ? (
+      {isSubmitted || todaysMood ? (
         <>
           <MoodToday />
           {todaysMood!.mood <= 2 ? <Quote /> : null}
