@@ -63,7 +63,7 @@ export const QUERY_MONTHLY_ENTRIES = gql`
 `
 
 export const QUERY_JOURNAL_ENTRIES = gql`
-  query fetchUser {
+  query fetchJournalEntries {
     fetchUser {
       id
       journalEntries {
