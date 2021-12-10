@@ -11,7 +11,8 @@ describe("Track page", () => {
   })
 
   it("If user has filled in today's mood, user should see the mood in track page", () => {
+    cy.visit("http://localhost:3000/glow-up-fe/track")
     cy.get(".today-mood-container > h3").contains("Today")
-    cy.get(".today-mood-container").children().eq(2).contains("😁")
+    cy.get(".today-mood-container > :nth-child(2)").contains("😁")
   })
 })
