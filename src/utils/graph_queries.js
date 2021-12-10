@@ -17,7 +17,6 @@ export const QUERY_USER = gql`
         id
         date
         habitId
-        status
       }
 
       journalEntries {
@@ -58,7 +57,6 @@ export const QUERY_WEEKLY_ENTRIES = gql`
     fetchUser {
       weeklyHabits {
         habitId
-        status
         date
         id
       }
