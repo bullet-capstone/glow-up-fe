@@ -17,7 +17,7 @@ export const QUERY_HABITS = gql`
   }
 `
 export const QUERY_DAILY_ENTRIES = gql`
-  query fetchUser {
+  query FetchDailyEntries {
     fetchUser {
       id
       dailyMood {
