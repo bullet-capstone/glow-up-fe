@@ -1,5 +1,3 @@
-const { cyan } = require("@mui/material/colors")
-
 describe("Track page", () => {
   beforeEach(() => {
     cy.intercept("POST", "/graphql", req => {
