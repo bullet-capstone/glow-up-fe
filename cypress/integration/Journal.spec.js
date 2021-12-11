@@ -25,9 +25,12 @@ describe('Journal', () => {
   })
 
   it('should display an accordion with the date of each entry', () => {
-    cy.get('p').eq(0).contains('Journal Entry 11/8/2021, 5:00:00 PM')
-    cy.get('p').eq(2).contains('Journal Entry 11/9/2021, 5:00:00 PM')
-    cy.get('p').eq(4).contains('Journal Entry 11/10/2021, 5:00:00 PM')
+    cy.get('p').eq(0)
+      .contains(`Journal Entry ${new Date("2021-11-09T00:00:00Z").toLocaleString("en-US")}`)
+      .get('p').eq(2)
+      .contains(`Journal Entry ${new Date("2021-11-10T00:00:00Z").toLocaleString("en-US")}`)
+      .get('p').eq(4)
+      .contains(`Journal Entry ${new Date("2021-11-11T00:00:00Z").toLocaleString("en-US")}`)
   })
 
   it('should expand and display the content of the entry when clicked', () => {
