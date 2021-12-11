@@ -11,7 +11,7 @@ const MoodForm = () => {
   const [description, setDescription] = useState("")
   const [validateForm, setValidateForm] = useState(true)
   const [createMood] = useMutation(SUBMIT_MOOD)
-  // const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const { todaysMood } = useContext(AppContext)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,17 +21,16 @@ const MoodForm = () => {
       setValidateForm(false)
     } else {
       createMood({ variables: { mood: parseInt(mood), description: description } })
-
       setValidateForm(true)
       setMood("")
       setDescription("")
-      // setIsSubmitted(true)
+      setIsSubmitted(true)
     }
   }
 
   return (
     <section className="mood-form-container">
-      {todaysMood ? (
+      {isSubmitted || todaysMood ? (
         <>
           <MoodToday />
           {todaysMood!.mood <= 2 ? <Quote /> : null}

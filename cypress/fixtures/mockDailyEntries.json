@@ -1,0 +1,22 @@
+{
+  "data": {
+    "fetchUser": {
+      "dailyMood": {
+        "id": "29",
+        "mood": 4,
+        "description": "Mood 29",
+        "createdAt": "2021-11-10T00:00:00Z"
+      },
+      "dailyHabits": [
+        {
+          "id": "1",
+          "name": "Exercise"
+        },
+        {
+          "id": "5",
+          "name": "Drink Water"
+        }
+      ]
+    }
+  }
+}

@@ -5,26 +5,6 @@ export const QUERY_USER = gql`
     fetchUser {
       id
       username
-
-      moods {
-        id
-        description
-        mood
-        createdAt
-      }
-
-      habitEntries {
-        id
-        date
-        habitId
-        status
-      }
-
-      journalEntries {
-        id
-        content
-        date
-      }
     }
   }
 `
@@ -37,7 +17,7 @@ export const QUERY_HABITS = gql`
   }
 `
 export const QUERY_DAILY_ENTRIES = gql`
-  query fetchUser {
+  query FetchDailyEntries {
     fetchUser {
       id
       dailyMood {
@@ -58,7 +38,6 @@ export const QUERY_WEEKLY_ENTRIES = gql`
     fetchUser {
       weeklyHabits {
         habitId
-        status
         date
         id
       }
