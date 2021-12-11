@@ -24,11 +24,11 @@ const Journal = () => {
     entryCards = journalEntries.map((entry :JournalEntry) => {
       const date = new Date(entry.date).toLocaleString("en-US")
       return (
-        <Accordion>
+        <Accordion key={entry.id}>
         <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        aria-controls={`panel${date}-content`}
-        id={`panel${date}-header`}
+        aria-controls={`panel${entry.id}-content`}
+        id={entry.id}
         >
         <Typography>Journal Entry {date}</Typography>
         </AccordionSummary>
