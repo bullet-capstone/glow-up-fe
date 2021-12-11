@@ -2,6 +2,7 @@
   "data": {
     "fetchUser": {
       "id": "1",
+      "__typename": "User",
       "username": "User",
       "dailyMood": {
         "id": "29",
@@ -80,23 +81,6 @@
           "mood": 3
         }
       ],
-      "journalEntries": [
-        {
-          "id": "30",
-          "content": "something really important",
-          "date": "2021-11-09T00:00:00Z"
-        },
-        {
-          "id": "29",
-          "content": "something really important",
-          "date": "2021-11-10T00:00:00Z"
-        },
-        {
-          "id": "28",
-          "content": "something really important",
-          "date": "2021-11-11T00:00:00Z"
-        }
-      ],
       "monthlyMoods": [
         {
           "id": "1",
@@ -137,6 +121,26 @@
           "id": "8",
           "createdAt": "2021-12-01T00:00:00Z",
           "mood": 2
+        }
+      ],
+      "journalEntries": [
+        {
+          "id": "30",
+          "content": "something VERY important",
+          "date": "2021-11-09T00:00:00Z",
+          "__typename": "JournalEntry"
+        },
+        {
+          "id": "29",
+          "content": "something REALLY important",
+          "date": "2021-11-10T00:00:00Z",
+          "__typename": "JournalEntry"
+        },
+        {
+          "id": "28",
+          "content": "something NOT important",
+          "date": "2021-11-11T00:00:00Z",
+          "__typename": "JournalEntry"
         }
       ]
     }
