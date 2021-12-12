@@ -80,6 +80,9 @@ const MonthlyGraphs = () => {
 
       setLabels(dayLabels)
       setMonthlyMoods(monthlyMoods)
+
+    } else  {
+      console.log('is this', error, data, loading)
     }
   }, [ data, loading ])
 
@@ -102,10 +105,11 @@ const MonthlyGraphs = () => {
   return (
     <section className="graph-container">
       <h3 className="month-title">{monthString}</h3>
-      { !!monthlyMoods.length ? (
+      { !!monthlyMoods.length && (
         <Chart type='line' data={dataset}  options={options}/>
       )
-      :
+      }
+      { !monthlyMoods.length && !error && 
       (
         <h2>There aren't any mood entries for this month yet!</h2>
       )

@@ -1,5 +1,4 @@
 import { aliasQuery } from '../utils/graphql-test-utils'
-import mockUserData from '../fixtures/mockUserData.json'
 
 describe('Journal', () => {
   beforeEach(() => {
