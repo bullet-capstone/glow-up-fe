@@ -23,5 +23,7 @@ describe("Mood form happy path", () => {
     cy.get(".today-mood-container > :nth-child(2)").contains("😐")
   })
 
-  it("If user's mood is below or equal 2, user should see a quote to cheer user up", () => {})
+  it("If user's mood is below or equal 2, user should see a quote to cheer user up", () => {
+    cy.get(".mood-form-container > :nth-child(2) > :nth-child(2)").contains("Whatever you are, be a good one.")
+  })
 })
