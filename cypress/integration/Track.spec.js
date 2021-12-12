@@ -1,6 +1,6 @@
 import { aliasQuery } from "../utils/graphql-test-utils"
 
-describe("Mood form happy path", () => {
+describe("Recorded sad mood in track page", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
@@ -25,5 +25,19 @@ describe("Mood form happy path", () => {
 
   it("If user's mood is below or equal 2, user should see a quote to cheer user up", () => {
     cy.get(".mood-form-container > :nth-child(2) > :nth-child(2)").contains("Whatever you are, be a good one.")
+  })
+})
+
+describe("Recorded happy mood in track page", () => {
+  it("If user's mood is above 2, user does not see a quote", () => {
+    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+      if (req.body.operationName === "FetchDailyEntries") {
+        req.alias = "gqlHappyMoodQuery"
+        req.reply({ fixture: "mockHappyMood.json" })
+      }
+    })
+    cy.visit("/track")
+
+    cy.get(".today-mood-container > :nth-child(2)").contains("😁")
   })
 })
