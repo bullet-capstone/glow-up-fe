@@ -30,6 +30,12 @@ describe("Recorded sad mood and habits in track page", () => {
   it("If user has recorded habits, user should see a propmt to add more habits", () => {
     cy.get(".habit-form-container > h2").contains("Add more habits")
   })
+
+  it("If user has recorded habits, user should see the completed habits in different style", () => {
+    cy.get(".habit-card-button").eq(0).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
+
+    cy.get(".habit-card-button").eq(4).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
+  })
 })
 
 describe("Recorded happy mood in track page", () => {
