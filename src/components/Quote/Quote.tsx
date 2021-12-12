@@ -14,9 +14,9 @@ export default function Quote() {
   }, [])
 
   return (
-    <div>
-      <p>Feeling down? Here's a quote for you:</p>
-      <p>
+    <div className="quote-container">
+      <p className="quote-prompt">Feeling down? Here's a quote for you:</p>
+      <p className="quote-body">
         "{quote}" -- {author}
       </p>
     </div>
