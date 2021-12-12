@@ -1,6 +1,6 @@
 import { aliasQuery } from "../utils/graphql-test-utils"
 
-describe("Recorded sad mood in track page", () => {
+describe("Recorded sad mood and habits in track page", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
@@ -25,6 +25,10 @@ describe("Recorded sad mood in track page", () => {
 
   it("If user's mood is below or equal 2, user should see a quote to cheer user up", () => {
     cy.get(".quote-body").contains("Whatever you are, be a good one.")
+  })
+
+  it("If user has recorded habits, user should see a propmt to add more habits", () => {
+    cy.get(".habit-form-container > h2").contains("Add more habits")
   })
 })
 
