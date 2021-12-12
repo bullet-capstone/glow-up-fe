@@ -37,18 +37,3 @@ describe("Recorded sad mood and habits in track page", () => {
     cy.get(".habit-card-button").eq(4).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
   })
 })
-
-describe("Recorded happy mood in track page", () => {
-  it("If user's mood is above 2, user does not see a quote", () => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
-      if (req.body.operationName === "FetchDailyEntries") {
-        req.alias = "gqlHappyMoodQuery"
-        req.reply({ fixture: "mockHappyMood.json" })
-      }
-    })
-    cy.visit("/track")
-
-    cy.get(".today-mood-container > :nth-child(2)").contains("😁")
-    cy.get(".quote-body").should("not.exist")
-  })
-})
