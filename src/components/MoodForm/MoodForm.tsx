@@ -27,8 +27,6 @@ const MoodForm = () => {
     }
   }
 
-  console.log("todaysmood in MoodForm", todaysMood)
-
   return (
     <section className="mood-form-container">
       {todaysMood ? (

@@ -10,7 +10,8 @@ import { Habit } from "../../utils/Models"
 
 const HabitForm = () => {
   const { loading, error, data } = useQuery(QUERY_HABITS)
-  const { checkedHabitIds, setCheckedHabitIds, todaysHabits } = useContext(AppContext)
+  const { checkedHabitIds, setCheckedHabitIds, todaysHabits, habitSubmitCount, setHabitSubmitCount } =
+    useContext(AppContext)
   const [createHabitEntry] = useMutation(SUBMIT_HABIT)
 
   useEffect(() => {
@@ -25,9 +26,11 @@ const HabitForm = () => {
     if (!entryParams.length) {
       alert("No entry today? Tomorrow is another day!")
       createHabitEntry({ variables: { idArr: entryParams } })
+      setHabitSubmitCount(habitSubmitCount + 1)
     } else {
       createHabitEntry({ variables: { idArr: entryParams } })
-      alert("Great job")
+      // alert("Great job")
+      setHabitSubmitCount(habitSubmitCount + 1)
     }
   }
 
