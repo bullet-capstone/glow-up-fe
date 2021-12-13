@@ -10,7 +10,9 @@ describe("Recorded sad mood and habits in track page", () => {
       expect(interception).to.be.an("object")
     })
 
-    cy.intercept("GET", "https://api.quotable.io/random", { fixture: "mockQuote.json" }).as("getMockQuote")
+    cy.intercept("GET", "https://api.quotable.io/random?maxLength=200", { fixture: "mockQuote.json" }).as(
+      "getMockQuote"
+    )
   })
 
   it("If user has filled in today's mood, user should see today's date and recorded mood", () => {
