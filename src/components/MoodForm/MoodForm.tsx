@@ -2,6 +2,7 @@ import "./MoodForm.css"
 import { useState, useContext } from "react"
 import { useMutation } from "@apollo/client"
 import { SUBMIT_MOOD } from "../../utils/graph_mutations"
+import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries.js"
 import { AppContext } from "../../utils/context"
 import MoodToday from "../MoodToday/MoodToday"
 import Quote from "../Quote/Quote"
@@ -10,7 +11,9 @@ const MoodForm = () => {
   const [mood, setMood] = useState("")
   const [description, setDescription] = useState("")
   const [validateForm, setValidateForm] = useState(true)
-  const [createMood] = useMutation(SUBMIT_MOOD)
+  const [createMood] = useMutation(SUBMIT_MOOD, {
+    refetchQueries: [QUERY_DAILY_ENTRIES, "FetchDailyEntries"],
+  })
   const { todaysMood, setIsMoodSubmitted } = useContext(AppContext)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -23,7 +26,7 @@ const MoodForm = () => {
       setValidateForm(true)
       setMood("")
       setDescription("")
-      setIsMoodSubmitted(true)
+      // setIsMoodSubmitted(true)
     }
   }
 

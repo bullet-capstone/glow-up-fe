@@ -15,8 +15,6 @@ interface ContextState {
   getDayString: (count: number) => string
   habitMap: HabitMap | null
   dailyQueryError: ApolloError | null
-  isMoodSubmitted: boolean
-  setIsMoodSubmitted: (submitted: boolean) => void
 }
 
 const AppContext = createContext<ContextState>({
@@ -30,8 +28,6 @@ const AppContext = createContext<ContextState>({
   getDayString: () => "",
   habitMap: null,
   dailyQueryError: null,
-  isMoodSubmitted: false,
-  setIsMoodSubmitted: () => {},
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
@@ -42,8 +38,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
 
   const [dailyQueryError, setDailyQueryError] = useState<ApolloError | null>(null)
-
-  const [isMoodSubmitted, setIsMoodSubmitted] = useState(false)
 
   const [habitMap] = useState({
     1: "Exercise",
@@ -91,10 +85,9 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     return yyyy + "-" + mm + "-" + dd
   }
 
-  const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
+  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
 
   useEffect(() => {
-    refetch()
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
@@ -102,7 +95,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     } else if (error) {
       setDailyQueryError(error)
     }
-  }, [loading, data, error, isMoodSubmitted, refetch])
+  }, [loading, data, error])
 
   return (
     <AppContext.Provider
@@ -117,8 +110,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         getDayString,
         habitMap,
         dailyQueryError,
-        isMoodSubmitted,
-        setIsMoodSubmitted,
       }}
     >
       {children}
