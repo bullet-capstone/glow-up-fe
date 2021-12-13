@@ -57,7 +57,7 @@ describe("When User has not recorded today's mood or any habits", () => {
     })
       .get(".habit-submit-button")
       .click()
-    cy.wait("@gqlAddHabitEntriesMutation")
+    // cy.wait("@gqlAddHabitEntriesMutation")
     cy.get(".habit-card-button").eq(8).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
     cy.get(".habit-card-button").eq(13).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
   })
