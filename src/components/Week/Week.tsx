@@ -7,54 +7,63 @@ import { AppContext } from "../../utils/context"
 
 import "./Week.css"
 
+interface WeeklyStats {
+  [key: string]: DayStat
+}
+
+interface DayStat {
+  mood: number
+  habits: HabitEntry[]
+}
+
 export default function Week() {
   const { loading, error, data } = useQuery(QUERY_WEEKLY_ENTRIES)
-  const [weeklyStats, setWeeklyStats] = useState([])
+  const [weeklyStats, setWeeklyStats] = useState<WeeklyStats>({})
   const { getDayString } = useContext(AppContext)
 
-  interface DayStat {
-    mood: Mood
-    habits: HabitEntry[]
-  }
 
   useEffect(() => {
-    if (!loading && data) {
-      const orderedHabits: HabitEntry[][] = []
-
+    if (!loading && data){
       for (let i = 1; i <= 7; i++) {
-        let dayString = getDayString(i)
-        let dayHabits: HabitEntry[] = data.fetchUser.weeklyHabits.filter(
-          (habit: HabitEntry) => habit.date.slice(0, 10) === dayString
-        )
-
-        orderedHabits.push(dayHabits)
+        weeklyStats[getDayString(i)] = {
+          mood: 999,
+          habits: []
+        }
       }
 
-      const final = data.fetchUser.weeklyMoods.reduce((acc: DayStat[], ele: Mood, index: number) => {
-        let temp: DayStat = {
-          mood: ele,
-          habits: orderedHabits[index],
+      const last7Days = Object.keys(weeklyStats)
+
+      last7Days.forEach(day => {
+        const mood = data.fetchUser.weeklyMoods.find((mood:Mood) => mood.createdAt!.slice(0, 10) === day)
+        const habits = data.fetchUser.weeklyHabits.filter((habit:HabitEntry) => habit.date.slice(0, 10) === day)
+
+        if (mood) {
+          weeklyStats[day].mood = mood.mood
         }
-        acc.push(temp)
-        return acc
-      }, [])
 
-      setWeeklyStats(final)
+        if (habits.length) {
+          weeklyStats[day].habits = habits
+        }
+      })
+
+      setWeeklyStats(weeklyStats)
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading, data])
 
-  const makeCards = () => {
-    const weeklyCards = weeklyStats.map((ele: DayStat, index: number) => (
-      <WeeklyCard mood={ele.mood.mood} habits={ele.habits} key={index} dayString={getDayString(index + 1)} />
-    ))
+  const weeklyCards = Object.keys(weeklyStats).map((ele: string, index: number) => {
+    return (
+        <WeeklyCard mood={weeklyStats[ele].mood} habits={weeklyStats[ele].habits} key={index} dayString={ele} />
+      )
+    }
+  )
 
-    return weeklyCards
+  if (loading) {
+    return <h1>Loading</h1>
   }
 
-  if (loading) return <h1>Loading</h1>
-  if (error) return <h1>{error.message}</h1>
+  if (error) {
+    return <h1>{error.message}</h1>
+  }
 
-  return <div className="weekcard-holder">{makeCards()}</div>
+  return <div className="weekcard-holder">{weeklyCards}</div>
 }
