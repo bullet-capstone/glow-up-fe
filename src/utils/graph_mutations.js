@@ -9,7 +9,7 @@ export const SUBMIT_MOOD = gql`
     }
   }
 `
-//mfer this one's input type got me ;/ aaahhhhhhh!
+
 export const SUBMIT_HABIT = gql`
   mutation AddHabitEntries($idArr: [HabitEntryInput!]!) {
     createHabitEntry(input: { params: $idArr }) {

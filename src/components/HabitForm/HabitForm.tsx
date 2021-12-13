@@ -39,6 +39,9 @@ const HabitForm = () => {
   }
 
   const displayHabits = () => {
+    console.log("display habits fires")
+    console.log("checked habit ids in display habits", checkedHabitIds)
+
     return habitList.map((habit: Habit) => (
       <HabitCard
         name={habit.name}
