@@ -34,5 +34,14 @@ describe("When User has not recorded today's mood or any habits", () => {
       .click()
     cy.wait("@gqlCreateMoodMutation")
     cy.get(".today-mood-container > :nth-child(2)").contains("😁")
+    cy.get(".today-mood-container > :nth-child(3)").contains("Super awesome")
+  })
+
+  it("If User has not recorded habits, User should see a prompt to remind completing habits", () => {
+    cy.get(".habit-form-question").contains("No check in yet")
+  })
+
+  it("If User has not recorded habits, habit cards should be in light background color", () => {
+    cy.get(".habit-card-button").eq(0).should("have.css", "backgroundColor").and("eq", "rgb(231, 231, 231)")
   })
 }) // end of describe block
