@@ -1,0 +1,12 @@
+{
+  "data": {
+    "fetchUser": {
+      "dailyMood": {
+        "id": "31",
+        "mood": 4,
+        "description": "Super awesome"
+      },
+      "dailyHabits": []
+    }
+  }
+}

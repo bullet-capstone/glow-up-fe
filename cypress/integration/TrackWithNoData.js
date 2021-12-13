@@ -1,4 +1,4 @@
-import { aliasQuery } from "../utils/graphql-test-utils"
+import { aliasQuery, aliasMutation } from "../utils/graphql-test-utils"
 
 describe("When User has not recorded today's mood or any habits", () => {
   beforeEach(() => {
@@ -7,11 +7,10 @@ describe("When User has not recorded today's mood or any habits", () => {
         req.alias = "gqlNoDailyEntries"
         req.reply({ fixture: "mockNoDailyEntries.json" })
       }
-    })
-    cy.visit("/track")
+    }) // end of intercept
 
-    cy.intercept("GET", "https://api.quotable.io/random", { fixture: "mockQuote.json" }).as("getMockQuote")
-  })
+    cy.visit("./track")
+  }) // end of before each
 
   it("Use should not see a display of today's mood", () => {
     cy.get(".today-mood-container").should("not.exist")
@@ -23,13 +22,17 @@ describe("When User has not recorded today's mood or any habits", () => {
   })
 
   it("After User records and submits mood, User should not see the form but the mood and description User just enters", () => {
-    cy.get(".mood-form").find("input[type='radio']").eq(0).click()
-    cy.get(".mood-form > input[type='text']").type("Feeling good")
+    cy.get(".mood-form").find("input[type='radio']").eq(0).click({ force: true })
+    cy.get(".mood-form > input[type='text']").type("Super awesome")
     cy.intercept("POST", "http://localhost:3001/graphql", req => {
       if (req.body.operationName === "FetchDailyEntries") {
-        req.alias = "gqlNoDailyEntries"
-        req.reply({ fixture: "mockNoDailyEntries.json" })
+        req.alias = "gqlCreateMoodMutation"
+        req.reply({ fixture: "submittedMoodAndHabits.json" })
       }
     })
+      .get(".mood-submit-button")
+      .click()
+    cy.wait("@gqlCreateMoodMutation")
+    cy.get(".today-mood-container > :nth-child(2)").contains("😁")
   })
-})
+}) // end of describe block
