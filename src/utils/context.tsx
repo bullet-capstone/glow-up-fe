@@ -5,8 +5,6 @@ import { useQuery, ApolloError } from "@apollo/client"
 import { QUERY_DAILY_ENTRIES } from "../utils/graph_queries"
 
 interface ContextState {
-  userHabits: Habit[]
-  setUserHabits: (habits: Habit[]) => void
   checkedHabitIds: number[]
   setCheckedHabitIds: (habitIds: number[]) => void
   todaysMood: Mood | null
@@ -19,13 +17,9 @@ interface ContextState {
   dailyQueryError: ApolloError | null
   isMoodSubmitted: boolean
   setIsMoodSubmitted: (submitted: boolean) => void
-  habitSubmitCount: number
-  setHabitSubmitCount: (count: number) => void
 }
 
 const AppContext = createContext<ContextState>({
-  userHabits: [],
-  setUserHabits: () => {},
   checkedHabitIds: [],
   setCheckedHabitIds: () => {},
   todaysMood: null,
@@ -38,13 +32,9 @@ const AppContext = createContext<ContextState>({
   dailyQueryError: null,
   isMoodSubmitted: false,
   setIsMoodSubmitted: () => {},
-  habitSubmitCount: 0,
-  setHabitSubmitCount: () => {},
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const [userHabits, setUserHabits] = useState<Habit[]>([])
-
   const [checkedHabitIds, setCheckedHabitIds] = useState<number[]>([])
 
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
@@ -54,8 +44,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [dailyQueryError, setDailyQueryError] = useState<ApolloError | null>(null)
 
   const [isMoodSubmitted, setIsMoodSubmitted] = useState(false)
-
-  const [habitSubmitCount, setHabitSubmitCount] = useState(0)
 
   const [habitMap] = useState({
     1: "Exercise",
@@ -105,8 +93,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
 
-  // const { hlLoading:loading, hlError:error, hlData:data, } = useQuery(QUERY_DAILY_ENTRIES)
-
   useEffect(() => {
     refetch()
     if (!loading && data) {
@@ -116,13 +102,13 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     } else if (error) {
       setDailyQueryError(error)
     }
-  }, [loading, data, error, isMoodSubmitted, habitSubmitCount])
+  }, [loading, data, error, isMoodSubmitted])
+
+  console.log("ids in conext", checkedHabitIds)
 
   return (
     <AppContext.Provider
       value={{
-        userHabits,
-        setUserHabits,
         checkedHabitIds,
         setCheckedHabitIds,
         todaysMood,
@@ -135,8 +121,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         dailyQueryError,
         isMoodSubmitted,
         setIsMoodSubmitted,
-        habitSubmitCount,
-        setHabitSubmitCount,
       }}
     >
       {children}
