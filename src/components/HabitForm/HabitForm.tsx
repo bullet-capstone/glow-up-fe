@@ -3,22 +3,26 @@ import { AppContext } from "../../utils/context"
 import { QUERY_HABITS } from "../../utils/graph_queries"
 import { SUBMIT_HABIT } from "../../utils/graph_mutations"
 import { useQuery, useMutation } from "@apollo/client"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import HabitCard from "../HabitCard/HabitCard"
 import "../../assets/icons/habit7-uncheck.png"
 import { Habit } from "../../utils/Models"
 
 const HabitForm = () => {
   const { loading, error, data } = useQuery(QUERY_HABITS)
-  const { checkedHabitIds, setCheckedHabitIds, todaysHabits, habitSubmitCount, setHabitSubmitCount } =
-    useContext(AppContext)
+  const { userHabits, checkedHabitIds, todaysHabits, habitSubmitCount, setHabitSubmitCount } = useContext(AppContext)
   const [createHabitEntry] = useMutation(SUBMIT_HABIT)
+  const [habitList, setHabitList] = useState([])
 
   useEffect(() => {
     if (!loading && data) {
-      setCheckedHabitIds(todaysHabits.map((ele: Habit) => parseInt(ele.id)))
+      setHabitList(data.fetchHabits)
     }
-  }, [loading, data, todaysHabits, setCheckedHabitIds])
+  }, [loading, error, data])
+
+  // useEffect(() => {
+  //   displayHabits()
+  // }, [todaysHabits])
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -29,13 +33,13 @@ const HabitForm = () => {
       setHabitSubmitCount(habitSubmitCount + 1)
     } else {
       createHabitEntry({ variables: { idArr: entryParams } })
-      // alert("Great job")
+      alert("Great job")
       setHabitSubmitCount(habitSubmitCount + 1)
     }
   }
 
   const displayHabits = () => {
-    return data.fetchHabits.map((habit: Habit) => (
+    return habitList.map((habit: Habit) => (
       <HabitCard
         name={habit.name}
         id={habit.id}

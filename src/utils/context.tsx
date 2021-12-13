@@ -44,6 +44,7 @@ const AppContext = createContext<ContextState>({
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [userHabits, setUserHabits] = useState<Habit[]>([])
+
   const [checkedHabitIds, setCheckedHabitIds] = useState<number[]>([])
 
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
@@ -104,12 +105,14 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const { loading, error, data, refetch } = useQuery(QUERY_DAILY_ENTRIES)
 
+  // const { hlLoading:loading, hlError:error, hlData:data, } = useQuery(QUERY_DAILY_ENTRIES)
+
   useEffect(() => {
     refetch()
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
-      setCheckedHabitIds(todaysHabits.map((ele: Habit) => parseInt(ele.id)))
+      setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
     } else if (error) {
       setDailyQueryError(error)
     }
