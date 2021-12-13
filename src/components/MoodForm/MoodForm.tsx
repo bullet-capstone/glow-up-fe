@@ -14,7 +14,7 @@ const MoodForm = () => {
   const [createMood] = useMutation(SUBMIT_MOOD, {
     refetchQueries: [QUERY_DAILY_ENTRIES, "FetchDailyEntries"],
   })
-  const { todaysMood, setIsMoodSubmitted } = useContext(AppContext)
+  const { todaysMood } = useContext(AppContext)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -26,7 +26,6 @@ const MoodForm = () => {
       setValidateForm(true)
       setMood("")
       setDescription("")
-      // setIsMoodSubmitted(true)
     }
   }
 

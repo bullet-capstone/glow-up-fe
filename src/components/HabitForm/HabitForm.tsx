@@ -1,6 +1,6 @@
 import "./HabitForm.css"
 import { AppContext } from "../../utils/context"
-import { QUERY_HABITS } from "../../utils/graph_queries"
+import { QUERY_HABITS, QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { SUBMIT_HABIT } from "../../utils/graph_mutations"
 import { useQuery, useMutation } from "@apollo/client"
 import { useContext } from "react"
@@ -11,7 +11,9 @@ import { Habit } from "../../utils/Models"
 const HabitForm = () => {
   const { loading, error, data } = useQuery(QUERY_HABITS)
   const { checkedHabitIds } = useContext(AppContext)
-  const [createHabitEntry] = useMutation(SUBMIT_HABIT)
+  const [createHabitEntry] = useMutation(SUBMIT_HABIT, {
+    refetchQueries: [QUERY_DAILY_ENTRIES, "FetchDailyEntries"],
+  })
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
