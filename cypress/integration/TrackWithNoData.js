@@ -16,7 +16,7 @@ describe("When User has not recorded today's mood or any habits", () => {
     cy.get(".today-mood-container").should("not.exist")
   })
 
-  it("Instead, User sees a form to remind User to record mood and five emojis representing moods", () => {
+  it("Instead, User sees a form that reminds User to record mood and five emojis representing moods", () => {
     cy.get(".mood-form > h2").contains("How are you feeling today")
     cy.get(".mood-form").find("input[type='radio']").should("have.length", 5)
   })
@@ -37,7 +37,7 @@ describe("When User has not recorded today's mood or any habits", () => {
     cy.get(".today-mood-container > :nth-child(3)").contains("Super awesome")
   })
 
-  it("If User has not recorded habits, User should see a prompt to remind completing habits", () => {
+  it("If User has not recorded habits, User should see a prompt that reminds completing habits", () => {
     cy.get(".habit-form-question").contains("No check in yet")
   })
 
