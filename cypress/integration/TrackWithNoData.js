@@ -44,4 +44,21 @@ describe("When User has not recorded today's mood or any habits", () => {
   it("If User has not recorded habits, habit cards should be in light background color", () => {
     cy.get(".habit-card-button").eq(0).should("have.css", "backgroundColor").and("eq", "rgb(231, 231, 231)")
   })
+
+  it("After User selects habits and clicks submit, selected habit cards should change style", () => {
+    cy.get(".habit-card-button").eq(8).click()
+    cy.get(".habit-card-button").eq(13).click()
+
+    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+      if (req.body.operationName === "FetchDailyEntries") {
+        req.alias = "gqlAddHabitEntriesMutation"
+        req.reply({ fixture: "submittedMoodAndHabits.json" })
+      }
+    })
+      .get(".habit-submit-button")
+      .click()
+    cy.wait("@gqlAddHabitEntriesMutation")
+    cy.get(".habit-card-button").eq(8).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
+    cy.get(".habit-card-button").eq(13).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
+  })
 }) // end of describe block
