@@ -2,6 +2,7 @@ import "./Journal.css"
 import { QUERY_JOURNAL_ENTRIES } from "../../utils/graph_queries"
 import { useQuery } from "@apollo/client"
 import { JournalEntry } from "../../utils/Models"
+import JournalEntryForm from "../JournalEntryForm/JournalEntryForm"
 import { useEffect, useState } from "react"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -50,6 +51,7 @@ const Journal = () => {
       <div className="journal-title-container">
         <h1 className="journal-title">My Journal</h1>
       </div>
+      <JournalEntryForm/>
       { entryCards }
     </section>
   )
