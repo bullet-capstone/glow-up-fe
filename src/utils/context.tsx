@@ -102,9 +102,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     } else if (error) {
       setDailyQueryError(error)
     }
-  }, [loading, data, error, isMoodSubmitted])
-
-  console.log("ids in conext", checkedHabitIds)
+  }, [loading, data, error, isMoodSubmitted, refetch])
 
   return (
     <AppContext.Provider
