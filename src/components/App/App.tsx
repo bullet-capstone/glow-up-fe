@@ -3,19 +3,13 @@ import MoodForm from "../MoodForm/MoodForm"
 import HabitForm from "../HabitForm/HabitForm"
 import Dashboard from "../Dashboard/Dashboard"
 import Journal from "../Journal/Journal"
-import { Routes, Route, NavLink } from "react-router-dom"
+import Header from "../Header/Header"
+import { Routes, Route } from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
-      <header className="header">
-        <h1>GlowUp</h1>
-        <nav className="nav">
-          <NavLink to="glow-up-fe/dashboard">Dashboard</NavLink>
-          <NavLink to="glow-up-fe/track">Track</NavLink>
-          <NavLink to="glow-up-fe/journal">Journal</NavLink>
-        </nav>
-      </header>
+      <Header />
       <Routes>
         <Route path="glow-up-fe">
           <Route index element={<Dashboard />} />
