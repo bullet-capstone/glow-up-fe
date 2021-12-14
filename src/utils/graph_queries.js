@@ -34,7 +34,7 @@ export const QUERY_DAILY_ENTRIES = gql`
   }
 `
 export const QUERY_WEEKLY_ENTRIES = gql`
-  query fetchUser {
+  query fetchWeeklyEntries {
     fetchUser {
       weeklyHabits {
         habitId
@@ -50,7 +50,7 @@ export const QUERY_WEEKLY_ENTRIES = gql`
 `
 
 export const QUERY_MONTHLY_ENTRIES = gql`
-  query fetchUser {
+  query fetchMonthlyEntries {
     fetchUser {
       id
       monthlyMoods {

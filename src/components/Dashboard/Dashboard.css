@@ -60,5 +60,5 @@
 
 .week-container {
   background: #e6eaee;
-  height: 100vh;
+  min-height: 100vh;
 }

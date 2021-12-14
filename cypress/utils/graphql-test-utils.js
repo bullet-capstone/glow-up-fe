@@ -1,7 +1,7 @@
 // Utility to match GraphQL mutation based on the operation name
 export const hasOperationName = (req, operationName) => {
   const { body } = req
-  console.log("body", body)
+
   return (
     body.hasOwnProperty('operationName') && body.operationName === operationName
   )
@@ -14,4 +14,6 @@ export const aliasQuery = (req, operationName) => {
 
     req.reply({ fixture: 'mockUserData.json'});
   }
+
+
 }
