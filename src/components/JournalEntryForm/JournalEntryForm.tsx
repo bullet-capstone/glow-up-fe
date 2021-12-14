@@ -8,7 +8,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 
-
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -64,12 +63,12 @@ const JournalEntryForm = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="journal-entry"
+        aria-describedby="journal-entry-modal"
       >
         <Box sx={style}>
-          <form className="journal-entry-form" onSubmit={handleSubmit}>
-            <h2>What's on your mind?</h2>
+          <form className="journal-entry-form" id="journal-entry-modal" onSubmit={handleSubmit}>
+            <h2 id="journal-entry">What's on your mind?</h2>
             <textarea
               name="journalEntry"
               id="journalEntryInput"
