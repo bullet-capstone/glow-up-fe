@@ -50,8 +50,8 @@ const Journal = () => {
       { error && <h2>Oops, something went wrong!</h2> }
       <div className="journal-title-container">
         <h1 className="journal-title">My Journal</h1>
+        <JournalEntryForm/>
       </div>
-      <JournalEntryForm/>
       { entryCards }
     </section>
   )

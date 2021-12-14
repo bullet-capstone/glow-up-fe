@@ -28,6 +28,7 @@
   margin: 1rem;
 }
 
+.journal-entry-submit-button,
 .mood-submit-button,
 .habit-submit-button {
   font-family: 'Raleway', sans-serif;
