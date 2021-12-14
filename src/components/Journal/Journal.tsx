@@ -3,14 +3,12 @@ import { QUERY_JOURNAL_ENTRIES } from "../../utils/graph_queries"
 import { useQuery } from "@apollo/client"
 import { JournalEntry } from "../../utils/Models"
 import JournalEntryForm from "../JournalEntryForm/JournalEntryForm"
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState } from "react"
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { AppContext } from "../../utils/context"
-
 
 const Journal = () => {
   const { loading, data, error } = useQuery(QUERY_JOURNAL_ENTRIES)
