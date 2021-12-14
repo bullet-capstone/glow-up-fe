@@ -1,0 +1,21 @@
+.journal-entry-form {
+  display: flex;
+  flex-direction: column;
+  height: -webkit-fill-available;
+  align-items: center;
+  justify-content: space-around;
+}
+
+textarea {
+  width: 490px;
+  height: 140px;
+}
+
+.journal-entry-submit-button:hover {
+  background: #DC4F3D;
+  color: white;
+}
+
+.journal-modal-button:hover {
+  color: red;
+}
