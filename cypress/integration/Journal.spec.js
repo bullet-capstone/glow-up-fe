@@ -1,6 +1,6 @@
 import { aliasQuery } from "../utils/graphql-test-utils"
 
-describe.skip("Journal", () => {
+describe("Journal", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "fetchJournalEntries"))
 

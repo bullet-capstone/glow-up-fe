@@ -1,6 +1,6 @@
 import { aliasQuery } from "../utils/graphql-test-utils"
 
-describe.skip("Dashboard Daily and Weekly Entries", () => {
+describe("Dashboard Daily and Weekly Entries", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
@@ -40,7 +40,7 @@ describe.skip("Dashboard Daily and Weekly Entries", () => {
   })
 })
 
-describe.skip("Dashboard Weekly Entries", () => {
+describe("Dashboard Weekly Entries", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => {
       aliasQuery(req, "fetchWeeklyEntries")
@@ -80,7 +80,7 @@ describe.skip("Dashboard Weekly Entries", () => {
   })
 })
 
-describe.skip("Dashboard Monthly Mood Graph", () => {
+describe("Dashboard Monthly Mood Graph", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "fetchMonthlyEntries"))
 
