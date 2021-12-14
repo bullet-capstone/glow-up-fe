@@ -5,8 +5,6 @@ import { useQuery, ApolloError } from "@apollo/client"
 import { QUERY_DAILY_ENTRIES } from "../utils/graph_queries"
 
 interface ContextState {
-  userHabits: Habit[]
-  setUserHabits: (habits: Habit[]) => void
   checkedHabitIds: number[]
   setCheckedHabitIds: (habitIds: number[]) => void
   todaysMood: Mood | null
@@ -20,8 +18,6 @@ interface ContextState {
 }
 
 const AppContext = createContext<ContextState>({
-  userHabits: [],
-  setUserHabits: () => {},
   checkedHabitIds: [],
   setCheckedHabitIds: () => {},
   todaysMood: null,
@@ -35,12 +31,12 @@ const AppContext = createContext<ContextState>({
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const [userHabits, setUserHabits] = useState<Habit[]>([])
   const [checkedHabitIds, setCheckedHabitIds] = useState<number[]>([])
 
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
 
   const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
+
   const [dailyQueryError, setDailyQueryError] = useState<ApolloError | null>(null)
 
   const [habitMap] = useState({
@@ -95,6 +91,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
+      setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
     } else if (error) {
       setDailyQueryError(error)
     }
@@ -103,8 +100,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   return (
     <AppContext.Provider
       value={{
-        userHabits,
-        setUserHabits,
         checkedHabitIds,
         setCheckedHabitIds,
         todaysMood,

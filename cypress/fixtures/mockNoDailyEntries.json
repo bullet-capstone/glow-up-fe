@@ -1,0 +1,20 @@
+{
+  "data": {
+    "fetchUser": {
+      "dailyMood": null,
+      "dailyHabits": []
+    }
+  },
+  "errors": [
+    {
+      "message": "No Mood Selected",
+      "locations": [
+        {
+          "line": 3,
+          "column": 7
+        }
+      ],
+      "path": ["fetchUser", "dailyMood"]
+    }
+  ]
+}

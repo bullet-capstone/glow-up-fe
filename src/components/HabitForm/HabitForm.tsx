@@ -1,23 +1,19 @@
 import "./HabitForm.css"
 import { AppContext } from "../../utils/context"
-import { QUERY_HABITS } from "../../utils/graph_queries"
+import { QUERY_HABITS, QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { SUBMIT_HABIT } from "../../utils/graph_mutations"
 import { useQuery, useMutation } from "@apollo/client"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import HabitCard from "../HabitCard/HabitCard"
 import "../../assets/icons/habit7-uncheck.png"
 import { Habit } from "../../utils/Models"
 
 const HabitForm = () => {
   const { loading, error, data } = useQuery(QUERY_HABITS)
-  const { checkedHabitIds, setCheckedHabitIds, todaysHabits } = useContext(AppContext)
-  const [createHabitEntry] = useMutation(SUBMIT_HABIT)
-
-  useEffect(() => {
-    if (!loading && data) {
-      setCheckedHabitIds(todaysHabits.map((ele: Habit) => parseInt(ele.id)))
-    }
-  }, [loading, data, todaysHabits, setCheckedHabitIds])
+  const { checkedHabitIds } = useContext(AppContext)
+  const [createHabitEntry] = useMutation(SUBMIT_HABIT, {
+    refetchQueries: [QUERY_DAILY_ENTRIES, "FetchDailyEntries"],
+  })
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -49,7 +45,7 @@ const HabitForm = () => {
         <h2>{`Error! ${error.message}`}</h2>
       ) : (
         <section className="habit-form-container">
-          {todaysHabits.length ? (
+          {checkedHabitIds.length ? (
             <h2>Add more habits</h2>
           ) : (
             <h2 className="habit-form-question">No check in yet. Go complete some!</h2>
