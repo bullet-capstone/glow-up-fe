@@ -2,7 +2,7 @@ import { aliasQuery } from "../utils/graphql-test-utils"
 
 describe("Dashboard Daily and Weekly Entries", () => {
   beforeEach(() => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
     cy.visit("/dashboard")
 
@@ -42,7 +42,7 @@ describe("Dashboard Daily and Weekly Entries", () => {
 
 describe("Dashboard Weekly Entries", () => {
   beforeEach(() => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       aliasQuery(req, "fetchWeeklyEntries")
     })
 
@@ -82,7 +82,7 @@ describe("Dashboard Weekly Entries", () => {
 
 describe("Dashboard Monthly Mood Graph", () => {
   beforeEach(() => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "fetchMonthlyEntries"))
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => aliasQuery(req, "fetchMonthlyEntries"))
 
     cy.visit("/dashboard")
 

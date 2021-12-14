@@ -2,7 +2,7 @@
 
 describe("Recorded happy mood in track page", () => {
   it("If user's mood is above 2, user does not see a quote", () => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "FetchDailyEntries") {
         req.alias = "gqlHappyMoodQuery"
         req.reply({ fixture: "mockHappyMood.json" })
