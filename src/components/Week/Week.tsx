@@ -23,7 +23,7 @@ export default function Week() {
 
 
   useEffect(() => {
-    if (!loading && data){
+    if (!loading && data) {
       for (let i = 1; i <= 7; i++) {
         weeklyStats[getDayString(i)] = {
           mood: 999,
@@ -48,7 +48,8 @@ export default function Week() {
 
       setWeeklyStats(weeklyStats)
     }
-  }, [loading, data])
+     // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loading, data, weeklyStats, getDayString])
 
   const weeklyCards = Object.keys(weeklyStats).map((ele: string, index: number) => {
     return (
