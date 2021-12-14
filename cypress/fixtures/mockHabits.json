@@ -1,0 +1,66 @@
+{
+  "data": {
+    "fetchHabits": [
+      {
+        "id": "1",
+        "name": "Exercise"
+      },
+      {
+        "id": "2",
+        "name": "Meditate"
+      },
+      {
+        "id": "3",
+        "name": "Floss"
+      },
+      {
+        "id": "4",
+        "name": "Brush teeth x2"
+      },
+      {
+        "id": "5",
+        "name": "Drink Water"
+      },
+      {
+        "id": "6",
+        "name": "Socialize"
+      },
+      {
+        "id": "7",
+        "name": "Eat Healthy"
+      },
+      {
+        "id": "8",
+        "name": "Wash Dishes"
+      },
+      {
+        "id": "9",
+        "name": "Write in Journal"
+      },
+      {
+        "id": "10",
+        "name": "Take a Shower"
+      },
+      {
+        "id": "11",
+        "name": "Stay off Social Media"
+      },
+      {
+        "id": "12",
+        "name": "Make Bed"
+      },
+      {
+        "id": "13",
+        "name": "Read"
+      },
+      {
+        "id": "14",
+        "name": "Go Outside"
+      },
+      {
+        "id": "15",
+        "name": "Plan Tomorrow"
+      }
+    ]
+  }
+}

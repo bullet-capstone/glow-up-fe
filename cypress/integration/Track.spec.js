@@ -1,6 +1,6 @@
 import { aliasQuery } from "../utils/graphql-test-utils"
 
-describe("Recorded sad mood and habits in track page", () => {
+describe("Recorded sad mood in track page", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
@@ -36,11 +36,19 @@ describe("Recorded habits in Track page", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
+    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+      if (req.body.operationName === "FetchHabits") {
+        req.alias = "gqlHabitsQuery"
+        req.reply({ fixture: "mockHabits.json" })
+      }
+    })
+
     cy.visit("/track")
 
     cy.wait("@gqlFetchDailyEntriesQuery").then(interception => {
       expect(interception).to.be.an("object")
     })
+    cy.wait("@gqlHabitsQuery")
   })
 
   it("If user has recorded habits, user should see a propmt to add more habits", () => {
