@@ -46,13 +46,13 @@ const Journal = () => {
 
   return (
     <section>
-      { loading && <h2>Loading...</h2> }
-      { error && <h2>Oops, something went wrong!</h2> }
       <div className="journal-title-container">
         <h1 className="journal-title">My Journal</h1>
       </div>
       <JournalEntryForm/>
       { entryCards }
+      { loading && <h2>Loading...</h2> }
+      { error && <h2>Oops, something went wrong!</h2> }
     </section>
   )
 }
