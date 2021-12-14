@@ -26,11 +26,12 @@ export const SUBMIT_HABIT = gql`
 
 export const SUBMIT_JOURNAL_ENTRY = gql`
   mutation createJournalEntry($content: String!) {
-    createJournalEntry(input: { params: $content }) {
+    createJournalEntry(input: { params: { content: $content } }) {
       user {
         journalEntries {
           id
           content
+          date
         }
       }
     }
