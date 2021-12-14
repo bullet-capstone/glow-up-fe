@@ -48,8 +48,8 @@ describe("Recorded habits in Track page", () => {
   })
 
   it("If user has recorded habits, user should see the completed habits in different style", () => {
-    cy.get(".habit-card-button").eq(0).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
+    cy.get(".habit-form > :nth-child(1)").should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
 
-    cy.get(".habit-card-button").eq(4).should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
+    cy.get(".habit-form > :nth-child(5)").should("have.css", "backgroundColor").and("eq", "rgb(134, 174, 91)")
   })
 })
