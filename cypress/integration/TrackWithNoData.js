@@ -7,10 +7,10 @@ describe("When User has not recorded today's mood or any habits", () => {
         req.alias = "gqlNoDailyEntries"
         req.reply({ fixture: "mockNoDailyEntries.json" })
       }
-    }) // end of intercept
+    })
 
     cy.visit("./track")
-  }) // end of before each
+  })
 
   it("Use should not see a display of today's mood", () => {
     cy.get(".today-mood-container").should("not.exist")
