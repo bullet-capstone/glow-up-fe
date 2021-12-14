@@ -31,15 +31,15 @@ describe('Dashboard Daily and Weekly Entries', () => {
       .get('.completed-habit').eq(0).contains('Exercise')
       .get('.completed-habit').eq(1).contains('Drink Water')
   })
-
-
 })
 
 
 describe('Dashboard Weekly Entries', () => {
   beforeEach(() => {
     cy.intercept('POST', 'http://localhost:3001/graphql',
-      (req) => aliasQuery(req, 'fetchWeeklyEntries'))
+      (req) => {
+        aliasQuery(req, 'fetchWeeklyEntries')
+      })
 
     cy.visit('/dashboard');
 
@@ -47,13 +47,18 @@ describe('Dashboard Weekly Entries', () => {
       .then(interception => {
         expect(interception).to.be.an('object')
       })
+      .its('response.body.data.fetchUser')
+      .should('have.property', 'weeklyMoods')
   })
 
   it('should display the past 7 days mood entry and habit entries', () => {
     cy.get('.weekly-card').should('have.length', 7)
-      // .get('.weekly-card > h4').eq(0).contains('2021-12-10')
-      .get('.weekly-card > p').eq(0).contains('Mood:😭')
-      .get('.weekly-card-habit').contains('Eat Healthy')
+      .get('.weekly-card-mood').eq(0).contains('Mood: ❓')
+      .get('.weekly-card-mood').eq(4).contains('Mood: 😭')
+      .get('.weekly-card-habit').eq(0).contains('Eat Healthy')
+      .get('.weekly-card-habit').eq(1).contains('Take a Shower')
+      .get('.weekly-card-habit').eq(2).contains('Make Bed')
+      .get('.weekly-card-habit').eq(3).contains('Floss')
   })
 })
 
