@@ -14,9 +14,9 @@ export default function WeeklyCard(props: WeeklyCardProps) {
   let habitList;
 
   if (props.habits.length) {
-    habitList = props.habits.sort().map(habit => {
+    habitList = props.habits.sort().map((habit, i) => {
       return (
-        <p key={habit.id} className="weekly-card-habit">
+        <p key={i} className="weekly-card-habit">
            ✩ {habitMap![parseInt(habit.habitId) as keyof typeof habitMap]}
         </p>
       )
