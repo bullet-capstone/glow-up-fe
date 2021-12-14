@@ -4,15 +4,17 @@ describe("Recorded sad mood and habits in track page", () => {
   beforeEach(() => {
     cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
+    cy.intercept("GET", "https://api.quotable.io/random?maxLength=200", { fixture: "mockQuote.json" }).as(
+      "getMockQuote"
+    )
+
     cy.visit("/track")
 
     cy.wait("@gqlFetchDailyEntriesQuery").then(interception => {
       expect(interception).to.be.an("object")
     })
 
-    cy.intercept("GET", "https://api.quotable.io/random?maxLength=200", { fixture: "mockQuote.json" }).as(
-      "getMockQuote"
-    )
+    cy.wait("@getMockQuote")
   })
 
   it("If user has filled in today's mood, user should see today's date and recorded mood", () => {
@@ -27,6 +29,18 @@ describe("Recorded sad mood and habits in track page", () => {
 
   it("If user's mood is below or equal 2, user should see a quote to cheer user up", () => {
     cy.get(".quote-body").contains("Whatever you are, be a good one.")
+  })
+})
+
+describe("Recorded habits in Track page", () => {
+  beforeEach(() => {
+    cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
+
+    cy.visit("/track")
+
+    cy.wait("@gqlFetchDailyEntriesQuery").then(interception => {
+      expect(interception).to.be.an("object")
+    })
   })
 
   it("If user has recorded habits, user should see a propmt to add more habits", () => {
