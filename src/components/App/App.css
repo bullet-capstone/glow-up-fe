@@ -2,25 +2,14 @@
   text-align: center;
 }
 
-.header {
-  display: flex;
-  width: 100vw;
-  justify-content: space-between;
-  font-family: "Quicksand", sans-serif;
-  height: 20%;
-}
-
-.nav {
-  display: flex;
-}
-
 a {
   text-decoration: none;
   color: black;
   margin: 1rem;
   font-weight: bold;
+  border-bottom: 3px solid transparent;
 }
 
 .active {
-  text-decoration: underline;
+  border-bottom: 3px solid white;
 }
