@@ -24,32 +24,32 @@ export default function Week() {
 
   useEffect(() => {
     if (!loading && data) {
+      let stats: WeeklyStats = {}
       for (let i = 1; i <= 7; i++) {
-        weeklyStats[getDayString(i)] = {
+        stats[getDayString(i)] = {
           mood: 999,
           habits: []
         }
       }
 
-      const last7Days = Object.keys(weeklyStats)
+      const last7Days = Object.keys(stats)
 
       last7Days.forEach(day => {
         const mood = data.fetchUser.weeklyMoods.find((mood:Mood) => mood.createdAt!.slice(0, 10) === day)
         const habits = data.fetchUser.weeklyHabits.filter((habit:HabitEntry) => habit.date.slice(0, 10) === day)
 
         if (mood) {
-          weeklyStats[day].mood = mood.mood
+          stats[day].mood = mood.mood
         }
 
         if (habits.length) {
-          weeklyStats[day].habits = habits
+          stats[day].habits = habits
         }
       })
 
-      setWeeklyStats(weeklyStats)
+      setWeeklyStats(stats)
     }
-     // eslint-disable-line react-hooks/exhaustive-deps
-  }, [loading, data, weeklyStats, getDayString])
+  }, [loading, data, getDayString])
 
   const weeklyCards = Object.keys(weeklyStats).map((ele: string, index: number) => {
     return (
