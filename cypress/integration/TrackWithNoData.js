@@ -37,9 +37,15 @@ describe("When User has not recorded today's mood or any habits", () => {
         req.reply({ fixture: "submittedMoodAndHabits.json" })
       }
     })
+    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+      if (req.body.operationName === "FetchDailyEntries") {
+        req.alias = "gqlFetchSubmitted"
+        req.reply({ fixture: "submittedMoodAndHabits.json" })
+      }
+    })
       .get(".mood-submit-button")
       .click()
-    cy.wait("@gqlCreateMoodMutation")
+    cy.wait(["@gqlCreateMoodMutation", "@gqlFetchSubmitted"])
     cy.get(".today-mood-container > :nth-child(2)").contains("😁")
     cy.get(".today-mood-container > :nth-child(3)").contains("Super awesome")
   })
