@@ -1,4 +1,3 @@
-
   <h1 align="center">✨GlowUp</h1>
 <p align="center">
   <a href="https://bullet-capstone.github.io/glow-up-fe/">Explore our website</a>
@@ -10,7 +9,6 @@
 
 GlowUp is a bullet journaling application where users can track their mood and habits completed as well as make journal entries. The frontend was built in React with TypeScript. We used Apollo Client for integration with the GraphQL backend, Cypress for testing, and GitHub Actions for continuous integration.
 
-
 ## Set Up
 
 ### Backend Set Up
@@ -21,16 +19,19 @@ GlowUp is a bullet journaling application where users can track their mood and h
 ### Frontend Set Up
 
 1. Clone down this repository.
-  ```
-  git clone git@github.com:bullet-capstone/glow-up-fe.git
-  ```
-2. In your terminal, run:
-  ```
-  npm install
-  npm start
-  ```
-4. Explore the website.
 
+```
+git clone git@github.com:bullet-capstone/glow-up-fe.git
+```
+
+2. In your terminal, run:
+
+```
+npm install
+npm start
+```
+
+4. Explore the website.
 
 ## Technologies
 
@@ -63,11 +64,18 @@ GlowUp is a bullet journaling application where users can track their mood and h
 
 ## Wins
 
--
+- Adopt React hooks and functional components throught project to improve web performance.
+- Suceed in transitioning from requesting RESTful API to GraphQL endpoints
+- Utilize Apollo library in React to make graphql network requests
+- Employ Typescript throughout project to keep codes clean and readable.
+- Achive 90% coverage end-to-end testing with Cypress to ensure smooth production phase
+- Implement Github Actions CI & CD as another extra level of safeguards before shipping codes to production.
+- Use the latest version of React Router (V6)
 
 ## Challenges
 
--
+- CI/CD setup took some time
+- Router V6 caused deployment trouble and on page refreshing
 
 ## Future Features
 
@@ -89,6 +97,5 @@ GlowUp is a bullet journaling application where users can track their mood and h
 - Laura Court: [GitHub](https://github.com/Lmcourt) & [LinkedIn](https://www.linkedin.com/in/laura-court/)
 - Tanner Dale: [GitHub](https://github.com/TannerDale) & [LinkedIn](https://www.linkedin.com/in/tannerdale/)
 - Weston Ellis: [GitHub](https://github.com/WMudgeEllis/) & [LinkedIn](https://www.linkedin.com/in/weston-mudge-ellis/)
-
 
 [Project Spec](https://mod4.turing.edu/projects/capstone/) provided by the Turing School of Software & Design.
