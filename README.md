@@ -31,7 +31,7 @@ npm install
 npm start
 ```
 
-4. Explore the website.
+3. Explore the website.
 
 ### Deployed Link
 
