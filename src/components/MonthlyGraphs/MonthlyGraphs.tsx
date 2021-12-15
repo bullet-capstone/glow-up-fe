@@ -5,6 +5,7 @@ import "./MonthlyGraphs.css"
 import { Mood } from "../../utils/Models"
 import {
   Chart as ChartJS,
+  LineController,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -13,9 +14,10 @@ import {
   Tooltip,
   Legend,
 } from "chart.js"
+
 import { Chart } from "react-chartjs-2"
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
+ChartJS.register(LineController, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
 const yLabels = {
   0: "😭",
