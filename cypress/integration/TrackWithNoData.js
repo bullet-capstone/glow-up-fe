@@ -2,21 +2,22 @@ import { aliasQuery, aliasMutation } from "../utils/graphql-test-utils"
 
 describe("When User has not recorded today's mood or any habits", () => {
   beforeEach(() => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "FetchDailyEntries") {
         req.alias = "gqlNoDailyEntries"
         req.reply({ fixture: "mockNoDailyEntries.json" })
       }
     })
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "FetchHabits") {
-        req.alias = "gqlHabitsQuery"
+        req.alias = "gqlFetchHabitsQuery"
         req.reply({ fixture: "mockHabits.json" })
       }
     })
 
     cy.visit("./track")
-    cy.wait(["@gqlNoDailyEntries", "@gqlHabitsQuery"])
+    cy.wait(["@gqlNoDailyEntries", "@gqlFetchHabitsQuery"])
   })
 
   it("Use should not see a display of today's mood", () => {
@@ -31,13 +32,14 @@ describe("When User has not recorded today's mood or any habits", () => {
   it("After User records and submits mood, User should not see the form but the mood and description User just enters", () => {
     cy.get(".mood-form").find("input[type='radio']").eq(0).click({ force: true })
     cy.get(".mood-form > input[type='text']").type("Super awesome")
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "CreateMood") {
         req.alias = "gqlCreateMoodMutation"
         req.reply({ fixture: "submittedMoodAndHabits.json" })
       }
     })
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "FetchDailyEntries") {
         req.alias = "gqlFetchSubmitted"
         req.reply({ fixture: "submittedMoodAndHabits.json" })
@@ -62,7 +64,7 @@ describe("When User has not recorded today's mood or any habits", () => {
     cy.get(".habit-card-button").eq(8).click()
     cy.get(".habit-card-button").eq(13).click()
 
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "AddHabitEntries") {
         req.alias = "gqlAddHabitEntriesMutation"
         req.reply({ fixture: "submittedMoodAndHabits.json" })

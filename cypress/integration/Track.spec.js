@@ -2,7 +2,7 @@ import { aliasQuery } from "../utils/graphql-test-utils"
 
 describe("Recorded sad mood in track page", () => {
   beforeEach(() => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
     cy.intercept("GET", "https://api.quotable.io/random?maxLength=200", { fixture: "mockQuote.json" }).as(
       "getMockQuote"
@@ -34,9 +34,9 @@ describe("Recorded sad mood in track page", () => {
 
 describe("Recorded habits in Track page", () => {
   beforeEach(() => {
-    cy.intercept("POST", "http://localhost:3001/graphql", req => aliasQuery(req, "FetchDailyEntries"))
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
-    cy.intercept("POST", "http://localhost:3001/graphql", req => {
+    cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "FetchHabits") {
         req.alias = "gqlHabitsQuery"
         req.reply({ fixture: "mockHabits.json" })
@@ -45,9 +45,11 @@ describe("Recorded habits in Track page", () => {
 
     cy.visit("/track")
 
-    cy.wait("@gqlFetchDailyEntriesQuery").then(interception => {
-      expect(interception).to.be.an("object")
-    })
+    cy.wait("@gqlFetchDailyEntriesQuery")
+      .then(interception => {
+        expect(interception).to.be.an("object")
+      })
+
     cy.wait("@gqlHabitsQuery")
   })
 
