@@ -1,12 +1,35 @@
-# GlowUp
+
+  <h1 align="center">✨GlowUp</h1>
+<p align="center">
+  <a href="https://bullet-capstone.github.io/glow-up-fe/">Explore our website</a>
+</p>
 
 ![GlowUp Workflow](https://github.com/bullet-capstone/glow-up-fe/actions/workflows/node.js.yml/badge.svg)
 
 ## Overview
 
+GlowUp is a bullet journaling application where users can track their mood and habits completed as well as make journal entries. The frontend was built in React with TypeScript. We used Apollo Client for integration with the GraphQL backend, Cypress for testing, and GitHub Actions for continuous integration.
 
 
-## Demo
+## Set Up
+
+### Backend Set Up
+
+1. Go to this [repository](https://github.com/bullet-capstone/glow-up-be).
+2. Follow Set Up instructions.
+
+### Frontend Set Up
+
+1. Clone down this repository.
+  ```
+  git clone git@github.com:bullet-capstone/glow-up-fe.git
+  ```
+2. In your terminal, run:
+  ```
+  npm install
+  npm start
+  ```
+4. Explore the website.
 
 
 ## Technologies
@@ -48,17 +71,24 @@
 
 ## Future Features
 
--
+- Displaying a graph for the monthly habit entries.
+- Tracking sleep and exercise.
+- Allowing the user to submit their mood multiple times in a day.
+- Email notifications to remind the user to submit their mood and habits for the day.
+- Allowing the user to track appointments and have a to-do list for the day.
 
 ## Contributors
 
 ### Frontend Team
 
-- Bei Zhang: [GitHub]() & [LinkedIn]()
+- Bei Zhang: [GitHub](https://github.com/beizy) & [LinkedIn](https://www.linkedin.com/in/bei-z-75aa1b7a/)
 - Natalia Zamboni Vergara: [GitHub](https://github.com/nzambonivergara) & [LinkedIn](https://www.linkedin.com/in/natalia-zamboni-vergara)
 
 ### Backend Team
 
-- Laura Court: [GitHub]() & [LinkedIn]()
-- Tanner Dale: [GitHub]() & [LinkedIn]()
-- Weston Ellis: [GitHub]() & [LinkedIn]()
+- Laura Court: [GitHub](https://github.com/Lmcourt) & [LinkedIn](https://www.linkedin.com/in/laura-court/)
+- Tanner Dale: [GitHub](https://github.com/TannerDale) & [LinkedIn](https://www.linkedin.com/in/tannerdale/)
+- Weston Ellis: [GitHub](https://github.com/WMudgeEllis/) & [LinkedIn](https://www.linkedin.com/in/weston-mudge-ellis/)
+
+
+[Project Spec](https://mod4.turing.edu/projects/capstone/) provided by the Turing School of Software & Design.
