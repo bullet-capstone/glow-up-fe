@@ -33,6 +33,10 @@ npm start
 
 4. Explore the website.
 
+### Deployed Link
+
+See the app live (here)[https://bullet-capstone.github.io/glow-up-fe/]
+
 ## Technologies
 
 <table>
