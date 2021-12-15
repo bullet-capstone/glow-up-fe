@@ -35,7 +35,7 @@ npm start
 
 ### Deployed Link
 
-See the app live (here)[https://bullet-capstone.github.io/glow-up-fe/]
+See the app live [here](https://bullet-capstone.github.io/glow-up-fe/)
 
 ## Technologies
 
@@ -80,6 +80,17 @@ See the app live (here)[https://bullet-capstone.github.io/glow-up-fe/]
 
 - CI/CD setup took some time
 - Router V6 caused deployment trouble and on page refreshing
+
+## Screenshots
+Landing page (Dashboard)
+![dashboard](https://user-images.githubusercontent.com/73845209/146233236-433367a7-f642-44a4-b0ca-0ccd6b6505a0.gif)
+
+Track page
+![track](https://user-images.githubusercontent.com/73845209/146233279-69f6aed3-6391-49d5-a87a-cc60bbfa6c76.gif)
+
+Journal page
+![journal](https://user-images.githubusercontent.com/73845209/146233313-2b98faa5-842b-47ee-b91e-7882b60011e5.gif)
+
 
 ## Future Features
 
