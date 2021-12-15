@@ -4,7 +4,7 @@ import "./index.css"
 import App from "./components/App/App"
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client"
 import { ContextProvider } from "./utils/context"
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 
 const client = new ApolloClient({
   uri: "https://glowup-be.herokuapp.com/graphql",
@@ -13,13 +13,13 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <BrowserRouter>
       <ApolloProvider client={client}>
         <ContextProvider>
           <App />
         </ContextProvider>
       </ApolloProvider>
-    </Router>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 )
