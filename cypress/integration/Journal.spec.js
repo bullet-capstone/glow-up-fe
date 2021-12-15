@@ -22,7 +22,7 @@ describe("Journal", () => {
     cy.get("h1").contains("Journal")
   })
 
-  it("should display an accordion with the date of each entry", () => {
+  it.skip("should display an accordion with the date of each entry", () => {
     cy.get("p")
       .eq(0)
       .contains(`Journal Entry ${new Date("2021-11-09T00:00:00Z").toLocaleString("en-US")}`)
