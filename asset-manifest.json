@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/glow-up-fe/static/css/main.75f750ae.chunk.css",
-    "main.js": "/glow-up-fe/static/js/main.04b5ba34.chunk.js",
-    "main.js.map": "/glow-up-fe/static/js/main.04b5ba34.chunk.js.map",
+    "main.css": "/glow-up-fe/static/css/main.a108c449.chunk.css",
+    "main.js": "/glow-up-fe/static/js/main.4cb2a828.chunk.js",
+    "main.js.map": "/glow-up-fe/static/js/main.4cb2a828.chunk.js.map",
     "runtime-main.js": "/glow-up-fe/static/js/runtime-main.db12db73.js",
     "runtime-main.js.map": "/glow-up-fe/static/js/runtime-main.db12db73.js.map",
     "static/js/2.96339e5b.chunk.js": "/glow-up-fe/static/js/2.96339e5b.chunk.js",
     "static/js/2.96339e5b.chunk.js.map": "/glow-up-fe/static/js/2.96339e5b.chunk.js.map",
     "index.html": "/glow-up-fe/index.html",
-    "static/css/main.75f750ae.chunk.css.map": "/glow-up-fe/static/css/main.75f750ae.chunk.css.map",
+    "static/css/main.a108c449.chunk.css.map": "/glow-up-fe/static/css/main.a108c449.chunk.css.map",
     "static/js/2.96339e5b.chunk.js.LICENSE.txt": "/glow-up-fe/static/js/2.96339e5b.chunk.js.LICENSE.txt",
     "static/media/habit7-uncheck.d30420f0.png": "/glow-up-fe/static/media/habit7-uncheck.d30420f0.png"
   },
   "entrypoints": [
     "static/js/runtime-main.db12db73.js",
     "static/js/2.96339e5b.chunk.js",
-    "static/css/main.75f750ae.chunk.css",
-    "static/js/main.04b5ba34.chunk.js"
+    "static/css/main.a108c449.chunk.css",
+    "static/js/main.4cb2a828.chunk.js"
   ]
 }
