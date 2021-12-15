@@ -68,18 +68,22 @@ See the app live [here](https://bullet-capstone.github.io/glow-up-fe/)
 
 ## Wins
 
-- Adopt React hooks and functional components throught project to improve web performance.
-- Suceed in transitioning from requesting RESTful API to GraphQL endpoints
-- Utilize Apollo library in React to make graphql network requests
-- Employ Typescript throughout project to keep codes clean and readable.
-- Achive 90% coverage end-to-end testing with Cypress to ensure smooth production phase
-- Implement Github Actions CI & CD as another extra level of safeguards before shipping codes to production.
-- Use the latest version of React Router (V6)
+- Adopting React hooks and functional components through project to improve web performance.
+- Succeeding in transitioning from requesting RESTful API to GraphQL endpoint.
+- Utilizing Apollo library in React to make GraphQL network requests.
+- Employing Typescript throughout project to keep codes clean and readable.
+- Achieve 90% coverage end-to-end testing with Cypress to ensure smooth production phase.
+- Implementing Github Actions CI & CD as another extra level of safeguards before shipping codes to production.
+- Using the latest version of React Router (V6).
+- Keeping our workflow organized through our GitHub Project Board.
+- Meeting accessibility principles.
 
 ## Challenges
 
-- CI/CD setup took some time
-- Router V6 caused deployment trouble and on page refreshing
+- Setting up CI/CD.
+- Integrating deployed BE with FE application.
+- Utilizing Router V6 was challenging for our deployment.
+- Keeping our workflow organized through our GitHub Project Board.
 
 ## Screenshots
 Landing page (Dashboard)
@@ -97,7 +101,6 @@ Journal page
 - Displaying a graph for the monthly habit entries.
 - Tracking sleep and exercise.
 - Allowing the user to submit their mood multiple times in a day.
-- Email notifications to remind the user to submit their mood and habits for the day.
 - Allowing the user to track appointments and have a to-do list for the day.
 
 ## Contributors
