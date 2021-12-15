@@ -1,46 +1,64 @@
-# Getting Started with Create React App
+# GlowUp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![GlowUp Workflow](https://github.com/bullet-capstone/glow-up-fe/actions/workflows/node.js.yml/badge.svg)
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<table>
+    <tr>
+        <td>TypeScript</td>
+        <td>JavaScript</td>
+        <td>React</td>
+        <td>React Router</td>
+        <td>React Hooks</td>
+        <td>HTML</td>
+        <td>CSS</td>
+        <td>Context API</td>
+        <td>Cypress</td>
+        <td>Apollo Client</td>
+    </tr>
+    </tr>
+        <td><img src="https://cdn.worldvectorlogo.com/logos/typescript.svg" alt="typescript" width="100" height="auto" /></td>
+        <td><img src="https://user-images.githubusercontent.com/73092355/119360616-074c6580-bc68-11eb-8ac1-f1ca05b87bf8.png" alt="javascript" width="100" height="auto" /></td>
+        <td><img src="https://user-images.githubusercontent.com/73092355/119361040-74f89180-bc68-11eb-845a-29ec9f93f095.png" alt="react" width="100" height="auto" /></td>
+        <td><img src="https://user-images.githubusercontent.com/73092355/119361186-9d808b80-bc68-11eb-97ee-05bde2700716.png" alt="react router" width="100" height="auto" /></td>
+        <td><img src="https://miro.medium.com/max/1400/1*-Ijet6kVJqGgul6adezDLQ.png" alt="react hooks" width="100" height="auto" /></td>
+        <td><img src="https://user-images.githubusercontent.com/73092355/119402191-d553f700-bc99-11eb-8cd3-6ef44023d530.png" alt="HTML" width="100" height="auto" /></td>
+        <td><img src="https://user-images.githubusercontent.com/73092355/119402395-1e0bb000-bc9a-11eb-9173-30403b8848d1.png" alt="css" width="100" height="auto" /></td>
+        <td><img src="https://miro.medium.com/max/1400/0*_54xAc93WGeIuRZZ.png" alt="react context api" width="100" height="auto" /></td>
+        <td><img src="https://user-images.githubusercontent.com/73092355/119361263-b5f0a600-bc68-11eb-9f41-8e10aa013e7a.png" alt="Cypress" width="100" height="auto" /></td>
+         <td><img src="https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png" alt="apollo client" width="100" height="auto" /></td>
+    </tr>
+</table>
 
-### `npm run build`
+## Wins
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Challenges
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-
 
-### `npm run eject`
+## Future Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributors
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Frontend Team
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Bei Zhang: [GitHub]() & [LinkedIn]()
+- Natalia Zamboni Vergara: [GitHub](https://github.com/nzambonivergara) & [LinkedIn](https://www.linkedin.com/in/natalia-zamboni-vergara)
 
-## Learn More
+### Backend Team
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Laura Court: [GitHub]() & [LinkedIn]()
+- Tanner Dale: [GitHub]() & [LinkedIn]()
+- Weston Ellis: [GitHub]() & [LinkedIn]()
