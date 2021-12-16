@@ -15,9 +15,12 @@ export default function Quote() {
 
   return (
     <div className="quote-container">
-      <p className="quote-prompt">Feeling down? Here's a quote for you:</p>
-      <p className="quote-body">
-        "{quote}" -- {author}
+      <p className="page-quote">Feeling down? Here's a quote for you:</p>
+      <p className="page-quote">
+        "{quote}"
+      </p>
+      <p className="page-quote author">
+        - {author}
       </p>
     </div>
   )
