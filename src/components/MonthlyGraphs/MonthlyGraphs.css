@@ -1,7 +1,30 @@
+.graph-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .graph-container {
   padding: 3rem;
+  position: relative;
+  height: 80vh;
+  width: 80vw;
 }
 
 .month-title {
   margin: 1rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .graph-container {
+    height: 70vh;
+    width: 100vw;
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .graph-container {
+    height: 50vh;
+  }
 }

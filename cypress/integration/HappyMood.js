@@ -11,6 +11,6 @@ describe("Recorded happy mood in track page", () => {
     cy.visit("/track")
 
     cy.get(".today-mood-container > :nth-child(2)").contains("😁")
-    cy.get(".quote-body").should("not.exist")
+    cy.get(".page-quote").should("not.exist")
   })
 })

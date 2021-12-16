@@ -29,6 +29,7 @@ const yLabels = {
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top" as const,
@@ -95,11 +96,13 @@ const MonthlyGraphs = () => {
   }
 
   return (
-    <section className="graph-container">
-      <h3 className="month-title">{monthString}</h3>
-      {!!monthlyMoods.length && <Chart type="line" data={dataset} options={options} />}
-      {!monthlyMoods.length && !error && <h2>There aren't any mood entries for this month yet!</h2>}
-      {error && <h2>Sorry, something went wrong!</h2>}
+    <section className="graph-section">
+      <div className="graph-container">
+        <h3 className="month-title">{monthString}</h3>
+        {!!monthlyMoods.length && <Chart type="line" data={dataset} options={options} />}
+        {!monthlyMoods.length && !error && <h2>There aren't any mood entries for this month yet!</h2>}
+        {error && <h2>Sorry, something went wrong!</h2>}
+      </div>
     </section>
   )
 }

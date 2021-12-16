@@ -43,7 +43,7 @@ const Dashboard = () => {
         )}
       </article>
       <section className="week-container">
-        <h3>This week...</h3>
+        <h3 className="week-title">This week</h3>
         <Week />
       </section>
       <MonthlyGraphs />
