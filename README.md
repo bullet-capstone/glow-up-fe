@@ -1,6 +1,6 @@
   <h1 align="center">✨GlowUp</h1>
 <p align="center">
-  <a href="https://bullet-capstone.github.io/glow-up-fe/">Explore our website</a>
+  <a href="https://glow-up-fe.herokuapp.com/glow-up-fe/">Explore our website</a>
 </p>
 
 ![GlowUp Workflow](https://github.com/bullet-capstone/glow-up-fe/actions/workflows/node.js.yml/badge.svg)
@@ -33,9 +33,6 @@ npm start
 
 3. Explore the website.
 
-### Deployed Link
-
-See the app live [here](https://bullet-capstone.github.io/glow-up-fe/)
 
 ## Technologies
 
