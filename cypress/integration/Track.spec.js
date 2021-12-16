@@ -28,7 +28,7 @@ describe("Recorded sad mood in track page", () => {
   })
 
   it("If user's mood is below or equal 2, user should see a quote to cheer user up", () => {
-    cy.get(".quote-body").contains("Whatever you are, be a good one.")
+    cy.get(".page-quote").contains("Whatever you are, be a good one.")
   })
 })
 
