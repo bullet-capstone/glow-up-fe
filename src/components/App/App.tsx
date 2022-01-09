@@ -5,6 +5,7 @@ import Dashboard from "../Dashboard/Dashboard"
 import Journal from "../Journal/Journal"
 import Header from "../Header/Header"
 import LandingPage from "../LandingPage/LandingPage"
+import Signup from "../Signup/Signup"
 import { Routes, Route } from "react-router-dom"
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="journal" element={<Journal />} />
+          <Route path="signup" element={<Signup />} />
         </Route>
       </Routes>
     </div>
