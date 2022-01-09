@@ -15,7 +15,7 @@ export default function LandingPage() {
       </div>
       <div className="landing-main">
         <div className="main-left">
-          <NavLink to="glow-up-fe/signup">
+          <NavLink to="/glow-up-fe/signup">
             <button className="signup-button">Sign Up</button>
           </NavLink>
         </div>
