@@ -4,6 +4,7 @@ import HabitForm from "../HabitForm/HabitForm"
 import Dashboard from "../Dashboard/Dashboard"
 import Journal from "../Journal/Journal"
 import Header from "../Header/Header"
+import LandingPage from "../LandingPage/LandingPage"
 import { Routes, Route } from "react-router-dom"
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="glow-up-fe">
-          <Route index element={<Dashboard />} />
+          <Route index element={<LandingPage />} />
           <Route
             path="track"
             element={

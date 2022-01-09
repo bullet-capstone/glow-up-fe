@@ -28,7 +28,7 @@ describe("Dashboard Daily and Weekly Entries", () => {
       .contains("Mood 29")
   })
 
-  it.skip("should display the habit entries for that day", () => {
+  it("should display the habit entries for that day", () => {
     cy.get("h4")
       .contains("Habits I completed:")
       .get(".completed-habit")

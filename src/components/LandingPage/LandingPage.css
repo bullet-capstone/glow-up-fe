@@ -1,0 +1,33 @@
+.landing-container {
+  background: #fde7d8;
+}
+
+.landing-nav,
+.landing-ul,
+.landing-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 50px;
+}
+
+.landing-nav {
+  height: 20%;
+}
+
+.landing-main {
+  height: 80%;
+}
+
+.landing-nav > ul {
+  width: 30%;
+}
+
+.login-button,
+.signup-button {
+  background: #9a6b5b;
+  color: white;
+  border: none;
+  outline: none;
+  width: 60px;
+}
