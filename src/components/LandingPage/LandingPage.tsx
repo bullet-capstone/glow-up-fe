@@ -1,5 +1,5 @@
 import "./LandingPage.css"
-import { NavLink } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export default function LandingPage() {
   return (
@@ -15,9 +15,9 @@ export default function LandingPage() {
       </div>
       <div className="landing-main">
         <div className="main-left">
-          <NavLink to="/glow-up-fe/signup">
+          <Link to="/glow-up-fe/signup">
             <button className="signup-button">Sign Up</button>
-          </NavLink>
+          </Link>
         </div>
         <div className="main-right"></div>
       </div>

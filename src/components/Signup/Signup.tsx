@@ -36,41 +36,49 @@ export default function Signup() {
     <div>
       <h2>Sign up form</h2>
       <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-password">Username</InputLabel>
         <OutlinedInput
-          required
-          // id="outlined-required"
+          id="outlined-adornment-password"
+          value={values.password}
+          // onChange={handleChange('password')}
           label="Username"
-          defaultValue="Username"
-          // onChange={handleChange("username")}
-          value={values.username}
         />
       </FormControl>
+      <FormControl sx={{ m: 1, width: "25ch" }}>
+        <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
+        <OutlinedInput
+          // id="outlined-adornment-password"
+          value={values.email}
+          // onChange={handleChange('password')}
 
-      <TextField
+          label="Email"
+        />
+      </FormControl>
+      {/* <TextField
         required
         // id="outlined-required"
         label="Email"
         defaultValue="Email"
         // onChange={handleChange("email")}
         value={values.email}
-      />
+      /> */}
       <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
           id="outlined-adornment-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
-          onChange={handleChange("password")}
+          // onChange={handleChange("password")}
           endAdornment={
             <InputAdornment position="end">
-              <IconButton
+              {/* <IconButton
                 aria-label="toggle password visibility"
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
                 {values.showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
+              </IconButton> */}
             </InputAdornment>
           }
           label="Password"
