@@ -10,11 +10,12 @@ export default function Signup() {
     password: "",
     confirmPassword: "",
     showPassword: false,
-    usernameError:false,
-    emailError:false,
-    passwordError:false
-
   })
+
+const [usernameError, setUsernameError] = useState(false)
+const [emailError, setEmailError] = useState(false)
+const [pwError, setPwError] = useState(false)
+const [matchError, setMatchError] = useState(false)
 
   const handleChange = prop => event => {
     setValues({ ...values, [prop]: event.target.value })
@@ -30,25 +31,51 @@ export default function Signup() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault()
   }
-  const checkValues = () => {
+
+  const validateForm = () => {
     if(!values.username){
-        setValues({...values, usernameError:true})
-    }
+      setUsernameError(true)
+    } 
     
+    if(!(/^\w{3} (\.\w+)* @  [A-z0-9]+ (\. [A-z]{2,5}){1,2}$/.test(values.email))){
+      setEmailError(true)
+    } 
+    
+    if(!values.password){
+      setPwError(true)
+    }
+
+    if(!(values.password === values.confirmPassword)){
+      setMatchError(true)
+    } 
+   
+    
+  }
+  
+
+  const handleSubmit = () => {
+      if (values.username && (/^\w{3,} (\.\w+)* @  [A-z0-9]+ (\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
+        alert('sign up successful')
+        // Now send all that info to backend and redirect user to dashboard
+      } else {
+        validateForm()
+      }
+      
+   
   }
   
   return (
     <div id='signup-form-container'>
       <h2>Sign up form</h2>
-      <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+      <FormControl sx={{ m: 1, width: "25ch" }}>
         <TextField
           id="signup-input-username"
           label="Username"
           variant="outlined"
           value={values.username}
           onChange={handleChange("username")}
-          error={values.usernameError}
-          helperText={values.usernameError? "Username cannot be empty":""}
+          error={usernameError}
+          helperText={usernameError? "Username cannot be empty":""}
         />
       </FormControl>
 
@@ -59,14 +86,15 @@ export default function Signup() {
           variant="outlined"
           value={values.email} 
           onChange={handleChange("email")} 
-          error={values.emailError}
-          helperText={values.emailError? "Please input a proper email address":""}
+          error={emailError}
+          helperText={emailError? "Please input a proper email address":""}
         />
       </FormControl>
 
-      <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+      <FormControl sx={{ m: 1, width: "25ch" }} error={pwError}>
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
+          required
           id="signup-input-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
@@ -85,17 +113,19 @@ export default function Signup() {
             </InputAdornment>
           }
         />
+        <FormHelperText>{pwError? "Password cannot be empty":"" }</FormHelperText>
       </FormControl>
 
-      <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined" error={values.passwordError}>
+      <FormControl sx={{ m: 1, width: "25ch" }} error={matchError}>
         <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
         <OutlinedInput
-          id="signup-input-psconfim"
+          required
+          id="signup-input-psconfirm"
           type={values.showPassword ? "text" : "password"}
           value={values.confirmPassword}
           onChange={handleChange("confirmPassword")}
           label="Confirm Password"
-          error={values.passwordError}
+          error={pwError}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -109,9 +139,10 @@ export default function Signup() {
             </InputAdornment>
           }
         />
-      <FormHelperText>{values.passwordError? "Passwards must match":"" }</FormHelperText>
+      <FormHelperText id="notshown">{matchError? "Passwords must match":"" }
+      </FormHelperText>
       </FormControl>
-      <Button variant="contained" onClick={checkValues}>Sign me up</Button>
+      <Button id="signup-btn" variant="contained" onClick={handleSubmit}>Sign me up</Button>
       
     </div>
   )
