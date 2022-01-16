@@ -33,21 +33,19 @@ const [matchError, setMatchError] = useState(false)
   }
 
   const validateForm = () => {
-    if(!values.username){
-      setUsernameError(true)
-    } 
+    !values.username? setUsernameError(true):setUsernameError(false)
     
-    if(!(/^\w{3} (\.\w+)* @[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email))){
-      setEmailError(true)
-    } 
+    !(/^\w{3} (\.\w+)* @[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email))?setEmailError(true):setEmailError(false)
+      
     
-    if(!values.password){
-      setPwError(true)
-    }
+    
+    !values.password?setPwError(true):setPwError(false)
+      
+    
 
-    if(!(values.password === values.confirmPassword)){
-      setMatchError(true)
-    } 
+    !(values.password === values.confirmPassword)?setMatchError(true):setMatchError(false)
+      
+    
    
     
   }
@@ -92,9 +90,9 @@ const [matchError, setMatchError] = useState(false)
       </FormControl>
 
       <FormControl sx={{ m: 1, width: "25ch" }} error={pwError}>
-        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+        <InputLabel>Password</InputLabel>
         <OutlinedInput
-          required
+        
           id="signup-input-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
@@ -117,15 +115,14 @@ const [matchError, setMatchError] = useState(false)
       </FormControl>
 
       <FormControl sx={{ m: 1, width: "25ch" }} error={matchError}>
-        <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
+        <InputLabel>Confirm Password</InputLabel>
         <OutlinedInput
-          required
+        
           id="signup-input-psconfirm"
           type={values.showPassword ? "text" : "password"}
           value={values.confirmPassword}
           onChange={handleChange("confirmPassword")}
           label="Confirm Password"
-          error={pwError}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -139,8 +136,7 @@ const [matchError, setMatchError] = useState(false)
             </InputAdornment>
           }
         />
-      <FormHelperText id="notshown">{matchError? "Passwords must match":""}</FormHelperText>
-      {/* <FormHelperText>{pwError? "Password cannot be empty":"" }</FormHelperText> */}
+      <FormHelperText>{matchError? "Passwords must match":""}</FormHelperText>
       </FormControl>
       <Button id="signup-btn" variant="contained" onClick={handleSubmit}>Sign me up</Button>
       
