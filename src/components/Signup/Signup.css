@@ -11,5 +11,6 @@
 }
 
 #notshown {
-  border:2px solid green
+  border:2px solid green;
+  height:50px
 }

@@ -37,7 +37,7 @@ const [matchError, setMatchError] = useState(false)
       setUsernameError(true)
     } 
     
-    if(!(/^\w{3} (\.\w+)* @  [A-z0-9]+ (\. [A-z]{2,5}){1,2}$/.test(values.email))){
+    if(!(/^\w{3} (\.\w+)* @[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email))){
       setEmailError(true)
     } 
     
@@ -54,7 +54,7 @@ const [matchError, setMatchError] = useState(false)
   
 
   const handleSubmit = () => {
-      if (values.username && (/^\w{3,} (\.\w+)* @  [A-z0-9]+ (\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
+      if (values.username && (/^\w{3,}(\.\w+)* @[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
         alert('sign up successful')
         // Now send all that info to backend and redirect user to dashboard
       } else {
@@ -139,8 +139,8 @@ const [matchError, setMatchError] = useState(false)
             </InputAdornment>
           }
         />
-      <FormHelperText id="notshown">{matchError? "Passwords must match":"" }
-      </FormHelperText>
+      <FormHelperText id="notshown">{matchError? "Passwords must match":""}</FormHelperText>
+      {/* <FormHelperText>{pwError? "Password cannot be empty":"" }</FormHelperText> */}
       </FormControl>
       <Button id="signup-btn" variant="contained" onClick={handleSubmit}>Sign me up</Button>
       
