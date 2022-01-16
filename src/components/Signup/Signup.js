@@ -1,13 +1,13 @@
-import Box from "@mui/material/Box"
 import { useState } from "react"
+import './Signup.css'
 import FormControl from "@mui/material/FormControl"
-import TextField from "@mui/material/TextField"
 import InputLabel from "@mui/material/InputLabel"
 import OutlinedInput from "@mui/material/OutlinedInput"
 import InputAdornment from "@mui/material/InputAdornment"
 import IconButton from "@mui/material/IconButton"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
+import Button from '@mui/material/Button';
 
 export default function Signup() {
   const [values, setValues] = useState({
@@ -33,7 +33,7 @@ export default function Signup() {
     event.preventDefault()
   }
   return (
-    <div>
+    <div id='signup-form-container'>
       <h2>Sign up form</h2>
       <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">Username</InputLabel>
@@ -44,6 +44,7 @@ export default function Signup() {
           label="Username"
         />
       </FormControl>
+
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
         <OutlinedInput
@@ -53,14 +54,7 @@ export default function Signup() {
           label="Email" 
         />
       </FormControl>
-      {/* <TextField
-        required
-        // id="outlined-required"
-        label="Email"
-        defaultValue="Email"
-        // onChange={handleChange("email")}
-        value={values.email}
-      /> */}
+
       <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
@@ -106,6 +100,9 @@ export default function Signup() {
           }
         />
       </FormControl>
+
+      <Button variant="contained">Contained</Button>
+      
     </div>
   )
 }
