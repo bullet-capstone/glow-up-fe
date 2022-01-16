@@ -18,8 +18,8 @@ export default function Signup() {
     showPassword: false,
   })
 
-  const handleChange = (prop: string) => (event: React.FormEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.currentTarget.value })
+  const handleChange = prop => event => {
+    setValues({ ...values, [prop]: event.target.value })
   }
 
   const handleClickShowPassword = () => {
@@ -29,7 +29,7 @@ export default function Signup() {
     })
   }
 
-  const handleMouseDownPassword = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleMouseDownPassword = (event) => {
     event.preventDefault()
   }
   return (
@@ -38,20 +38,19 @@ export default function Signup() {
       <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">Username</InputLabel>
         <OutlinedInput
-          id="outlined-adornment-password"
-          value={values.password}
-          // onChange={handleChange('password')}
+          id="signup-input-username"
+          value={values.username}
+          onChange={handleChange("username")}
           label="Username"
         />
       </FormControl>
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
         <OutlinedInput
-          // id="outlined-adornment-password"
-          value={values.email}
-          // onChange={handleChange('password')}
-
-          label="Email"
+          id="signup-input-email"
+          value={values.email} 
+          onChange={handleChange("email")} 
+          label="Email" 
         />
       </FormControl>
       {/* <TextField
@@ -65,23 +64,46 @@ export default function Signup() {
       <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
         <OutlinedInput
-          id="outlined-adornment-password"
+          id="signup-input-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
-          // onChange={handleChange("password")}
+          onChange={handleChange("password")}
+          label="Password"
           endAdornment={
             <InputAdornment position="end">
-              {/* <IconButton
+              <IconButton
                 aria-label="toggle password visibility"
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
               >
                 {values.showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton> */}
+              </IconButton>
             </InputAdornment>
           }
-          label="Password"
+        />
+      </FormControl>
+
+      <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+        <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
+        <OutlinedInput
+          id="signup-input-psconfim"
+          type={values.showPassword ? "text" : "password"}
+          value={values.confirmPassword}
+          onChange={handleChange("confirmPassword")}
+          label="Confirm Password"
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
         />
       </FormControl>
     </div>
