@@ -1,13 +1,7 @@
 import { useState } from "react"
 import './Signup.css'
-import FormControl from "@mui/material/FormControl"
-import InputLabel from "@mui/material/InputLabel"
-import OutlinedInput from "@mui/material/OutlinedInput"
-import InputAdornment from "@mui/material/InputAdornment"
-import IconButton from "@mui/material/IconButton"
-import Visibility from "@mui/icons-material/Visibility"
-import VisibilityOff from "@mui/icons-material/VisibilityOff"
-import Button from '@mui/material/Button';
+import {FormControl,OutlinedInput,InputAdornment,InputLabel,IconButton, Button,TextField,FormHelperText} from "@mui/material"
+import {Visibility,VisibilityOff} from '@mui/icons-material';
 
 export default function Signup() {
   const [values, setValues] = useState({
@@ -16,6 +10,10 @@ export default function Signup() {
     password: "",
     confirmPassword: "",
     showPassword: false,
+    usernameError:false,
+    emailError:false,
+    passwordError:false
+
   })
 
   const handleChange = prop => event => {
@@ -32,26 +30,37 @@ export default function Signup() {
   const handleMouseDownPassword = (event) => {
     event.preventDefault()
   }
+  const checkValues = () => {
+    if(!values.username){
+        setValues({...values, usernameError:true})
+    }
+    
+  }
+  
   return (
     <div id='signup-form-container'>
       <h2>Sign up form</h2>
       <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-password">Username</InputLabel>
-        <OutlinedInput
+        <TextField
           id="signup-input-username"
+          label="Username"
+          variant="outlined"
           value={values.username}
           onChange={handleChange("username")}
-          label="Username"
+          error={values.usernameError}
+          helperText={values.usernameError? "Username cannot be empty":""}
         />
       </FormControl>
 
       <FormControl sx={{ m: 1, width: "25ch" }}>
-        <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
-        <OutlinedInput
+        <TextField
           id="signup-input-email"
+          label="Email" 
+          variant="outlined"
           value={values.email} 
           onChange={handleChange("email")} 
-          label="Email" 
+          error={values.emailError}
+          helperText={values.emailError? "Please input a proper email address":""}
         />
       </FormControl>
 
@@ -78,7 +87,7 @@ export default function Signup() {
         />
       </FormControl>
 
-      <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
+      <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined" error={values.passwordError}>
         <InputLabel htmlFor="outlined-adornment-password">Confirm Password</InputLabel>
         <OutlinedInput
           id="signup-input-psconfim"
@@ -86,6 +95,7 @@ export default function Signup() {
           value={values.confirmPassword}
           onChange={handleChange("confirmPassword")}
           label="Confirm Password"
+          error={values.passwordError}
           endAdornment={
             <InputAdornment position="end">
               <IconButton
@@ -99,9 +109,9 @@ export default function Signup() {
             </InputAdornment>
           }
         />
+      <FormHelperText>{values.passwordError? "Passwards must match":"" }</FormHelperText>
       </FormControl>
-
-      <Button variant="contained">Contained</Button>
+      <Button variant="contained" onClick={checkValues}>Sign me up</Button>
       
     </div>
   )
