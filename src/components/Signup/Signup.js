@@ -35,24 +35,17 @@ const [matchError, setMatchError] = useState(false)
   const validateForm = () => {
     !values.username? setUsernameError(true):setUsernameError(false)
     
-    !(/^\w{3} (\.\w+)* @[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email))?setEmailError(true):setEmailError(false)
-      
-    
-    
+    // regex is madness
+    !(/^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email))?setEmailError(true):setEmailError(false)
+              
     !values.password?setPwError(true):setPwError(false)
-      
-    
-
+     
     !(values.password === values.confirmPassword)?setMatchError(true):setMatchError(false)
-      
-    
-   
-    
   }
   
 
   const handleSubmit = () => {
-      if (values.username && (/^\w{3,}(\.\w+)* @[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
+      if (values.username && (/^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
         alert('sign up successful')
         // Now send all that info to backend and redirect user to dashboard
       } else {
