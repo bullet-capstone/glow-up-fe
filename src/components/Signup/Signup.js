@@ -31,8 +31,9 @@ const [matchError, setMatchError] = useState(false)
   const handleMouseDownPassword = (event) => {
     event.preventDefault()
   }
+  
 
-  const validateForm = () => {
+  const handleSubmit = () => {
     !values.username? setUsernameError(true):setUsernameError(false)
     
     // regex is madness
@@ -41,18 +42,12 @@ const [matchError, setMatchError] = useState(false)
     !values.password?setPwError(true):setPwError(false)
      
     !(values.password === values.confirmPassword)?setMatchError(true):setMatchError(false)
-  }
-  
 
-  const handleSubmit = () => {
-      if (values.username && (/^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
-        alert('sign up successful')
-        // Now send all that info to backend and redirect user to dashboard
-      } else {
-        validateForm()
-      }
-      
-   
+    if (values.username && (/^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
+      alert('sign up successful')
+      // Now send all that info to backend and redirect user to dashboard
+    }
+     
   }
   
   return (
