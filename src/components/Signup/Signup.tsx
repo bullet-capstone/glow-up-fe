@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { ChangeEventHandler, useState } from "react"
 import './Signup.css'
 import {FormControl,OutlinedInput,InputAdornment,InputLabel,IconButton, Button,TextField,FormHelperText} from "@mui/material"
 import {Visibility,VisibilityOff} from '@mui/icons-material';
@@ -17,8 +17,8 @@ const [emailError, setEmailError] = useState(false)
 const [pwError, setPwError] = useState(false)
 const [matchError, setMatchError] = useState(false)
 
-  const handleChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
+  const handleChange = (prop:string):ChangeEventHandler<HTMLInputElement> => (event:React.FormEvent<HTMLInputElement>) => {
+    setValues({ ...values, [prop]: event.currentTarget.value })
   }
 
   const handleClickShowPassword = () => {
@@ -28,7 +28,7 @@ const [matchError, setMatchError] = useState(false)
     })
   }
 
-  const handleMouseDownPassword = (event) => {
+  const handleMouseDownPassword = (event:React.MouseEvent) => {
     event.preventDefault()
   }
   
