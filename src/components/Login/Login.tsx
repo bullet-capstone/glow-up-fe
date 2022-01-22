@@ -19,8 +19,8 @@ const Login = () => {
     })
   }
 
-  const handleChange = (prop) => {
-    setValues({ ...values, prop: prop.currentTarget.value })
+  const handleChange = (prop:string): ChangeEventHandler<HTMLInputElement> => (e:React.FormEvent<HTMLInputElement>) => {
+    setValues({ ...values, [prop]: e.currentTarget.value })
   }
 
   const handleSubmit = () => {
@@ -32,8 +32,8 @@ const Login = () => {
     }
   }
 
-  const handleMouseDownPassword = (prop) => {
-    prop.preventDefault()
+  const handleMouseDownPassword = (event:React.MouseEvent) => {
+    event.preventDefault()
   }
 
   return (
@@ -41,7 +41,7 @@ const Login = () => {
       <h2>Login form</h2>
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <TextField
-          id="signup-input-username"
+          id="login-input-username"
           label="Username"
           variant="outlined"
           value={values.username}
@@ -54,7 +54,7 @@ const Login = () => {
       <FormControl sx={{ m: 1, width: "25ch" }} error={passwordError}>
         <InputLabel>Password</InputLabel>
         <OutlinedInput
-          id="signup-input-password"
+          id="login-input-password"
           type={values.showPassword ? "text" : "password"}
           value={values.password}
           onChange={handleChange("password")}

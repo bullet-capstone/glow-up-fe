@@ -11,7 +11,10 @@ export default function LandingPage() {
           <li>Product</li>
           <li>Team</li>
         </ul>
+        <Link to="/glow-up-fe/login">
         <button className="login-button">Login</button>
+        </Link>
+        
       </div>
       <div className="landing-main">
         <div className="main-left">
