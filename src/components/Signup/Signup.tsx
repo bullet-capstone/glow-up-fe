@@ -7,6 +7,7 @@ import {SIGNUP_USER, } from "../../utils/graph_mutations"
 import { useQuery, useMutation } from "@apollo/client"
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 
 export default function Signup() {
@@ -23,10 +24,11 @@ const [usernameError, setUsernameError] = useState(false)
 const [emailError, setEmailError] = useState(false)
 const [pwError, setPwError] = useState(false)
 const [matchError, setMatchError] = useState(false)
+const [cookie, setCookie]= useCookies(['userToken'])
 const [createUser, { data, loading, error }] = useMutation(SIGNUP_USER,{
   onCompleted:(data)=>{
-    // register token
-   onCompletion()
+    
+   onCompletion(data.createUser.token)
   },
   onError:() => {
     onError()
@@ -34,7 +36,9 @@ const [createUser, { data, loading, error }] = useMutation(SIGNUP_USER,{
 
 })
 
-const onCompletion = () => {
+const onCompletion = (token:string) => {
+  setCookie('userToken',token,{path:"/",maxAge:259200})
+  // 259200 is three days in seconds
   redirectToDashboard('/glow-up-fe/dashboard')
 
 }

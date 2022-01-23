@@ -39,10 +39,6 @@ export const SUBMIT_JOURNAL_ENTRY = gql`
 export const SIGNUP_USER = gql`
   mutation createUser($username:String!,$email:String!, $password:String!,$passwordConfirmation:String!) {
     createUser(input: { params: { username: $username, email:$email, password:$password,passwordConfirmation:$passwordConfirmation} }) {
-      user {
-        id
-        username
-      }
       token 
     }
   }
