@@ -2,6 +2,12 @@ import React, { ChangeEventHandler, useState } from "react"
 import './Signup.css'
 import {FormControl,OutlinedInput,InputAdornment,InputLabel,IconButton, Button,TextField,FormHelperText} from "@mui/material"
 import {Visibility,VisibilityOff} from '@mui/icons-material';
+import {SIGNUP_USER, } from "../../utils/graph_mutations"
+
+import { useQuery, useMutation } from "@apollo/client"
+import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
+import { useNavigate } from "react-router-dom";
+
 
 export default function Signup() {
   const [values, setValues] = useState({
@@ -11,11 +17,34 @@ export default function Signup() {
     confirmPassword: "",
     showPassword: false,
   })
+  const redirectToDashboard = useNavigate()
 
 const [usernameError, setUsernameError] = useState(false)
 const [emailError, setEmailError] = useState(false)
 const [pwError, setPwError] = useState(false)
 const [matchError, setMatchError] = useState(false)
+const [createUser, { data, loading, error }] = useMutation(SIGNUP_USER,{
+  onCompleted:(data)=>{
+    // register token
+   onCompletion()
+  },
+  onError:() => {
+    onError()
+  }
+
+})
+
+const onCompletion = () => {
+  redirectToDashboard('/glow-up-fe/dashboard')
+
+}
+
+const onError = () => {
+  console.log("error occurs");
+  
+}
+
+
 
   const handleChange = (prop:string):ChangeEventHandler<HTMLInputElement> => (event:React.FormEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.currentTarget.value })
@@ -44,15 +73,16 @@ const [matchError, setMatchError] = useState(false)
     !(values.password === values.confirmPassword)?setMatchError(true):setMatchError(false)
 
     if (values.username && (/^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/.test(values.email)) && values.password && values.confirmPassword && values.password === values.confirmPassword) {
-      alert('sign up successful')
       // Now send all that info to backend and redirect user to dashboard
+      createUser({ variables: { username: values.username, email:values.email, password:values.password,passwordConfirmation:values.confirmPassword} })
     }
-     
+  
   }
   
   return (
     <div id='signup-form-container'>
       <h2>Sign up form</h2>
+      {error?.graphQLErrors}
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <TextField
           id="signup-input-username"
