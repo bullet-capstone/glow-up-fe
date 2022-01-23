@@ -23,7 +23,6 @@ const HabitForm = () => {
       createHabitEntry({ variables: { idArr: entryParams } })
     } else {
       createHabitEntry({ variables: { idArr: entryParams } })
-      alert("Great job")
     }
   }
 
