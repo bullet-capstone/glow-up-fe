@@ -1,8 +1,9 @@
-.landing-container {
+.landing-view {
   background: #fde7d8;
+  height: 100%;
 }
 
-.landing-nav,
+.landing-header,
 .landing-ul,
 .landing-main {
   display: flex;
@@ -11,12 +12,19 @@
   padding: 0 50px;
 }
 
-.landing-nav {
-  height: 20%;
+.landing-header {
+  height: 200px;
+  border: 1px solid blue;
+}
+
+#logo-img {
+  width: 64px;
+  height: 64px;
 }
 
 .landing-main {
-  height: 80%;
+  height: 600px;
+  border: 1px solid green;
 }
 
 .landing-nav > ul {
