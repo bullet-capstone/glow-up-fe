@@ -4,7 +4,6 @@
   height: 100vh;
   width: 100%;
   background-size: cover;
-  /* position: relative; */
 }
 
 
@@ -13,7 +12,7 @@
   display: flex;
   flex-direction: row;
   padding: 0 25px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 
 #logo-img {
@@ -24,29 +23,49 @@
 .landing-main {
   height: 70%;
   width: 40%;
-  border: 1px solid green;
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  
+  /* justify-content: space-between; */
+  padding: 20px 0 20px 25px;
 }
 
+.landing-title {
+  margin-top:30%;
+  font-size: 48px;
+  text-align: left;
+}
+
+.landing-intro,.landing-btn-container {
+  margin-top:10%;
+  text-align:left;
+}
+
+.landing-btn-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap:10px
+}
 
 .login-button,
 .signup-button {
-  display: inline-flex;
   font-size: 14px;
-  letter-spacing: 0px;
   font-weight: 700;
   line-height: 16px;
   background-color: #273C5A;
   color: #fff;
   border: none;
   border-radius: 2px;
-  cursor: pointer;
-  justify-content: center;
   padding: 16px 32px;
   height: 48px;
+  width: 170px;
   text-align: center;
-  white-space: nowrap;
+
 }
 
 .signup-button {
-  background-color: #F9425F
+  background-color: #F9425F;
 }
