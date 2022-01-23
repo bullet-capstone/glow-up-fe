@@ -82,7 +82,7 @@ const Header = () => {
               }}
             >
               {pages.map((page) => (
-                <NavLink to={`glow-up-fe/${page}`} key={page}>
+                <NavLink to={`/glow-up-fe/${page}`} key={page}>
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography
                       textAlign="center"
@@ -105,7 +105,7 @@ const Header = () => {
           </Typography>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <NavLink to={`glow-up-fe/${page}`} key={page}>
+              <NavLink to={`/glow-up-fe/${page}`} key={page}>
                 <Button
                   onClick={handleCloseNavMenu}
                   sx={{ my: 2, color: 'white', display: 'block' }}

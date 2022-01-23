@@ -12,24 +12,36 @@ import { Routes, Route } from "react-router-dom"
 function App() {
   return (
     <div className="App">
-      <Header />
       <Routes>
-        <Route path="glow-up-fe">
-          <Route index element={<LandingPage />} />
+        <Route path="glow-up-fe" element={<LandingPage />}> </Route>
           <Route
-            path="track"
+            path="glow-up-fe/track"
             element={
               <section className="trackers-container">
+                <Header />
                 <MoodForm />
                 <HabitForm />
               </section>
             }
           />
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="journal" element={<Journal />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="login" element={<Login />} />
-        </Route>
+          <Route path="glow-up-fe/dashboard" element={
+          <>
+          <Header />
+          <Dashboard />
+          </>} />
+          <Route path="glow-up-fe/journal" element={
+          <>
+          <Header />
+          <Journal />
+          </>
+          } />
+          <Route path="glow-up-fe/signup" element={<Signup />} />
+          <Route path="glow-up-fe/login" element={<Login />} />
+          <Route path="/*" element={
+            <>
+          <Header />
+          <Dashboard />
+            </>} />
       </Routes>
     </div>
   )
