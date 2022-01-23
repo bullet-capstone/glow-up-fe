@@ -1,7 +1,6 @@
 import "./LandingPage.css"
 import logo from '../../assets/logo-transparent.png'
 import { Link } from "react-router-dom"
-import { InputAdornment } from '@mui/material';
 
 export default function LandingPage() {
   return (
@@ -17,12 +16,12 @@ export default function LandingPage() {
         </div>
      
         <div className="landing-btn-container">
-          <Link to="/glow-up-fe/signup">
-            <button className="signup-button">SIGN UP</button>
-          </Link>
           <Link to="/glow-up-fe/login">
         <button className="login-button">LOGIN</button>
         </Link>
+          <Link to="/glow-up-fe/signup">
+            <button className="signup-button">SIGN UP</button>
+          </Link>
         </div>
       </section>
     </div>

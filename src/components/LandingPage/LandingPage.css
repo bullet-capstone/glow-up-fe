@@ -1,7 +1,13 @@
 .landing-view {
-  background: #fde7d8;
+  /* background: #fde7d8; */
+  background-image: url('https://images.unsplash.com/photo-1523742238290-adf3b54101bf?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNzQ2MTB8MHwxfGFsbHx8fHx8fHx8fDE2NDI5NTkyNTA&ixlib=rb-1.2.1&q=85');
   height: 100vh;
+  width: 100%;
+  background-size: cover;
+  /* position: relative; */
 }
+
+
 
 .landing-header {
   display: flex;
@@ -16,7 +22,8 @@
 }
 
 .landing-main {
-  /* height: 600px; */
+  height: 70%;
+  width: 40%;
   border: 1px solid green;
 }
 
@@ -38,4 +45,8 @@
   height: 48px;
   text-align: center;
   white-space: nowrap;
+}
+
+.signup-button {
+  background-color: #F9425F
 }
