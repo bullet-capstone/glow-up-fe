@@ -17,7 +17,9 @@ interface DayStat {
 }
 
 export default function Week() {
-  const { loading, error, data } = useQuery(QUERY_WEEKLY_ENTRIES)
+  const {loading, error, data }= useQuery(QUERY_WEEKLY_ENTRIES,{variables:{
+    //get token from cookie
+  }})
   const [weeklyStats, setWeeklyStats] = useState<WeeklyStats>({})
   const { getDayString } = useContext(AppContext)
 
