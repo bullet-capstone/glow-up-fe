@@ -24,4 +24,8 @@ button {
   cursor: pointer;
 }
 
+#root {
+  height: 100%;
+}
+
 
