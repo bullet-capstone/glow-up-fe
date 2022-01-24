@@ -17,7 +17,7 @@ interface DayStat {
 }
 
 export default function Week() {
-  const [cookie, setCookie]= useCookies(['userToken'])
+  const [cookie,]= useCookies(['userToken'])
   const {loading, error, data }= useQuery(QUERY_WEEKLY_ENTRIES,{variables:{
     token: cookie.userToken
     

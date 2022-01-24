@@ -4,6 +4,7 @@ import { Habit, Mood, HabitMap } from "./Models"
 import { useQuery, ApolloError } from "@apollo/client"
 import { QUERY_DAILY_ENTRIES } from "../utils/graph_queries"
 
+
 interface ContextState {
   checkedHabitIds: number[]
   setCheckedHabitIds: (habitIds: number[]) => void
@@ -28,6 +29,7 @@ const AppContext = createContext<ContextState>({
   getDayString: () => "",
   habitMap: null,
   dailyQueryError: null,
+
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
@@ -84,6 +86,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
     return yyyy + "-" + mm + "-" + dd
   }
+  
 
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
 

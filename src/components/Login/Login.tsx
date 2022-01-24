@@ -1,16 +1,35 @@
-import React, { ChangeEventHandler, useState } from "react"
+import React, { ChangeEventHandler, useState,} from "react"
 import "./Login.css"
 import {FormControl,OutlinedInput,InputAdornment,InputLabel,IconButton,Button,TextField,FormHelperText} from "@mui/material"
 import {Visibility,VisibilityOff} from "@mui/icons-material"
+import {SIGNIN_USER, } from "../../utils/graph_mutations"
+import {useMutation } from "@apollo/client"
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
-  const [values, setValues] = useState({
+   const [values, setValues] = useState({
     username: "",
     password: "",
     showPassword: false
   })
+  const navigate = useNavigate()
+
   const [usernameError, setUsernameError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
+  const [cookie, setCookie]= useCookies(['userToken'])
+  const [signIn, { data, loading, error }] = useMutation(SIGNIN_USER,{
+    onCompleted:(data)=>{
+      setCookie('userToken',data.signInUser.token,{path:"/",maxAge:259200})
+      navigate('/glow-up-fe/dashboard')
+
+    },
+    onError:() => {
+     console.log("sign in error", error);
+    }
+  
+  })
 
   const handleClickShowPassword = () => {
     setValues({
@@ -28,7 +47,8 @@ const Login = () => {
     !values.password ? setPasswordError(true) : setPasswordError(false)
 
     if (values.username && values.password) {
-      // submitUserData()
+      signIn({variables:{username:values.username, password: values.password}})
+
     }
   }
 

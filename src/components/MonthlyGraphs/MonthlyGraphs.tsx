@@ -52,7 +52,7 @@ const options = {
 }
 
 const MonthlyGraphs = () => {
-  const [cookie, setCookie]= useCookies(['userToken'])
+  const [cookie,]= useCookies(['userToken'])
   const today = new Date()
   const monthString = today.toLocaleString("default", { month: "long" })
 

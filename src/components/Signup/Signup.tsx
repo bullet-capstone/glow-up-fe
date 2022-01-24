@@ -1,11 +1,9 @@
-import React, { ChangeEventHandler, useState } from "react"
+import React, { ChangeEventHandler, useState,} from "react"
 import './Signup.css'
 import {FormControl,OutlinedInput,InputAdornment,InputLabel,IconButton, Button,TextField,FormHelperText} from "@mui/material"
 import {Visibility,VisibilityOff} from '@mui/icons-material';
 import {SIGNUP_USER, } from "../../utils/graph_mutations"
-
-import { useQuery, useMutation } from "@apollo/client"
-import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
+import { useMutation } from "@apollo/client"
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
@@ -18,8 +16,8 @@ export default function Signup() {
     confirmPassword: "",
     showPassword: false,
   })
-  const redirectToDashboard = useNavigate()
 
+const navigate = useNavigate()
 const [usernameError, setUsernameError] = useState(false)
 const [emailError, setEmailError] = useState(false)
 const [pwError, setPwError] = useState(false)
@@ -27,26 +25,15 @@ const [matchError, setMatchError] = useState(false)
 const [cookie, setCookie]= useCookies(['userToken'])
 const [createUser, { data, loading, error }] = useMutation(SIGNUP_USER,{
   onCompleted:(data)=>{
-    
-   onCompletion(data.createUser.token)
+    setCookie('userToken',data.createUser.token,{path:"/",maxAge:259200})  // 259200 is three days in seconds
+ 
+    navigate('/glow-up-fe/dashboard')
   },
   onError:() => {
-    onError()
+    console.log('sign up error', error)
   }
 
 })
-
-const onCompletion = (token:string) => {
-  setCookie('userToken',token,{path:"/",maxAge:259200})
-  // 259200 is three days in seconds
-  redirectToDashboard('/glow-up-fe/dashboard')
-
-}
-
-const onError = () => {
-  console.log("error occurs");
-  
-}
 
 
 

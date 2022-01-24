@@ -12,7 +12,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useCookies } from "react-cookie";
 
 const Journal = () => {
-  const [cookie, setCookie]= useCookies(['userToken'])
+  const [cookie,]= useCookies(['userToken'])
   const { loading, data, error } = useQuery(QUERY_JOURNAL_ENTRIES,{variables:{
     token: cookie.userToken
     
