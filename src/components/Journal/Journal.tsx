@@ -9,9 +9,14 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useCookies } from "react-cookie";
 
 const Journal = () => {
-  const { loading, data, error } = useQuery(QUERY_JOURNAL_ENTRIES)
+  const [cookie, setCookie]= useCookies(['userToken'])
+  const { loading, data, error } = useQuery(QUERY_JOURNAL_ENTRIES,{variables:{
+    token: cookie.userToken
+    
+  }})
   const [ journalEntries, setJournalEntries ] = useState<JournalEntry[]>([])
 
   useEffect(() => {
@@ -50,7 +55,7 @@ const Journal = () => {
         <h1 className="journal-title">My Journal</h1>
         <JournalEntryForm/>
       </div>
-      { entryCards }
+      { journalEntries.length? entryCards:"No journal entries yet" }
       { loading && <h2>Loading...</h2> }
       { error && <h2>Oops, something went wrong!</h2> }
     </section>
