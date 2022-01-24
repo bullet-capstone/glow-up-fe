@@ -16,6 +16,7 @@ import {
 } from "chart.js"
 
 import { Chart } from "react-chartjs-2"
+import { useCookies } from "react-cookie";
 
 ChartJS.register(LineController, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 
@@ -51,13 +52,14 @@ const options = {
 }
 
 const MonthlyGraphs = () => {
+  const [cookie, setCookie]= useCookies(['userToken'])
   const today = new Date()
   const monthString = today.toLocaleString("default", { month: "long" })
 
   const [labels, setLabels] = useState<string[]>([])
   const [monthlyMoods, setMonthlyMoods] = useState<Mood[]>([])
 
-  const { loading, data, error } = useQuery(QUERY_MONTHLY_ENTRIES)
+  const { loading, data, error } = useQuery(QUERY_MONTHLY_ENTRIES,{variables:{token:cookie.userToken}})
 
   useEffect(() => {
     if (!loading && data) {
