@@ -89,7 +89,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   
 
   const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
-
+  // consider adding QUERY_MONTHLY_ENTRIES to store monthly moods and habits
   useEffect(() => {
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)

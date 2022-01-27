@@ -6,7 +6,7 @@ import MonthlyGraphs from "../MonthlyGraphs/MonthlyGraphs"
 import { Habit } from "../../utils/Models"
 import MoodToday from "../MoodToday/MoodToday"
 import Week from "../Week/Week"
-
+  
 const Dashboard = () => {
   const { todaysMood, todaysHabits } = useContext(AppContext)
 
