@@ -1,4 +1,4 @@
-#login-form-container {
+#login-form-container,#signup-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,6 +8,6 @@
   background-size: cover;
 }
 
-#login-btn {
+#login-btn, #signup-btn{
   margin-top: 20px;
 }

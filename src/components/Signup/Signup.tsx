@@ -1,5 +1,4 @@
 import React, { ChangeEventHandler, useState,} from "react"
-import './Signup.css'
 import {FormControl,OutlinedInput,InputAdornment,InputLabel,IconButton, Button,TextField,FormHelperText} from "@mui/material"
 import {Visibility,VisibilityOff} from '@mui/icons-material';
 import {SIGNUP_USER, } from "../../utils/graph_mutations"
