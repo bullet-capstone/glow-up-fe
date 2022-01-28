@@ -68,7 +68,8 @@ const Header = () => {
           >
             GlowUp
           </Typography>
-          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -119,7 +120,7 @@ const Header = () => {
           >
             GlowUp
           </Typography>
-          <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             
             {pages.map((page) => (
               <NavLink to={`/glow-up-fe/${page}`} key={page}>
@@ -132,7 +133,7 @@ const Header = () => {
               </NavLink>
             ))}
           </Box>
-          {cookie.userToken? <Box sx={{ flexGrow: 0 }}>
+          {cookie.userToken? <Box sx={{ flexGrow: 0 }} alignSelf='right'>
             <Tooltip title="Log out">
               <IconButton onClick={handleLogout} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
