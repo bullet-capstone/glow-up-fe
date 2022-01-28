@@ -8,23 +8,8 @@ import { BrowserRouter } from "react-router-dom"
 import { CookiesProvider } from "react-cookie";
 import { gql } from "@apollo/client"
 import { useCookies } from "react-cookie";
-import { setContext } from '@apollo/client/link/context';
 
 
-// const [cookie,]= useCookies(['userToken'])
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
-
-// const authLink = setContext((_, { headers }) => {
-//   const token = cookie.userToken;
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : ''
-//     }
-//   };
-// });
 
 const client = new ApolloClient({
   uri: "http://localhost:3001/graphql",
@@ -42,11 +27,11 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ApolloProvider client={client}>
-        <ContextProvider>
-          <CookiesProvider>
-          <App />
-          </CookiesProvider>
-        </ContextProvider>
+        <CookiesProvider>
+          <ContextProvider>
+            <App />
+          </ContextProvider>
+        </CookiesProvider>
       </ApolloProvider>
     </BrowserRouter>
   </React.StrictMode>,
