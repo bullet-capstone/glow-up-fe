@@ -34,7 +34,7 @@ const pages = ['dashboard', 'track', 'journal'];
 
 const Header = () => {
   const navigate = useNavigate()
-  const [cookie,]= useCookies(['userToken'])
+  const [cookie,setCookie]= useCookies(['userToken'])
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
  
 
@@ -50,6 +50,7 @@ const Header = () => {
     console.log('logout fires');
     // call logout mutation, remove cookie
     // redirect to login page
+    setCookie('userToken',"",{path:"/"})
     navigate('/glow-up-fe/')
     
   };
@@ -131,13 +132,13 @@ const Header = () => {
               </NavLink>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
+          {cookie.userToken? <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Log out">
               <IconButton onClick={handleLogout} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
               </Tooltip>
-          </Box>
+          </Box>: <NavLink to="/glow-up-fe/" style={{color:"white"}}>Please sign in</NavLink>}
         </Toolbar>
       </Container>
     </AppBar>
