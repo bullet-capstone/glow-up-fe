@@ -35,8 +35,18 @@ function App() {
           <Journal />
           </>
           } />
-          <Route path="glow-up-fe/signup" element={<Signup />} />
-          <Route path="glow-up-fe/login" element={<Login />} />
+          <Route path="glow-up-fe/signup" element={
+            <>
+            <Header />
+            <Signup />
+            </>
+          } />
+          <Route path="glow-up-fe/login" element={
+          <>
+          <Header />
+          <Login />
+          </>} />
+          
           <Route path="/*" element={
             <>
           <Header />

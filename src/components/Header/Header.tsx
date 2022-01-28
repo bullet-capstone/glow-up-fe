@@ -140,7 +140,8 @@ const Header = () => {
                 Log out
               </Button>
               {/* </Tooltip> */}
-          </Box></>): <NavLink to="/glow-up-fe/" style={{color:"white"}}>Please sign in</NavLink>}
+          </Box></>): <Box sx={{ position:"absolute",right:"20px" }}><NavLink to="/glow-up-fe/login" style={{color:"white"}} >Login</NavLink>
+            </Box>}
         </Toolbar>
       </Container>
     </AppBar>
