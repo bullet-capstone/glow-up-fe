@@ -50,7 +50,7 @@ const Header = () => {
     console.log('logout fires');
     // call logout mutation, remove cookie
     // redirect to login page
-    setCookie('userToken',"",{path:"/"})
+    setCookie('userToken',"",{path:"/"}) // remove?
     navigate('/glow-up-fe/')
     
   };
@@ -120,7 +120,7 @@ const Header = () => {
           >
             GlowUp
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          {cookie.userToken ? (<><Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             
             {pages.map((page) => (
               <NavLink to={`/glow-up-fe/${page}`} key={page}>
@@ -133,13 +133,14 @@ const Header = () => {
               </NavLink>
             ))}
           </Box>
-          {cookie.userToken? <Box sx={{ flexGrow: 0 }} alignSelf='right'>
-            <Tooltip title="Log out">
-              <IconButton onClick={handleLogout} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-              </Tooltip>
-          </Box>: <NavLink to="/glow-up-fe/" style={{color:"white"}}>Please sign in</NavLink>}
+           <Box sx={{ flexGrow: 0 }}>
+            {/* <Tooltip title="Log out"> */}
+              <Button onClick={handleLogout} sx={{ p: 0, color: 'white' }}> 
+                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
+                Log out
+              </Button>
+              {/* </Tooltip> */}
+          </Box></>): <NavLink to="/glow-up-fe/" style={{color:"white"}}>Please sign in</NavLink>}
         </Toolbar>
       </Container>
     </AppBar>

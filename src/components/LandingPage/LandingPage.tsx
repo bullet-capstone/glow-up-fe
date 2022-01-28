@@ -11,16 +11,16 @@ export default function LandingPage() {
       </section>
       <section className="landing-main">
         {/* <div className="landing-intro"> */}
-          <h1 className="landing-title">Landing template for starups</h1>
-          <h3 className="landing-intro">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever. </h3>
+          <h1 className="landing-title" style={{color:'#36454F'}}>GlowUp</h1>
+          <h3 className="landing-intro" style={{color:'#36454F'}} >Login or sign up to start your mindfulness journey today!</h3>
         {/* </div> */}
      
         <div className="landing-btn-container">
-          <Link to="/glow-up-fe/login">
-        <button className="login-button">LOGIN</button>
-        </Link>
           <Link to="/glow-up-fe/signup">
             <button className="signup-button">SIGN UP</button>
+          </Link>
+          <Link to="/glow-up-fe/login">
+          <button className="login-button">LOGIN</button>
           </Link>
         </div>
       </section>

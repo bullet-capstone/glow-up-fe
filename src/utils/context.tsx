@@ -85,7 +85,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     var mm = String(day.getMonth() + 1).padStart(2, "0") //January is 0!
     var yyyy = day.getFullYear()
 
-    return yyyy + "-" + mm + "-" + dd
+    return `${mm}/${dd}/${yyyy}`
   }
   
   const [cookie,]= useCookies(['userToken'])

@@ -6,6 +6,9 @@ import MonthlyGraphs from "../MonthlyGraphs/MonthlyGraphs"
 import { Habit } from "../../utils/Models"
 import MoodToday from "../MoodToday/MoodToday"
 import Week from "../Week/Week"
+import HabitGraph from '../HabitGraph/HabitGraph';
+;
+
   
 const Dashboard = () => {
   const { todaysMood, todaysHabits } = useContext(AppContext)
@@ -47,6 +50,7 @@ const Dashboard = () => {
         <Week />
       </section>
       <MonthlyGraphs />
+      <HabitGraph />
     </main>
   )
 }
