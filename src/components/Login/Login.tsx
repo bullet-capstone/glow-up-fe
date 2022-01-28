@@ -23,7 +23,6 @@ const Login = () => {
     onCompleted:(data)=>{
       setCookie('userToken',data.signInUser.token,{path:"/",maxAge:259200})
       navigate('/glow-up-fe/dashboard')
-
     },
     onError:() => {
      console.log("sign in error", error);

@@ -7,22 +7,29 @@ import { useContext } from "react"
 import HabitCard from "../HabitCard/HabitCard"
 import "../../assets/icons/habit7-uncheck.png"
 import { Habit } from "../../utils/Models"
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 const HabitForm = () => {
+  const [cookie,]= useCookies(['userToken'])
+
   const { loading, error, data } = useQuery(QUERY_HABITS)
   const { checkedHabitIds } = useContext(AppContext)
   const [createHabitEntry] = useMutation(SUBMIT_HABIT, {
     refetchQueries: [QUERY_DAILY_ENTRIES, "FetchDailyEntries"],
   })
+  const navigate = useNavigate()
 
   const createHabitEntries = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const entryParams = checkedHabitIds.map(ele => ({ id: ele }))
     if (!entryParams.length) {
       alert("No entry today? Tomorrow is another day!")
-      createHabitEntry({ variables: { idArr: entryParams } })
+      createHabitEntry({ variables: { idArr: entryParams,userToken: cookie.userToken } })
+      navigate('/glow-up-fe/dashboard')
     } else {
-      createHabitEntry({ variables: { idArr: entryParams } })
+      createHabitEntry({ variables: { idArr: entryParams, userToken: cookie.userToken } })
+      navigate('/glow-up-fe/dashboard')
     }
   }
 

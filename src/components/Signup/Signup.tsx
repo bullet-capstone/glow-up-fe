@@ -28,8 +28,9 @@ const [createUser, { data, loading, error }] = useMutation(SIGNUP_USER,{
  
     navigate('/glow-up-fe/dashboard')
   },
-  onError:() => {
-    console.log('sign up error', error)
+  // errorPolicy: 'all',
+  onError:(error) => {
+    console.log('messagea', error?.message, 'gwl error', error.graphQLErrors)
   }
 
 })

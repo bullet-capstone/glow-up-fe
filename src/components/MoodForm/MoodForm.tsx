@@ -6,8 +6,10 @@ import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries.js"
 import { AppContext } from "../../utils/context"
 import MoodToday from "../MoodToday/MoodToday"
 import Quote from "../Quote/Quote"
+import { useCookies } from "react-cookie";
 
 const MoodForm = () => {
+  const [cookie,]= useCookies(['userToken'])
   const [mood, setMood] = useState("")
   const [description, setDescription] = useState("")
   const [validateForm, setValidateForm] = useState(true)
@@ -22,7 +24,8 @@ const MoodForm = () => {
     if (!mood) {
       setValidateForm(false)
     } else {
-      createMood({ variables: { mood: parseInt(mood), description: description } })
+      createMood({ variables: { mood: parseInt(mood), description: description, userToken: cookie.userToken}, 
+        })
       setValidateForm(true)
       setMood("")
       setDescription("")

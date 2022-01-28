@@ -1,8 +1,9 @@
 import React, { createContext, useState, useEffect } from "react"
 
 import { Habit, Mood, HabitMap } from "./Models"
-import { useQuery, ApolloError } from "@apollo/client"
+import { useQuery, ApolloError, ApolloClient } from "@apollo/client"
 import { QUERY_DAILY_ENTRIES } from "../utils/graph_queries"
+import { useCookies } from "react-cookie";
 
 
 interface ContextState {
@@ -87,8 +88,9 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     return yyyy + "-" + mm + "-" + dd
   }
   
+  const [cookie,]= useCookies(['userToken'])
 
-  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
+  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES,{variables: {token: cookie.userToken}})
   // consider adding QUERY_MONTHLY_ENTRIES to store monthly moods and habits
   useEffect(() => {
     if (!loading && data) {

@@ -105,6 +105,7 @@ const Header = () => {
             GlowUp
           </Typography>
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+            {/* {userToken ? */}
             {pages.map((page) => (
               <NavLink to={`/glow-up-fe/${page}`} key={page}>
                 <Button
@@ -113,6 +114,10 @@ const Header = () => {
                 >
                   {page}
                 </Button>
+                {/* 'Logout' 
+                :
+              ['login', 'signup']
+            } */}
               </NavLink>
             ))}
           </Box>
