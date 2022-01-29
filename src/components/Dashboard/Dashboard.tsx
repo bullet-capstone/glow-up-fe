@@ -1,17 +1,38 @@
 import "./Dashboard.css"
 import { Link } from "react-router-dom"
-import { useContext } from "react"
+import { useState,useEffect } from "react"
 import { AppContext } from "../../utils/context"
 import MonthlyGraphs from "../MonthlyGraphs/MonthlyGraphs"
 import { Habit } from "../../utils/Models"
 import MoodToday from "../MoodToday/MoodToday"
 import Week from "../Week/Week"
 import HabitGraph from '../HabitGraph/HabitGraph';
+import { useQuery, ApolloError, } from "@apollo/client"
+import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
+import { useCookies } from "react-cookie";
 ;
 
   
 const Dashboard = () => {
-  const { todaysMood, todaysHabits } = useContext(AppContext)
+  // const { todaysMood, todaysHabits } = useContext(AppContext)
+  const [cookie,]= useCookies(['userToken'])
+  const [todaysMood, setTodaysMood] = useState(null);
+  const [todaysHabits, setTodaysHabits] = useState([]);
+
+  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES,{variables: {token: cookie.userToken}})
+  useEffect(() => {
+    if (!loading && data) {
+      setTodaysMood(data.fetchUser.dailyMood)
+      setTodaysHabits(data.fetchUser.dailyHabits)
+      // setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
+      console.log('query success');
+      
+    } else if (error) {
+      console.log('query error');
+      
+      // setDailyQueryError(error)
+    }
+  }, [loading, data, error])
 
   const displayHabit = () => {
     const completedHabits = todaysHabits!.map((habit: Habit) => (
@@ -34,7 +55,7 @@ const Dashboard = () => {
         </div>
       </section>
       <article className="today-container">
-        {todaysMood ? <MoodToday /> : <Link to="/glow-up-fe/track">➕ Enter your mood today!</Link>}
+        {todaysMood ? <MoodToday mt={todaysMood}/> : <Link to="/glow-up-fe/track">➕ Enter your mood today!</Link>}
         {todaysHabits.length ? (
           <div className="completed-habits-container">
             <h4>Habits I completed:</h4>

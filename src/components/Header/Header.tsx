@@ -9,8 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import Avatar from '@mui/material/Avatar';
-import Tooltip from '@mui/material/Tooltip';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { NavLink,useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
@@ -34,7 +32,7 @@ const pages = ['dashboard', 'track', 'journal'];
 
 const Header = () => {
   const navigate = useNavigate()
-  const [cookie,setCookie]= useCookies(['userToken'])
+  const [cookie,setCookie,removeCookie]= useCookies(['userToken'])
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
  
 
@@ -47,10 +45,7 @@ const Header = () => {
   };
  
   const handleLogout = () => {
-    console.log('logout fires');
-    // call logout mutation, remove cookie
-    // redirect to login page
-    setCookie('userToken',"",{path:"/"}) // remove?
+    removeCookie('userToken',{path:'/'})
     navigate('/glow-up-fe/')
     
   };

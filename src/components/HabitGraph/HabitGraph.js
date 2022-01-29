@@ -1,13 +1,9 @@
 import * as echarts from "echarts/core";
 import {
   TitleComponent,
-  TitleComponentOption,
   TooltipComponent,
-  TooltipComponentOption,
   GridComponent,
-  GridComponentOption,
   LegendComponent,
-  LegendComponentOption
 } from "echarts/components";
 import { ScatterChart, ScatterSeriesOption } from "echarts/charts";
 import { UniversalTransition } from "echarts/features";

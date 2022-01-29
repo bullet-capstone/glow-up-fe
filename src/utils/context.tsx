@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from "react"
 
 import { Habit, Mood, HabitMap } from "./Models"
-import { useQuery, ApolloError, ApolloClient } from "@apollo/client"
-import { QUERY_DAILY_ENTRIES } from "../utils/graph_queries"
+import { useQuery, ApolloError, } from "@apollo/client"
+import { QUERY_DAILY_ENTRIES, QUERY_HABITS} from "../utils/graph_queries"
 import { useCookies } from "react-cookie";
 
 
@@ -17,6 +17,7 @@ interface ContextState {
   getDayString: (count: number) => string
   habitMap: HabitMap | null
   dailyQueryError: ApolloError | null
+  habitList:Habit[]
 }
 
 const AppContext = createContext<ContextState>({
@@ -30,6 +31,7 @@ const AppContext = createContext<ContextState>({
   getDayString: () => "",
   habitMap: null,
   dailyQueryError: null,
+  habitList:[]
 
 })
 
@@ -39,6 +41,8 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   const [todaysMood, setTodaysMood] = useState<Mood | null>(null)
 
   const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
+
+  const [habitList, setHabitList] = useState([]);
 
   const [dailyQueryError, setDailyQueryError] = useState<ApolloError | null>(null)
 
@@ -90,15 +94,21 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
   
   const [cookie,]= useCookies(['userToken'])
 
-  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES,{variables: {token: cookie.userToken}})
-  // consider adding QUERY_MONTHLY_ENTRIES to store monthly moods and habits
+  // const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES,{variables: {token: cookie.userToken}})
+  const {loading, error, data } = useQuery(QUERY_HABITS)
+ 
   useEffect(() => {
     if (!loading && data) {
-      setTodaysMood(data.fetchUser.dailyMood)
-      setTodaysHabits(data.fetchUser.dailyHabits)
-      setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
+      // setTodaysMood(data.fetchUser.dailyMood)
+      // setTodaysHabits(data.fetchUser.dailyHabits)
+      // setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
+      // console.log('context query success');
+      setHabitList(data.fetchHabits)
+      
     } else if (error) {
-      setDailyQueryError(error)
+      console.log('context query error');
+      
+      // setDailyQueryError(error)
     }
   }, [loading, data, error])
 
@@ -115,6 +125,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         getDayString,
         habitMap,
         dailyQueryError,
+        habitList
       }}
     >
       {children}

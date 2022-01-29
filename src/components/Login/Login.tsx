@@ -57,7 +57,7 @@ const Login = () => {
 
   return (
     <div id="login-form-container">
-      <h2>Login form</h2>
+      {/* <h2>Login form</h2> */}
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <TextField
           id="login-input-username"

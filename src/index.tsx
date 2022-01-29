@@ -2,12 +2,10 @@ import React from "react"
 import ReactDOM from "react-dom"
 import "./index.css"
 import App from "./components/App/App"
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink} from "@apollo/client"
+import { ApolloClient, InMemoryCache, ApolloProvider,} from "@apollo/client"
 import { ContextProvider } from "./utils/context"
 import { BrowserRouter } from "react-router-dom"
 import { CookiesProvider } from "react-cookie";
-import { gql } from "@apollo/client"
-import { useCookies } from "react-cookie";
 
 
 

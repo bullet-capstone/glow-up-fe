@@ -6,10 +6,13 @@ interface HabitCardProps {
   name: string
   id: string
   checkedToday: boolean
+  updateHabits:(arr:number[]) => void
+  checkedIds:number[]
 }
 
 export default function HabitCard(props: HabitCardProps) {
-  const { checkedHabitIds, setCheckedHabitIds } = useContext(AppContext)
+  // const { checkedHabitIds, setCheckedHabitIds } = useContext(AppContext)
+  const {updateHabits, checkedIds}= props
   const [checked, setChecked] = useState(props.checkedToday)
   const [style] = useState({
     false: {
@@ -31,13 +34,13 @@ export default function HabitCard(props: HabitCardProps) {
     switch (checked) {
       case false:
         setChecked(true)
-        setCheckedHabitIds([...checkedHabitIds, parseInt(e.currentTarget.id)])
+        updateHabits([...checkedIds, parseInt(e.currentTarget.id)])
         break
 
       case true:
         setChecked(false)
-        let filtered = checkedHabitIds.filter(ele => ele !== parseInt(e.currentTarget.id))
-        setCheckedHabitIds(filtered)
+        let filtered = checkedIds.filter(ele => ele !== parseInt(e.currentTarget.id))
+        updateHabits(filtered)
         break
       default:
         break
