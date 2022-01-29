@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useState,useEffect} from "react"
+import React, { ChangeEventHandler, useState} from "react"
 import {FormControl,OutlinedInput,InputAdornment,InputLabel,IconButton, Button,TextField,FormHelperText} from "@mui/material"
 import {Visibility,VisibilityOff} from '@mui/icons-material';
 import {SIGNUP_USER, } from "../../utils/graph_mutations"
@@ -21,15 +21,15 @@ const [usernameError, setUsernameError] = useState(false)
 const [emailError, setEmailError] = useState(false)
 const [pwError, setPwError] = useState(false)
 const [matchError, setMatchError] = useState(false)
-const [cookie, setCookie,removeCookie]= useCookies(['userToken'])
-const [createUser, { data, loading, error }] = useMutation(SIGNUP_USER,{
-  onCompleted:(data)=>{
+const [, setCookie,]= useCookies(['userToken'])
+const [createUser, { data,error }] = useMutation(SIGNUP_USER,{
+  onCompleted:()=>{
     setCookie('userToken',data.createUser.token,{path:"/",maxAge:259200}) 
      // 259200 is three days in seconds
     navigate('/glow-up-fe/dashboard')
   },
-  onError:(error) => {
-    console.log('messagea', error?.message, 'gwl error', error.graphQLErrors)
+  onError:() => {
+    console.log('messagea', error?.message, 'gwl error', error?.graphQLErrors)
   }
 
 })

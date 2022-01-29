@@ -1,9 +1,8 @@
 import React, { createContext, useState, useEffect } from "react"
 
 import { Habit, Mood, HabitMap } from "./Models"
-import { useQuery, ApolloError, } from "@apollo/client"
-import { QUERY_DAILY_ENTRIES, QUERY_HABITS} from "../utils/graph_queries"
-import { useCookies } from "react-cookie";
+import { useQuery,} from "@apollo/client"
+import { QUERY_HABITS} from "../utils/graph_queries"
 
 
 interface ContextState {
@@ -16,7 +15,6 @@ interface ContextState {
   displayMood: (mood: number) => string
   getDayString: (count: number) => string
   habitMap: HabitMap | null
-  dailyQueryError: ApolloError | null
   habitList:Habit[]
 }
 
@@ -30,7 +28,6 @@ const AppContext = createContext<ContextState>({
   displayMood: () => "",
   getDayString: () => "",
   habitMap: null,
-  dailyQueryError: null,
   habitList:[]
 
 })
@@ -44,7 +41,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const [habitList, setHabitList] = useState([]);
 
-  const [dailyQueryError, setDailyQueryError] = useState<ApolloError | null>(null)
+
 
   const [habitMap] = useState({
     1: "Exercise",
@@ -92,23 +89,16 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     return `${mm}/${dd}/${yyyy}`
   }
   
-  const [cookie,]= useCookies(['userToken'])
 
-  // const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES,{variables: {token: cookie.userToken}})
   const {loading, error, data } = useQuery(QUERY_HABITS)
  
   useEffect(() => {
     if (!loading && data) {
-      // setTodaysMood(data.fetchUser.dailyMood)
-      // setTodaysHabits(data.fetchUser.dailyHabits)
-      // setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
-      // console.log('context query success');
       setHabitList(data.fetchHabits)
       
     } else if (error) {
       console.log('context query error');
       
-      // setDailyQueryError(error)
     }
   }, [loading, data, error])
 
@@ -124,7 +114,6 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         displayMood,
         getDayString,
         habitMap,
-        dailyQueryError,
         habitList
       }}
     >

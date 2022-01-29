@@ -1,6 +1,5 @@
 import "./HabitCard.css"
-import { useState, useContext, useEffect } from "react"
-import { AppContext } from "../../utils/context"
+import { useState,useEffect } from "react"
 
 interface HabitCardProps {
   name: string

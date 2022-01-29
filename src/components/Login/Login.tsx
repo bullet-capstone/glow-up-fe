@@ -18,9 +18,9 @@ const Login = () => {
 
   const [usernameError, setUsernameError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
-  const [cookie, setCookie]= useCookies(['userToken'])
-  const [signIn, { data, loading, error }] = useMutation(SIGNIN_USER,{
-    onCompleted:(data)=>{
+  const [, setCookie]= useCookies(['userToken'])
+  const [signIn, { data, error }] = useMutation(SIGNIN_USER,{
+    onCompleted:()=>{
       setCookie('userToken',data.signInUser.token,{path:"/",maxAge:259200})
       navigate('/glow-up-fe/dashboard')
     },

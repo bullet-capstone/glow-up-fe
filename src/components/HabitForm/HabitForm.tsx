@@ -1,6 +1,6 @@
 import "./HabitForm.css"
 import { AppContext } from "../../utils/context"
-import { QUERY_HABITS, QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
+import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { SUBMIT_HABIT } from "../../utils/graph_mutations"
 import { useQuery, useMutation } from "@apollo/client"
 import { useContext,useState,useEffect } from "react"

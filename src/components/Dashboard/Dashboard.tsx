@@ -1,13 +1,12 @@
 import "./Dashboard.css"
 import { Link } from "react-router-dom"
 import { useState,useEffect } from "react"
-import { AppContext } from "../../utils/context"
 import MonthlyGraphs from "../MonthlyGraphs/MonthlyGraphs"
 import { Habit } from "../../utils/Models"
 import MoodToday from "../MoodToday/MoodToday"
 import Week from "../Week/Week"
 import HabitGraph from '../HabitGraph/HabitGraph';
-import { useQuery, ApolloError, } from "@apollo/client"
+import { useQuery, } from "@apollo/client"
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries"
 import { useCookies } from "react-cookie";
 ;
@@ -25,8 +24,8 @@ const Dashboard = () => {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
     } else if (error) {
-      console.log('query error');
-      
+      console.log('query error',error);
+           
     }
   }, [loading, data, error])
 
@@ -41,6 +40,9 @@ const Dashboard = () => {
     return completedHabits
   }
 
+  if(error){
+    return <h1>{error.message}</h1>
+  }
   return (
     <main>
       <section className="dashboard-container">

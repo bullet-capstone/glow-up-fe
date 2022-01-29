@@ -5,7 +5,7 @@ import {
   GridComponent,
   LegendComponent,
 } from "echarts/components";
-import { ScatterChart, ScatterSeriesOption } from "echarts/charts";
+import { ScatterChart,} from "echarts/charts";
 import { UniversalTransition } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
 import { useEffect, useRef } from "react";

@@ -1,13 +1,12 @@
 import "./MoodForm.css"
-import { useState, useContext,useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useMutation } from "@apollo/client"
 import { SUBMIT_MOOD } from "../../utils/graph_mutations"
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries.js"
-import { AppContext } from "../../utils/context"
 import MoodToday from "../MoodToday/MoodToday"
 import Quote from "../Quote/Quote"
 import { useCookies } from "react-cookie";
-import { useQuery, ApolloError, } from "@apollo/client"
+import { useQuery, } from "@apollo/client"
 import { Mood } from "../../utils/Models"
 
 

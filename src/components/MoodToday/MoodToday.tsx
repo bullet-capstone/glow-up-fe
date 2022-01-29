@@ -9,7 +9,7 @@ interface MoodTodayProps {
 }
 
 export default function MoodToday(props:MoodTodayProps) {
-  const { todaysMood, displayMood, getDayString } = useContext(AppContext)
+  const {displayMood, getDayString } = useContext(AppContext)
   const date = getDayString(0)
   return (
     <div className="today-mood-container">

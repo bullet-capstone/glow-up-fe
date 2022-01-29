@@ -32,7 +32,7 @@ const pages = ['dashboard', 'track', 'journal'];
 
 const Header = () => {
   const navigate = useNavigate()
-  const [cookie,setCookie,removeCookie]= useCookies(['userToken'])
+  const [cookie,,removeCookie]= useCookies(['userToken'])
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
  
 
