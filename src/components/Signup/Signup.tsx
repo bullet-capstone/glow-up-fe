@@ -21,15 +21,15 @@ const [usernameError, setUsernameError] = useState(false)
 const [emailError, setEmailError] = useState(false)
 const [pwError, setPwError] = useState(false)
 const [matchError, setMatchError] = useState(false)
-const [, setCookie,]= useCookies(['userToken'])
+const [cookie, setCookie,]= useCookies(['userToken'])
 const [createUser, { data,error }] = useMutation(SIGNUP_USER,{
-  onCompleted:()=>{
+  onCompleted:(data)=>{
     setCookie('userToken',data.createUser.token,{path:"/",maxAge:259200}) 
      // 259200 is three days in seconds
     navigate('/glow-up-fe/dashboard')
   },
-  onError:() => {
-    console.log('messagea', error?.message, 'gwl error', error?.graphQLErrors)
+  onError:(error) => {
+    console.log('sign up error', error,'message',error.message, 'gql error', error.graphQLErrors)
   }
 
 })
@@ -69,8 +69,7 @@ const [createUser, { data,error }] = useMutation(SIGNUP_USER,{
   
   return (
     <div id='signup-form-container'>
-      {/* <h2>Sign up form</h2> */}
-      {error?.graphQLErrors}
+      {error && <h2 style={{marginBottom:'20px'}}>Please verify input and try again</h2>}
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <TextField
           id="signup-input-username"

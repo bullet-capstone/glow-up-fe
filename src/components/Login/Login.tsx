@@ -18,13 +18,13 @@ const Login = () => {
 
   const [usernameError, setUsernameError] = useState(false)
   const [passwordError, setPasswordError] = useState(false)
-  const [, setCookie]= useCookies(['userToken'])
-  const [signIn, { data, error }] = useMutation(SIGNIN_USER,{
-    onCompleted:()=>{
+  const [cookie, setCookie]= useCookies(['userToken'])
+  const [signIn, { data, loading,error }] = useMutation(SIGNIN_USER,{
+    onCompleted:(data)=>{
       setCookie('userToken',data.signInUser.token,{path:"/",maxAge:259200})
       navigate('/glow-up-fe/dashboard')
     },
-    onError:() => {
+    onError:(error) => {
      console.log("sign in error", error);
     }
   
@@ -57,7 +57,7 @@ const Login = () => {
 
   return (
     <div id="login-form-container">
-      {/* <h2>Login form</h2> */}
+       {error && <h2 style={{marginBottom:'20px'}}>Please verify input and try again</h2>}
       <FormControl sx={{ m: 1, width: "25ch" }}>
         <TextField
           id="login-input-username"
