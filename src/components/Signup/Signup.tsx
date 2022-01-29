@@ -34,15 +34,6 @@ const [createUser, { data, loading, error }] = useMutation(SIGNUP_USER,{
 
 })
 
-useEffect(() => {
-  console.log('cookie before', cookie.userToken);
-  
-  removeCookie('userToken',{path:"/"})
-});
-
-
-
-
   const handleChange = (prop:string):ChangeEventHandler<HTMLInputElement> => (event:React.FormEvent<HTMLInputElement>) => {
     setValues({ ...values, [prop]: event.currentTarget.value })
   }

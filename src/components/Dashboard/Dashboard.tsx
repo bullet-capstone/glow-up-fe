@@ -24,13 +24,9 @@ const Dashboard = () => {
     if (!loading && data) {
       setTodaysMood(data.fetchUser.dailyMood)
       setTodaysHabits(data.fetchUser.dailyHabits)
-      // setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
-      console.log('query success');
-      
     } else if (error) {
       console.log('query error');
       
-      // setDailyQueryError(error)
     }
   }, [loading, data, error])
 
