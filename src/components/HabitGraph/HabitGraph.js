@@ -172,7 +172,10 @@ const Graph = () => {
       formatter: function (params) {
         const habitsOnThatDay = monthlyHabits[params.value[0]].reduce((acc,ele)=>{
           acc.push(ele.habitId)
-          return acc},[]).map(id => habitMap[id]).toString()
+          return acc},[])
+        .map(id => habitMap[id])
+        .toString()
+
         return (
           "You completed "+
           params.value[2] +
@@ -195,11 +198,20 @@ const Graph = () => {
       data: dates,
       boundaryGap: true,
       splitLine: {
-        show: true
+        show: true,
+        interval:0
       },
       axisLine: {
-        show: false
-      }
+        show: true
+      },
+      axisTick:{
+        interval:0
+      },
+      axisLabel:{
+        fontSize:10,
+        interval:0
+      },
+    
     },
     yAxis: {
       type: "category",
@@ -235,7 +247,7 @@ const Graph = () => {
 
   return (
     <>
-      <div style={{ width: "900px",height:"400px" }} ref={chartRef} />
+      <div style={{ width: "1000px",height:"400px" }} ref={chartRef} />
     </>
   );
 };
