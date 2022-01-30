@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client"
 
 export const QUERY_USER = gql`
-  query fetchUser {
-    fetchUser {
+  query fetchUser($token:String!) {
+    fetchUser(token:$token) {
       id
       username
     }
@@ -17,9 +17,9 @@ export const QUERY_HABITS = gql`
   }
 `
 export const QUERY_DAILY_ENTRIES = gql`
-  query FetchDailyEntries {
-    fetchUser {
-      id
+  query FetchDailyEntries($token:String!) {
+    fetchUser(token: $token) {
+      
       dailyMood {
         id
         mood
@@ -34,8 +34,8 @@ export const QUERY_DAILY_ENTRIES = gql`
   }
 `
 export const QUERY_WEEKLY_ENTRIES = gql`
-  query fetchWeeklyEntries {
-    fetchUser {
+  query fetchWeeklyEntries($token:String!) {
+    fetchUser(token:$token) {
       weeklyHabits {
         habitId
         date
@@ -50,21 +50,25 @@ export const QUERY_WEEKLY_ENTRIES = gql`
 `
 
 export const QUERY_MONTHLY_ENTRIES = gql`
-  query fetchMonthlyEntries {
-    fetchUser {
-      id
+  query fetchMonthlyEntries($token:String!) {
+    fetchUser(token:$token) {
       monthlyMoods {
         id
-        createdAt
         mood
+        createdAt
+      }
+      monthlyHabits {
+        id
+        habitId
+        date
       }
     }
   }
 `
 
 export const QUERY_JOURNAL_ENTRIES = gql`
-  query fetchJournalEntries {
-    fetchUser {
+  query fetchJournalEntries($token:String!) {
+    fetchUser(token:$token) {
       id
       journalEntries {
         id

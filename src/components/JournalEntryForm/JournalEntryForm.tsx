@@ -7,6 +7,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import { useCookies } from "react-cookie";
+
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -24,6 +26,8 @@ const style = {
 
 
 const JournalEntryForm = () => {
+  const [cookie,]= useCookies(['userToken'])
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -42,7 +46,7 @@ const JournalEntryForm = () => {
     if (!content) {
       setValidateForm(false)
     } else {
-      createJournalEntry({ variables: { content: content } })
+      createJournalEntry({ variables: { content: content,userToken: cookie.userToken } })
       setValidateForm(true)
       setContent("")
       handleClose()
@@ -54,7 +58,8 @@ const JournalEntryForm = () => {
       <Button
         style={{
           color: "white",
-          backgroundColor: "rgba(220, 79, 61, 0.8)"
+          backgroundColor: "rgba(220, 79, 61, 0.8)",
+          marginTop: "-20%"
         }}
         onClick={handleOpen}
       >

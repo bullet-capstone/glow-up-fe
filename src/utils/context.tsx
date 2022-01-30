@@ -1,8 +1,9 @@
 import React, { createContext, useState, useEffect } from "react"
 
 import { Habit, Mood, HabitMap } from "./Models"
-import { useQuery, ApolloError } from "@apollo/client"
-import { QUERY_DAILY_ENTRIES } from "../utils/graph_queries"
+import { useQuery,} from "@apollo/client"
+import { QUERY_HABITS} from "../utils/graph_queries"
+
 
 interface ContextState {
   checkedHabitIds: number[]
@@ -14,7 +15,7 @@ interface ContextState {
   displayMood: (mood: number) => string
   getDayString: (count: number) => string
   habitMap: HabitMap | null
-  dailyQueryError: ApolloError | null
+  habitList:Habit[]
 }
 
 const AppContext = createContext<ContextState>({
@@ -27,7 +28,8 @@ const AppContext = createContext<ContextState>({
   displayMood: () => "",
   getDayString: () => "",
   habitMap: null,
-  dailyQueryError: null,
+  habitList:[]
+
 })
 
 const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
@@ -37,7 +39,9 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const [todaysHabits, setTodaysHabits] = useState<Habit[]>([])
 
-  const [dailyQueryError, setDailyQueryError] = useState<ApolloError | null>(null)
+  const [habitList, setHabitList] = useState([]);
+
+
 
   const [habitMap] = useState({
     1: "Exercise",
@@ -82,18 +86,19 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
     var mm = String(day.getMonth() + 1).padStart(2, "0") //January is 0!
     var yyyy = day.getFullYear()
 
-    return yyyy + "-" + mm + "-" + dd
+    return `${mm}/${dd}/${yyyy}`
   }
+  
 
-  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES)
-
+  const {loading, error, data } = useQuery(QUERY_HABITS)
+ 
   useEffect(() => {
     if (!loading && data) {
-      setTodaysMood(data.fetchUser.dailyMood)
-      setTodaysHabits(data.fetchUser.dailyHabits)
-      setCheckedHabitIds(data.fetchUser.dailyHabits.map((ele: Habit) => parseInt(ele.id)))
+      setHabitList(data.fetchHabits)
+      
     } else if (error) {
-      setDailyQueryError(error)
+      console.log('context query error');
+      
     }
   }, [loading, data, error])
 
@@ -109,7 +114,7 @@ const ContextProvider = ({ children }: React.PropsWithChildren<{}>) => {
         displayMood,
         getDayString,
         habitMap,
-        dailyQueryError,
+        habitList
       }}
     >
       {children}

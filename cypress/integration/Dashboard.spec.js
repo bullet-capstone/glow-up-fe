@@ -1,6 +1,6 @@
 import { aliasQuery } from "../utils/graphql-test-utils"
 
-describe("Dashboard Daily and Weekly Entries", () => {
+describe.skip("Dashboard Daily and Weekly Entries", () => {
   beforeEach(() => {
     cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => aliasQuery(req, "FetchDailyEntries"))
 
@@ -28,7 +28,7 @@ describe("Dashboard Daily and Weekly Entries", () => {
       .contains("Mood 29")
   })
 
-  it.skip("should display the habit entries for that day", () => {
+  it("should display the habit entries for that day", () => {
     cy.get("h4")
       .contains("Habits I completed:")
       .get(".completed-habit")
@@ -40,7 +40,7 @@ describe("Dashboard Daily and Weekly Entries", () => {
   })
 })
 
-describe("Dashboard Weekly Entries", () => {
+describe.skip("Dashboard Weekly Entries", () => {
   beforeEach(() => {
     cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       aliasQuery(req, "fetchWeeklyEntries")
@@ -80,7 +80,7 @@ describe("Dashboard Weekly Entries", () => {
   })
 })
 
-describe("Dashboard Monthly Mood Graph", () => {
+describe.skip("Dashboard Monthly Mood Graph", () => {
   beforeEach(() => {
     cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => aliasQuery(req, "fetchMonthlyEntries"))
 

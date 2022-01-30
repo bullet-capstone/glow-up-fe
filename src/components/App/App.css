@@ -1,15 +1,8 @@
 .App {
   text-align: center;
+  /* border: 1px solid red; */
+  height: 100%;
+  
 }
 
-a {
-  text-decoration: none;
-  color: black;
-  margin: 1rem;
-  font-weight: bold;
-  border-bottom: 3px solid transparent;
-}
 
-.active {
-  border-bottom: 3px solid white;
-}

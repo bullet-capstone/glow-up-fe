@@ -4,7 +4,7 @@ import { QUERY_WEEKLY_ENTRIES } from "../../utils/graph_queries"
 import { HabitEntry, Mood } from "../../utils/Models"
 import WeeklyCard from "../WeeklyCard/WeeklyCard"
 import { AppContext } from "../../utils/context"
-
+import { useCookies } from "react-cookie";
 import "./Week.css"
 
 interface WeeklyStats {
@@ -17,12 +17,19 @@ interface DayStat {
 }
 
 export default function Week() {
-  const { loading, error, data } = useQuery(QUERY_WEEKLY_ENTRIES)
+  const [cookie,]= useCookies(['userToken'])
+  const {loading, error, data }= useQuery(QUERY_WEEKLY_ENTRIES,{variables:{
+    token: cookie.userToken
+   },
+  fetchPolicy:'no-cache'})
   const [weeklyStats, setWeeklyStats] = useState<WeeklyStats>({})
   const { getDayString } = useContext(AppContext)
 
 
+
   useEffect(() => {
+    
+    
     if (!loading && data) {
       let stats: WeeklyStats = {}
       for (let i = 1; i <= 7; i++) {
@@ -31,7 +38,8 @@ export default function Week() {
           habits: []
         }
       }
-
+      // console.log('stats', stats);
+      
       const last7Days = Object.keys(stats)
 
       last7Days.forEach(day => {

@@ -1,0 +1,71 @@
+.landing-view {
+  /* background: #fde7d8; */
+  background-image: url('https://images.unsplash.com/photo-1523742238290-adf3b54101bf?crop=entropy&cs=srgb&fm=jpg&ixid=MnwyNzQ2MTB8MHwxfGFsbHx8fHx8fHx8fDE2NDI5NTkyNTA&ixlib=rb-1.2.1&q=85');
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+}
+
+
+
+.landing-header {
+  display: flex;
+  flex-direction: row;
+  padding: 0 25px;
+  /* border: 1px solid blue; */
+}
+
+#logo-img {
+  width: 64px;
+  height: 64px;
+}
+
+.landing-main {
+  height: 70%;
+  width: 40%;
+  /* border: 1px solid green; */
+  display: flex;
+  flex-direction: column;
+  
+  /* justify-content: space-between; */
+  padding: 20px 0 20px 25px;
+}
+
+.landing-title {
+  margin-top:30%;
+  font-size: 48px;
+  text-align: left;
+}
+
+.landing-intro,.landing-btn-container {
+  margin-top:10%;
+  text-align:left;
+}
+
+.landing-btn-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap:10px
+}
+
+.login-button,
+.signup-button {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  background-color: #658C9B;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  padding: 16px 32px;
+  height: 48px;
+  width: 170px;
+  text-align: center;
+
+}
+
+.signup-button {
+  background-color: #127182;
+}

@@ -1,20 +1,36 @@
 import "./MoodForm.css"
-import { useState, useContext } from "react"
+import { useState, useEffect } from "react"
 import { useMutation } from "@apollo/client"
 import { SUBMIT_MOOD } from "../../utils/graph_mutations"
 import { QUERY_DAILY_ENTRIES } from "../../utils/graph_queries.js"
-import { AppContext } from "../../utils/context"
 import MoodToday from "../MoodToday/MoodToday"
 import Quote from "../Quote/Quote"
+import { useCookies } from "react-cookie";
+import { useQuery, } from "@apollo/client"
+import { Mood } from "../../utils/Models"
+
+
 
 const MoodForm = () => {
+  const [cookie,]= useCookies(['userToken'])
   const [mood, setMood] = useState("")
   const [description, setDescription] = useState("")
   const [validateForm, setValidateForm] = useState(true)
   const [createMood] = useMutation(SUBMIT_MOOD, {
     refetchQueries: [QUERY_DAILY_ENTRIES, "FetchDailyEntries"],
   })
-  const { todaysMood } = useContext(AppContext)
+  // const { todaysMood } = useContext(AppContext)
+  const { loading, error, data } = useQuery(QUERY_DAILY_ENTRIES,{variables: {token: cookie.userToken}})
+  useEffect(() => {
+    if (!loading && data) {
+      setTodaysMood(data.fetchUser.dailyMood)
+         
+    } else if (error) {
+      console.log('query error');
+      
+    }
+  }, [loading, data, error])
+  const [todaysMood, setTodaysMood] = useState<Mood | null>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -22,7 +38,8 @@ const MoodForm = () => {
     if (!mood) {
       setValidateForm(false)
     } else {
-      createMood({ variables: { mood: parseInt(mood), description: description } })
+      createMood({ variables: { mood: parseInt(mood), description: description, userToken: cookie.userToken}, 
+        })
       setValidateForm(true)
       setMood("")
       setDescription("")
@@ -33,7 +50,7 @@ const MoodForm = () => {
     <section className="mood-form-container">
       {todaysMood ? (
         <>
-          <MoodToday />
+          <MoodToday  mt={todaysMood}/>
           {todaysMood!.mood <= 2 ? <Quote /> : null}
         </>
       ) : (

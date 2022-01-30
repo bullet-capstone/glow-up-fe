@@ -20,7 +20,9 @@
 
 .journal-title,
 .page-title {
-  margin: 5rem;
+  font-size: 40px;
+  margin: 2rem;
+  margin-top: 3rem;
   position: relative;
 }
 
@@ -28,7 +30,7 @@
   position: relative;
   font-weight: bold;
   background: rgba(255,255,255, 0.50);
-  padding: 0 0.25rem;
+  padding: 0 0.3rem;
 }
 
 .author {
@@ -47,6 +49,7 @@
 }
 
 .completed-habits {
+  font-size: 18px;
   gap: 10px;
   flex-wrap: wrap;
   width: 50vw;
@@ -60,8 +63,22 @@
 
 .week-container {
   background: #e6eaee;
-  min-height: 80vh;
+  /*min-height: 80vh;*/
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  /*justify-content: space-evenly;*/
+}
+
+.week-title {
+  font-size: 30px;
+  margin: 20px 0;
+}
+
+.dashboard-link {
+  font-size: 25px;
+}
+
+.page-habits {
+  font-size: 30px;
 }
