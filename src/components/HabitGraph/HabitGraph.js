@@ -24,21 +24,6 @@ echarts.use([
   CanvasRenderer,
   UniversalTransition
 ]);
-// const cache = new InMemoryCache ({
-//   typePolicies:{
-//     User{
-//       monthlyMoods
-//     }
-//   }
-// })
-
-// type EChartsOption = echarts.ComposeOption<
-//   | TitleComponentOption
-//   | TooltipComponentOption
-//   | GridComponentOption
-//   | LegendComponentOption
-//   | ScatterSeriesOption
-// >;
 
 const Graph = () => {
   const chartRef = useRef();
@@ -46,8 +31,6 @@ const Graph = () => {
 
   const [monthlyMoods, setMonthlyMoods] = useState([]);
   const [monthlyHabits, setMonthlyHabits] = useState([]);
-  // const [options, setOptions] = useState({});
-  // const [entries, setEntries] = useState([]);
   const {habitMap} = useContext(AppContext)
 
 
@@ -93,10 +76,8 @@ const Graph = () => {
         tempEntries.push([ i, tempMonthlyMoods[i],compHabits.length])
       }
 
-      // setDates([...tempDates])
       setMonthlyHabits([...tempCompletedHabits])
       setMonthlyMoods([...tempMonthlyMoods])
-      // setEntries([...tempEntries])
 
       const tempOptions = createGraph(tempDates, tempEntries)
       renderChart(tempOptions)
@@ -104,45 +85,6 @@ const Graph = () => {
 
   useEffect(() => {
     if (!loading && data){
-      // const tempMonthlyDates = []
-      // const tempMonthlyMoods = []
-      // const tempCompletedHabits = []
-      // const tempEntries = []
-
-      // const userInfo = data.fetchUser
-
-      // userInfo.monthlyMoods.slice()
-      //   .sort((a, b) => {
-      //     return parseInt(a.createdAt.slice(3, 5)) - parseInt(b.createdAt.slice(3, 5))
-      //   })
-      //   .forEach((mood) => {
-      //     tempMonthlyDates.push(mood.createdAt.slice(0,5))
-
-      //     if (mood.mood) {
-      //       tempMonthlyMoods.push(mood.mood)
-      //     } else {
-      //       tempMonthlyMoods.push(5)
-      //     }
-      //   }
-      // )
-
-      // tempMonthlyDates.forEach((date)=>{
-      //     const habitsByDay = userInfo.monthlyHabits.slice().filter(habit => habit.date.slice(0, 5) == date)
-
-      //     tempCompletedHabits.push(habitsByDay)
-      //   })
-    
-      // for (let i = 0; i < tempMonthlyDates.length; i++) {
-      //   const compHabits = tempCompletedHabits[i]
-      //   tempEntries.push([tempMonthlyMoods[i], i, compHabits.length])
-      // }
-
-      // setDates([...tempMonthlyDates])
-      // setMonthlyHabits([...tempCompletedHabits])
-      // setMonthlyMoods([...tempMonthlyMoods])
-      // setEntries([...tempEntries])
-
-      // const options = createGraph()
     }
     
     return () => {
