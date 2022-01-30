@@ -106,9 +106,8 @@ const Graph = () => {
           .toString()
 
           return (
-            "You completed "+
             params.value[2] +
-            " habits on " +
+            " habits completed on " +
             dates[params.value[0]] +
             ": "+
             habitsOnThatDay
