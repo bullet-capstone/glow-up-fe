@@ -93,16 +93,10 @@ const Graph = () => {
         tempEntries.push([ i, tempMonthlyMoods[i],compHabits.length])
       }
 
-      console.log('tempDates',tempDates);
-      console.log("tempMonthlyMoods",tempMonthlyMoods);
-      console.log("tempCompletedHabits",tempCompletedHabits);
-      console.log("tempEntries",tempEntries);
-
       // setDates([...tempDates])
       setMonthlyHabits([...tempCompletedHabits])
       setMonthlyMoods([...tempMonthlyMoods])
       // setEntries([...tempEntries])
-      console.log('im on complete');
 
       const tempOptions = createGraph(tempDates, tempEntries)
       renderChart(tempOptions)
@@ -143,16 +137,10 @@ const Graph = () => {
       //   tempEntries.push([tempMonthlyMoods[i], i, compHabits.length])
       // }
 
-      // console.log('tempMonthlyDates',tempMonthlyDates);
-      // console.log("tempCompletedHabits",tempCompletedHabits);
-      // console.log("tempMonthlyMoods",tempMonthlyMoods);
-      // console.log("tempEntries",tempEntries);
-
       // setDates([...tempMonthlyDates])
       // setMonthlyHabits([...tempCompletedHabits])
       // setMonthlyMoods([...tempMonthlyMoods])
       // setEntries([...tempEntries])
-      console.log('im use effect');
 
       // const options = createGraph()
     }
@@ -243,7 +231,6 @@ const Graph = () => {
   }
 
   const renderChart = (options) => {
-    console.log(options)
     const chart = echarts.getInstanceByDom(chartRef.current);
     if (chart) {
       myChart = chart;
@@ -252,7 +239,6 @@ const Graph = () => {
     }
     myChart.setOption(options);
   };
-  console.log(options)
   return (
     <>
       <div style={{ width: "1000px",height:"400px" }} ref={chartRef} />
