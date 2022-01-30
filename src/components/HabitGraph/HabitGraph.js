@@ -33,9 +33,7 @@ const Graph = () => {
   const [monthlyHabits, setMonthlyHabits] = useState([]);
   const {habitMap} = useContext(AppContext)
 
-
-
-  const moodEmojis = ["😭", "🙁", "😐", "🙂", "😁", "No Mood"]
+  const moodEmojis = ["❓", "😭", "🙁", "😐", "🙂", "😁"]
 
   const {habitList} = useContext(AppContext)
   const habitNames = habitList.map(habit => habit.name)
@@ -58,10 +56,10 @@ const Graph = () => {
         })
         .forEach((mood) => {
           tempDates.push(mood.createdAt.slice(0,5))
-          if (mood.mood) {
-            tempMonthlyMoods.push(mood.mood)
+          if (mood.mood == 0 || mood.mood) {
+            tempMonthlyMoods.push(mood.mood + 1)
           } else {
-            tempMonthlyMoods.push(5)
+            tempMonthlyMoods.push(0)
           }
         })
 
@@ -79,26 +77,23 @@ const Graph = () => {
       setMonthlyHabits([...tempCompletedHabits])
       setMonthlyMoods([...tempMonthlyMoods])
 
-      const tempOptions = createGraph(tempDates, tempEntries)
+      const tempOptions = createGraph(tempDates, tempEntries, tempCompletedHabits)
       renderChart(tempOptions)
   }})
 
   useEffect(() => {
-    if (!loading && data){
-    }
-    
     return () => {
       myChart && myChart.dispose();
     };
   }, [loading, data])
 
-  const createGraph = (dates, entries) => {
+  const createGraph = (dates, entries, monthlyHabits) => {
     const options = {
       title: {
         text: "Monthly Habits"
       },
       legend: {
-        data: ["Punch Card"],
+        data: ["Mood and Habits Completed"],
         left: "right"
       },
       tooltip: {
@@ -107,7 +102,7 @@ const Graph = () => {
           const habitsOnThatDay = monthlyHabits[params.value[0]].reduce((acc,ele)=>{
             acc.push(ele.habitId)
             return acc},[])
-          .map(id => habitMap[id])
+          .map(id => ' ' + habitMap[id])
           .toString()
 
           return (
@@ -145,6 +140,7 @@ const Graph = () => {
           fontSize:10,
           interval:0
         },
+        scale: true
       
       },
       yAxis: {
@@ -156,10 +152,10 @@ const Graph = () => {
       },
       series: [
         {
-          name: "Punch Card",
+          name: "Mood and Habits Completed",
           type: "scatter",
           symbolSize: function (val) {
-            return val[2] * 3;
+            return ( val[2] == 0 ? 8 : 10 + val[2] * 3);
           },
           data: entries,
           animationDelay: function (idx) {
@@ -169,7 +165,6 @@ const Graph = () => {
       ]
     };
     return (options)
-    // renderChart();
   }
 
   const renderChart = (options) => {
@@ -183,7 +178,7 @@ const Graph = () => {
   };
   return (
     <>
-      <div style={{ width: "1000px",height:"400px" }} ref={chartRef} />
+      <div style={{ width: "100%",height:"50vh", paddingLeft: "20px" }} ref={chartRef} />
     </>
   );
 };
