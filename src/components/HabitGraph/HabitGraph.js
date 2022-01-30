@@ -46,8 +46,8 @@ const Graph = () => {
 
   const [monthlyMoods, setMonthlyMoods] = useState([]);
   const [monthlyHabits, setMonthlyHabits] = useState([]);
-  const [dates, setDates] = useState([]);
-  const [entries, setEntries] = useState([]);
+  // const [options, setOptions] = useState({});
+  // const [entries, setEntries] = useState([]);
   const {habitMap} = useContext(AppContext)
 
 
@@ -98,12 +98,14 @@ const Graph = () => {
       console.log("tempCompletedHabits",tempCompletedHabits);
       console.log("tempEntries",tempEntries);
 
-      setDates([...tempDates])
+      // setDates([...tempDates])
       setMonthlyHabits([...tempCompletedHabits])
       setMonthlyMoods([...tempMonthlyMoods])
-      setEntries([...tempEntries])
+      // setEntries([...tempEntries])
       console.log('im on complete');
 
+      const tempOptions = createGraph(tempDates, tempEntries)
+      renderChart(tempOptions)
   }})
 
   useEffect(() => {
@@ -151,91 +153,97 @@ const Graph = () => {
       // setMonthlyMoods([...tempMonthlyMoods])
       // setEntries([...tempEntries])
       console.log('im use effect');
-      renderChart();
+
+      // const options = createGraph()
     }
+    
     return () => {
       myChart && myChart.dispose();
     };
   }, [loading, data])
 
+  const createGraph = (dates, entries) => {
+    const options = {
+      title: {
+        text: "Monthly Habits"
+      },
+      legend: {
+        data: ["Punch Card"],
+        left: "right"
+      },
+      tooltip: {
+        position: "top",
+        formatter: function (params) {
+          const habitsOnThatDay = monthlyHabits[params.value[0]].reduce((acc,ele)=>{
+            acc.push(ele.habitId)
+            return acc},[])
+          .map(id => habitMap[id])
+          .toString()
 
-  const options = {
-    title: {
-      text: "Monthly Habits"
-    },
-    legend: {
-      data: ["Punch Card"],
-      left: "right"
-    },
-    tooltip: {
-      position: "top",
-      formatter: function (params) {
-        const habitsOnThatDay = monthlyHabits[params.value[0]].reduce((acc,ele)=>{
-          acc.push(ele.habitId)
-          return acc},[])
-        .map(id => habitMap[id])
-        .toString()
-
-        return (
-          "You completed "+
-          params.value[2] +
-          " habits on " +
-          dates[params.value[0]] +
-          ": "+
-          habitsOnThatDay
-         
-        );
-      }
-    },
-    grid: {
-      left: 2,
-      bottom: 10,
-      right: 10,
-      containLabel: true
-    },
-    xAxis: {
-      type: "category",
-      data: dates,
-      boundaryGap: true,
-      splitLine: {
-        show: true,
-        interval:0
-      },
-      axisLine: {
-        show: true
-      },
-      axisTick:{
-        interval:0
-      },
-      axisLabel:{
-        fontSize:10,
-        interval:0
-      },
-    
-    },
-    yAxis: {
-      type: "category",
-      data: moodEmojis,
-      axisLine: {
-        show: false
-      }
-    },
-    series: [
-      {
-        name: "Punch Card",
-        type: "scatter",
-        symbolSize: function (val) {
-          return val[2] * 3;
-        },
-        data: entries,
-        animationDelay: function (idx) {
-          return idx * 5;
+          return (
+            "You completed "+
+            params.value[2] +
+            " habits on " +
+            dates[params.value[0]] +
+            ": "+
+            habitsOnThatDay
+          
+          );
         }
-      }
-    ]
-  };
+      },
+      grid: {
+        left: 2,
+        bottom: 10,
+        right: 10,
+        containLabel: true
+      },
+      xAxis: {
+        type: "category",
+        data: dates,
+        boundaryGap: true,
+        splitLine: {
+          show: true,
+          interval:0
+        },
+        axisLine: {
+          show: true
+        },
+        axisTick:{
+          interval:0
+        },
+        axisLabel:{
+          fontSize:10,
+          interval:0
+        },
+      
+      },
+      yAxis: {
+        type: "category",
+        data: moodEmojis,
+        axisLine: {
+          show: false
+        }
+      },
+      series: [
+        {
+          name: "Punch Card",
+          type: "scatter",
+          symbolSize: function (val) {
+            return val[2] * 3;
+          },
+          data: entries,
+          animationDelay: function (idx) {
+            return idx * 5;
+          }
+        }
+      ]
+    };
+    return (options)
+    // renderChart();
+  }
 
-  const renderChart = () => {
+  const renderChart = (options) => {
+    console.log(options)
     const chart = echarts.getInstanceByDom(chartRef.current);
     if (chart) {
       myChart = chart;
@@ -244,7 +252,7 @@ const Graph = () => {
     }
     myChart.setOption(options);
   };
-
+  console.log(options)
   return (
     <>
       <div style={{ width: "1000px",height:"400px" }} ref={chartRef} />
