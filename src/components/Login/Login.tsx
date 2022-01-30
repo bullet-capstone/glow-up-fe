@@ -56,6 +56,7 @@ const Login = () => {
   }
 
   return (
+    cookie.userToken?<h1>You have logged in, please go to dashboard or log out</h1>:
     <div id="login-form-container">
        {error && <h2 style={{marginBottom:'20px'}}>Please verify input and try again</h2>}
       <FormControl sx={{ m: 1, width: "25ch" }}>
