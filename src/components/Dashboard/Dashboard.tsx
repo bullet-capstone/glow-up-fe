@@ -1,7 +1,7 @@
 import "./Dashboard.css"
 import { Link } from "react-router-dom"
 import { useState,useEffect } from "react"
-import MonthlyGraphs from "../MonthlyGraphs/MonthlyGraphs"
+// import MonthlyGraphs from "../MonthlyGraphs/MonthlyGraphs"
 import { Habit } from "../../utils/Models"
 import MoodToday from "../MoodToday/MoodToday"
 import Week from "../Week/Week"
@@ -13,7 +13,7 @@ import { useCookies } from "react-cookie";
 
   
 const Dashboard = () => {
-  // const { todaysMood, todaysHabits } = useContext(AppContext)
+
   const [cookie,]= useCookies(['userToken'])
   const [todaysMood, setTodaysMood] = useState(null);
   const [todaysHabits, setTodaysHabits] = useState([]);
@@ -68,7 +68,7 @@ const Dashboard = () => {
         <h3 className="week-title">This week</h3>
         <Week />
       </section>
-      <MonthlyGraphs />
+      {/* <MonthlyGraphs /> */}
       <HabitGraph />
     </main>
   )

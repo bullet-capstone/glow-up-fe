@@ -20,8 +20,8 @@ export default function Week() {
   const [cookie,]= useCookies(['userToken'])
   const {loading, error, data }= useQuery(QUERY_WEEKLY_ENTRIES,{variables:{
     token: cookie.userToken
-    
-  }})
+   },
+  fetchPolicy:'no-cache'})
   const [weeklyStats, setWeeklyStats] = useState<WeeklyStats>({})
   const { getDayString } = useContext(AppContext)
 
@@ -38,7 +38,8 @@ export default function Week() {
           habits: []
         }
       }
-
+      // console.log('stats', stats);
+      
       const last7Days = Object.keys(stats)
 
       last7Days.forEach(day => {

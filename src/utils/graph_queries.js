@@ -52,11 +52,15 @@ export const QUERY_WEEKLY_ENTRIES = gql`
 export const QUERY_MONTHLY_ENTRIES = gql`
   query fetchMonthlyEntries($token:String!) {
     fetchUser(token:$token) {
-      id
       monthlyMoods {
         id
-        createdAt
         mood
+        createdAt
+      }
+      monthlyHabits {
+        id
+        habitId
+        date
       }
     }
   }
