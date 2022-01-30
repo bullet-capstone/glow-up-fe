@@ -53,15 +53,15 @@ const Dashboard = () => {
         </div>
       </section>
       <article className="today-container">
-        {todaysMood ? <MoodToday mt={todaysMood}/> : <Link to="/glow-up-fe/track">➕ Enter your mood today!</Link>}
+        {todaysMood ? <MoodToday mt={todaysMood}/> : <Link to="/glow-up-fe/track" className='dashboard-link'>➕ Enter your mood today!</Link>}
         {todaysHabits.length ? (
           <div className="completed-habits-container">
-            <h4>Habits I completed:</h4>
+            <h4 className="page-habits">Habits I completed:</h4>
             <div className="completed-habits">{displayHabit()}</div>
-            <Link to="/glow-up-fe/track">➕ Edit habits</Link>
+            <Link to="/glow-up-fe/track" className='dashboard-link'>➕ Edit habits</Link>
           </div>
         ) : (
-          <Link to="/glow-up-fe/track">➕ Enter your habits!</Link>
+          <Link to="/glow-up-fe/track" className='dashboard-link'>➕ Enter your habits!</Link>
         )}
       </article>
       <section className="week-container">
