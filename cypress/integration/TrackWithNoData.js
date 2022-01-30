@@ -1,6 +1,6 @@
 import { aliasQuery, aliasMutation } from "../utils/graphql-test-utils"
 
-describe("When User has not recorded today's mood or any habits", () => {
+describe.skip("When User has not recorded today's mood or any habits", () => {
   beforeEach(() => {
     cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => {
       if (req.body.operationName === "FetchDailyEntries") {

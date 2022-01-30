@@ -1,6 +1,6 @@
 import { aliasQuery } from "../utils/graphql-test-utils"
 
-describe("Journal", () => {
+describe.skip("Journal", () => {
   beforeEach(() => {
     cy.intercept("POST", "https://glowup-be.herokuapp.com/graphql", req => aliasQuery(req, "fetchJournalEntries"))
 
